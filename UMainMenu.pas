@@ -9,6 +9,8 @@ uses
 type
   TMainMenu = class(TForm)
     ClockButton: TButton;
+    procedure ClockButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -21,5 +23,15 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TMainMenu.ClockButtonClick(Sender: TObject);
+begin
+  MainMenu.Hide;
+end;
+
+procedure TMainMenu.FormCreate(Sender: TObject);
+begin
+  MainMenu.Show;
+end;
 
 end.

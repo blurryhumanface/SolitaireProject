@@ -11,6 +11,7 @@ object MainMenu: TMainMenu
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object ClockButton: TButton
@@ -20,5 +21,6 @@ object MainMenu: TMainMenu
     Height = 25
     Caption = 'Clock Solitaire'
     TabOrder = 0
+    OnClick = ClockButtonClick
   end
 end
