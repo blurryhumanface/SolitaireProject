@@ -3,7 +3,9 @@ program Project;
 uses
   Vcl.Forms,
   UMainMenu in 'UMainMenu.pas' {MainMenu},
-  UClock in 'UClock.pas' {ClockForm};
+  UClockForm in 'UClockForm.pas' {ClockForm},
+  UClock in 'UClock.pas',
+  UCards in 'UCards.pas';
 
 {$R *.res}
 

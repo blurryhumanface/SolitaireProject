@@ -18,6 +18,23 @@ interface
         function GetName:string;
         function GetOrientation:TOrientation;
     end;
+    TCards = Array[0..51] of TCard;
+    TDeck = Class
+      Private
+        FCards, FQueue:TCards;
+        FFront, FRear, FSize: Integer;
+      Public
+        constructor Create;
+        destructor Destroy;
+        procedure shuffle;
+        procedure AddCard(card:TCard);
+        function DealCard:TCard;
+        function IsEmpty:boolean;
+        function IsFull:boolean;
+        property Top :integer read FFront write FFront;
+        property Bottom :integer read FRear write FRear;
+        property Size :integer read FSize write FSize;
+    End;
 
 implementation
 
