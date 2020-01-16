@@ -205,12 +205,13 @@ end;
 
 constructor THand.Create;
 begin
-
+  inherited;
+  FCards:=TList<TCards>.Create;
 end;
 
 destructor THand.Destroy;
 begin
-
+  FCards.Free;
   inherited;
 end;
 
