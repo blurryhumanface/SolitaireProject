@@ -35,6 +35,25 @@ interface
         property Bottom :integer read FRear write FRear;
         property Size :integer read FSize write FSize;
     End;
+    THand = class abstract
+      protected
+        FCards:TList<TCard>;
+        function GetCard(i:integer):TCard;
+        function GetSize:integer;
+      public
+        constructor Create;
+        destructor Destroy; override;
+        procedure AddCard(card:TCard);
+        procedure Clear;
+        function RemoveCard(i:integer):TCard;
+        function RemoveFirstCard:TCard;
+        function FindCard(r,s:integer):integer;
+        function First:TCard;
+        function Last:TCard;
+        function IsEmpty:boolean;
+        property Size: integer read GetSize;
+        property Cards[i:integer]:TCard read GetCard;
+    end;
 
 implementation
 
