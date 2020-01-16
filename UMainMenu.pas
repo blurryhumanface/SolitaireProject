@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,UClockForm;
 
 type
   TMainMenu = class(TForm)
@@ -27,6 +27,7 @@ implementation
 procedure TMainMenu.ClockButtonClick(Sender: TObject);
 begin
   MainMenu.Hide;
+  ClockForm.Show;
 end;
 
 procedure TMainMenu.FormCreate(Sender: TObject);
