@@ -26,7 +26,7 @@ interface
       Public
         constructor Create;
         destructor Destroy;
-        procedure shuffle;
+        procedure Shuffle;
         procedure AddCard(card:TCard);
         function DealCard:TCard;
         function IsEmpty:boolean;
@@ -38,7 +38,7 @@ interface
     THand = class abstract
       protected
         FCards:TList<TCard>;
-        function GetCard(i:integer):TCard;
+        function GetCard(i: integer): TCard;
         function GetSize:integer;
       public
         constructor Create;
@@ -113,6 +113,145 @@ begin
     3: result := 'Hearts';
     4: result := 'Clubs';
   end;
+end;
+
+{ TDeck }
+
+procedure TDeck.AddCard(card: TCard);
+begin
+  if not IsFull then
+  begin
+    if Bottom=51 then
+      Bottom:=0
+    else
+      Bottom:=Bottom+1;
+    Size:=Size+1;
+  end;
+end;
+
+constructor TDeck.Create;
+var
+  i:integer;
+begin
+  inherited Create;
+  for i := 0 to 51 do
+  begin
+    FCards[i]:=TCard.Create((i mod 13)+1,i div 13);
+    FQueue[i]:=FCards[i];
+  end;
+  top:=0;
+  bottom:=51;
+  size:=52;
+  randomize;
+end;
+
+function TDeck.DealCard: TCard;
+begin
+  if not IsEmpty then
+  begin
+    result:=FQueue[top];
+    if Top=51 then
+      Top:=0
+    else
+      Top:=Top+1;
+    size:=size-1;
+  end;
+end;
+
+destructor TDeck.Destroy;
+var
+  i:integer;
+begin
+   for i := 0 to 51 do
+    FCards[i].Free;
+  inherited destroy;
+end;
+
+function TDeck.IsEmpty: boolean;
+begin
+  result:= size=0;
+end;
+
+function TDeck.IsFull: boolean;
+begin
+  result:= size=52;
+end;
+
+procedure TDeck.Shuffle;
+var
+  i,RandInt:integer;
+  TempCard:TCard;
+begin
+  for i := 0 to 51 do
+  begin
+    RandInt:=randomrange(51,0);
+    TempCard:=FQueue[i];
+    FQueue[i]:=FQueue[RandInt];
+  end;
+
+end;
+
+{ THand }
+
+procedure THand.AddCard(card: TCard);
+begin
+
+end;
+
+procedure THand.Clear;
+begin
+
+end;
+
+constructor THand.Create;
+begin
+
+end;
+
+destructor THand.Destroy;
+begin
+
+  inherited;
+end;
+
+function THand.FindCard(r, s: integer): integer;
+begin
+
+end;
+
+function THand.First: TCard;
+begin
+
+end;
+
+function THand.GetCard(i: integer): TCard;
+begin
+
+end;
+
+function THand.GetSize: integer;
+begin
+
+end;
+
+function THand.IsEmpty: boolean;
+begin
+
+end;
+
+function THand.Last: TCard;
+begin
+
+end;
+
+function THand.RemoveCard(i: integer): TCard;
+begin
+
+end;
+
+function THand.RemoveFirstCard: TCard;
+begin
+
 end;
 
 end.
