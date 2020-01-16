@@ -47,7 +47,6 @@ interface
         procedure Clear;
         function RemoveCard(i:integer):TCard;
         function RemoveFirstCard:TCard;
-        function FindCard(r,s:integer):integer;
         function First:TCard;
         function Last:TCard;
         function IsEmpty:boolean;
@@ -195,18 +194,18 @@ end;
 
 procedure THand.AddCard(card: TCard);
 begin
-
+  FCards.Add(card);
 end;
 
 procedure THand.Clear;
 begin
-
+  FCards.Clear;
 end;
 
 constructor THand.Create;
 begin
   inherited;
-  FCards:=TList<TCards>.Create;
+  FCards := TList<TCard>.Create;
 end;
 
 destructor THand.Destroy;
@@ -215,44 +214,47 @@ begin
   inherited;
 end;
 
-function THand.FindCard(r, s: integer): integer;
-begin
-
-end;
-
 function THand.First: TCard;
 begin
-
+  result:=FCards[0];
 end;
 
 function THand.GetCard(i: integer): TCard;
 begin
-
+  result:=FCards[i]
 end;
 
 function THand.GetSize: integer;
 begin
-
+  result:=FCards.Count;
 end;
 
 function THand.IsEmpty: boolean;
 begin
-
+  result:=Size=0;
 end;
 
 function THand.Last: TCard;
 begin
-
+  result:=FCards[FCards.Count-1];
 end;
 
 function THand.RemoveCard(i: integer): TCard;
 begin
-
+  if Size > i then
+  begin
+    result:=FCards[i];
+    FCards.Delete(i);
+  end;
 end;
 
 function THand.RemoveFirstCard: TCard;
 begin
-
+  if not IsEmpty then
+  begin
+    result:=FCards.First;
+    FCards.Delete(0);
+  end;
 end;
 
 end.
