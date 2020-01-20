@@ -41,7 +41,7 @@ interface
         function GetCard(i: integer): TCard;
         function GetSize:integer;
       public
-        constructor Create;
+        constructor Create; virtual;
         destructor Destroy; override;
         procedure AddCard(card:TCard);
         procedure Clear;
