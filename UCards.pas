@@ -11,6 +11,7 @@ interface
         orientation: TOrientation;
       public
         constructor Create(r,s:integer);
+        procedure FlipCard;
         function GetRank:integer;
         function GetSuit:integer;
         function GetRankAsString:string;
@@ -63,6 +64,14 @@ begin
   rank:=r;
   suit:=s;
   orientation:=back;
+end;
+
+procedure TCard.FlipCard;
+begin
+  if Orientation=back then
+    Orientation:=face
+  else if Orientation=face then
+    Orientation:=back;
 end;
 
 function TCard.GetName: string;
