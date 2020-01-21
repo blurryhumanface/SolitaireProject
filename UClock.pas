@@ -22,7 +22,7 @@ interface
         destructor Destroy;
         procedure CreateHands;
         procedure AssignHands;
-        procedure MoveCard(i:integer);
+        procedure MoveCard(var FromHand:TClockHand);
     end;
 
     var
@@ -145,8 +145,27 @@ begin
     end;
 end;
 
-procedure TClockGame.MoveCard(i:integer);
+procedure TClockGame.MoveCard(var FromHand:TClockHand);
+var
+  j:integer;
 begin
+  j:=FromHand.Size;
+  case FromHand.Last.GetRank of
+    1:begin
+        CHand17.AddCard(FromHand.RemoveCard(j));
+      end;
+    2:;
+    3:;
+    4:;
+    5:;
+    6:;
+    7:;
+    8:;
+    9:;
+    10:;
+    11:;
+    12:;
+  end;
 end;
 
 end.
