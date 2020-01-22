@@ -67,6 +67,7 @@ implementation
 procedure TClockForm.CHand10ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand10,j);
   if j=true then
@@ -77,6 +78,7 @@ end;
 procedure TClockForm.CHand11ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand11,j);
   if j=true then
@@ -87,6 +89,7 @@ end;
 procedure TClockForm.CHand12ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand12,j);
   if j=true then
@@ -97,6 +100,7 @@ end;
 procedure TClockForm.CHand1ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand1,j);
   if j=true then
@@ -107,6 +111,7 @@ end;
 procedure TClockForm.CHand2ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand2,j);
   if j=true then
@@ -117,6 +122,7 @@ end;
 procedure TClockForm.CHand3ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand3,j);
   if j=true then
@@ -127,6 +133,7 @@ end;
 procedure TClockForm.CHand4ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand4,j);
   if j=true then
@@ -137,6 +144,7 @@ end;
 procedure TClockForm.CHand5ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand5,j);
   if j=true then
@@ -147,6 +155,7 @@ end;
 procedure TClockForm.CHand6ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand6,j);
   if j=true then
@@ -157,8 +166,9 @@ end;
 procedure TClockForm.CHand7ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
-  ClockGame.MoveCard(CHand7,j);
+  ClockGame.MoveCard(CHand7,j,i);
   if j=true then
     showMessage('Game Over');
   turnOffButtons;
@@ -167,6 +177,7 @@ end;
 procedure TClockForm.CHand8ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand8,j);
   if j=true then
@@ -177,6 +188,7 @@ end;
 procedure TClockForm.CHand9ButtonClick(Sender: TObject);
 var
   j:boolean;
+  i:integer;
 begin
   ClockGame.MoveCard(CHand9,j);
   if j=true then
@@ -186,7 +198,8 @@ end;
 
 procedure TClockForm.newGame;
 begin
-  turnOnButtons
+  turnOnButtons;
+  CHand13.Last.FlipCard;
 end;
 
 procedure TClockForm.turnOffButtons;
