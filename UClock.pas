@@ -213,22 +213,22 @@ begin
         i:=FromHand.Last.GetRank;
       end;
     13:begin
-        if CHand13.GetSize=0 then
+        if CHand13.Size=0 then
         begin
           CHand13.AddCard(FromHand.RemoveCard(j));
           CHand14.Last.FlipCard;
         end
-        else if CHand14.GetSize=0 then
+        else if CHand14.Size=0 then
         begin
           CHand14.AddCard(FromHand.RemoveCard(j));
           CHand15.Last.FlipCard;
         end
-        else if CHand15.GetSize=0 then
+        else if CHand15.Size=0 then
         begin
           CHand15.AddCard(FromHand.RemoveCard(j));
           CHand16.Last.FlipCard;
         end
-        else if CHand16.GetSize=0 then
+        else if CHand16.Size=0 then
         begin
           CHand16.AddCard(FromHand.RemoveCard(j));
           GameOver:=True;

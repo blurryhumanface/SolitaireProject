@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,UClock;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,UClock,UCards;
 
 type
   TClockForm = class(TForm)
@@ -48,13 +48,16 @@ type
     procedure CHand9ButtonClick(Sender: TObject);
     procedure CHand10ButtonClick(Sender: TObject);
     procedure CHand11ButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure CreateItems;
   public
     { Public declarations }
     procedure turnOffButtons;
     procedure turnOnButtons;
     procedure newGame;
+    procedure turnNextCard(i:integer);
   end;
 
 var
@@ -69,10 +72,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand10,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand10.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand10,j,i);
+    if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand11ButtonClick(Sender: TObject);
@@ -80,10 +88,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand11,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand11.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand11,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand12ButtonClick(Sender: TObject);
@@ -91,10 +104,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand12,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand12.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand12,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand1ButtonClick(Sender: TObject);
@@ -102,10 +120,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand1,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand1.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand1,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand2ButtonClick(Sender: TObject);
@@ -113,10 +136,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand2,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand2.Last.GetOrientation=face then
+    begin
+    ClockGame.MoveCard(CHand2,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand3ButtonClick(Sender: TObject);
@@ -124,10 +152,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand3,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand3.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand3,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand4ButtonClick(Sender: TObject);
@@ -135,10 +168,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand4,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand4.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand4,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand5ButtonClick(Sender: TObject);
@@ -146,10 +184,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand5,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand5.Last.GetOrientation=face then
+    begin
+    ClockGame.MoveCard(CHand5,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand6ButtonClick(Sender: TObject);
@@ -157,10 +200,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand6,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand6.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand6,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand7ButtonClick(Sender: TObject);
@@ -168,10 +216,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand7,j,i);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand7.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand7,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand8ButtonClick(Sender: TObject);
@@ -179,10 +232,15 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand8,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand8.Last.GetOrientation = face then
+  begin
+    ClockGame.MoveCard(CHand8,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
 end;
 
 procedure TClockForm.CHand9ButtonClick(Sender: TObject);
@@ -190,16 +248,108 @@ var
   j:boolean;
   i:integer;
 begin
-  ClockGame.MoveCard(CHand9,j);
-  if j=true then
-    showMessage('Game Over');
-  turnOffButtons;
+  if CHand9.Last.GetOrientation=face then
+  begin
+    ClockGame.MoveCard(CHand9,j,i);
+     if j=true then
+    begin
+      showMessage('Game Over');
+      turnOffButtons;
+    end;
+  end;
+end;
+
+procedure TClockForm.CreateItems;
+begin
+  ClockGame:=TClockGame.Create;
+end;
+
+procedure TClockForm.FormCreate(Sender: TObject);
+begin
+  newGame;
 end;
 
 procedure TClockForm.newGame;
 begin
   turnOnButtons;
-  CHand13.Last.FlipCard;
+  turnNextCard(13);
+
+end;
+
+procedure TClockForm.turnNextCard(i: integer);
+begin
+  case i of
+    1:begin
+        CHand1.Last.FlipCard;
+        CHand1Button.Caption:=CHand1.Last.GetName;
+      end;
+    2:begin
+        CHand2.Last.FlipCard;
+        CHand2Button.Caption:=CHand2.Last.GetName;
+      end;
+    3:begin
+        CHand3.Last.FlipCard;
+        CHand3Button.Caption:=CHand3.Last.GetName;
+      end;
+    4:begin
+        CHand4.Last.FlipCard;
+        CHand4Button.Caption:=CHand4.Last.GetName;
+      end;
+    5:begin
+        CHand5.Last.FlipCard;
+        CHand5Button.Caption:=CHand5.Last.GetName;
+      end;
+    6:begin
+        CHand6.Last.FlipCard;
+        CHand6Button.Caption:=CHand6.Last.GetName;
+      end;
+    7:begin
+        CHand7.Last.FlipCard;
+        CHand7Button.Caption:=CHand7.Last.GetName;
+      end;
+    8:begin
+        CHand8.Last.FlipCard;
+        CHand8Button.Caption:=CHand8.Last.GetName;
+      end;
+    9:begin
+        CHand9.Last.FlipCard;
+        CHand9Button.Caption:=CHand9.Last.GetName;
+      end;
+    10:begin
+        CHand10.Last.FlipCard;
+        CHand10Button.Caption:=CHand10.Last.GetName;
+      end;
+    11:begin
+        CHand11.Last.FlipCard;
+        CHand11Button.Caption:=CHand11.Last.GetName;
+      end;
+    12:begin
+        CHand12.Last.FlipCard;
+        CHand12Button.Caption:=CHand12.Last.GetName;
+      end;
+    13:begin
+        if (CHand13Button.Enabled=true)and(CHand13.Size=1) then
+        begin
+          CHand13.Last.FlipCard;
+          CHand13Button.Caption:=CHand13.Last.GetName;
+        end
+        else if (CHand14Button.Enabled=true)and(CHand14.Size=1) then
+        begin
+          CHand14.Last.FlipCard;
+          CHand14Button.Caption:=CHand14.Last.GetName;
+        end
+        else if (CHand15Button.Enabled=true)and(CHand15.Size=1) then
+        begin
+          CHand15.Last.FlipCard;
+          CHand15Button.Caption:=CHand15.Last.GetName;
+        end
+        else if (CHand16Button.Enabled=true)and(CHand16.Size=1) then
+        begin
+          CHand16.Last.FlipCard;
+          CHand16Button.Caption:=CHand16.Last.GetName;
+        end
+      end;
+  end;
 end;
 
 procedure TClockForm.turnOffButtons;
