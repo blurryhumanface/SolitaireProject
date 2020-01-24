@@ -15,9 +15,8 @@ interface
     end;
 
     TClockGame = class
-      private
-        Layout:Array[1..28] of TClockHand;
       public
+        Layout:Array[1..28] of TClockHand;
         constructor Create;
         destructor Destroy;
         procedure CreateHands;

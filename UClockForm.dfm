@@ -21,6 +21,7 @@ object ClockForm: TClockForm
     Height = 17
     Caption = 'CHand13'
     TabOrder = 0
+    OnClick = CHand13ButtonClick
   end
   object CHand14Button: TButton
     Left = 343

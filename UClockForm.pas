@@ -49,6 +49,7 @@ type
     procedure CHand10ButtonClick(Sender: TObject);
     procedure CHand11ButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure CHand13ButtonClick(Sender: TObject);
   private
     { Private declarations }
     procedure CreateItems;
@@ -58,6 +59,8 @@ type
     procedure turnOnButtons;
     procedure newGame;
     procedure turnNextCard(i:integer);
+    procedure editButtonCaption(i:integer);
+    procedure editAllButtonCaptions;
   end;
 
 var
@@ -79,7 +82,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -95,7 +100,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -111,8 +118,20 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
+end;
+
+procedure TClockForm.CHand13ButtonClick(Sender: TObject);
+var
+  j:boolean;
+  i:integer;
+begin
+  ClockGame.MoveCard(CHand13,j,i);
+  turnNextCard(i);
+  CHand13Button.Enabled:=False;
 end;
 
 procedure TClockForm.CHand1ButtonClick(Sender: TObject);
@@ -127,7 +146,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -143,7 +164,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -159,7 +182,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -175,7 +200,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -191,7 +218,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -207,7 +236,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -223,7 +254,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -239,7 +272,9 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
@@ -255,13 +290,142 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end;
+    end
+    else
+      turnNextCard(i);
   end;
 end;
 
 procedure TClockForm.CreateItems;
 begin
   ClockGame:=TClockGame.Create;
+end;
+
+procedure TClockForm.editAllButtonCaptions;
+var
+  i:integer;
+begin
+  for i := 1 to 13 do
+  begin
+    editButtonCaption(i);
+  end;
+
+
+end;
+
+procedure TClockForm.editButtonCaption(i:integer);
+begin
+  if ClockGame.Layout[i].Last.GetOrientation=back then
+  begin
+    case i of
+      1:CHand1Button.Caption:='back';
+      2:CHand2Button.Caption:='back';
+      3:CHand3Button.Caption:='back';
+      4:CHand4Button.Caption:='back';
+      5:CHand5Button.Caption:='back';
+      6:CHand6Button.Caption:='back';
+      7:CHand7Button.Caption:='back';
+      8:CHand8Button.Caption:='back';
+      9:CHand9Button.Caption:='back';
+      10:CHand10Button.Caption:='back';
+      11:CHand11Button.Caption:='back';
+      12:CHand12Button.Caption:='back';
+      13:CHand13Button.Caption:='back';
+      14:CHand14Button.Caption:='back';
+      15:CHand15Button.Caption:='back';
+      16:CHand16Button.Caption:='back';
+    end;
+  end
+  else
+  begin
+    case i of
+     1:begin
+      CHand1Button.Caption:=CHand1.Last.GetName;
+     end;
+     2:begin
+      CHand2Button.Caption:=CHand2.Last.GetName;
+     end;
+     3:begin
+      CHand3Button.Caption:=CHand3.Last.GetName;
+     end;
+     4:begin
+      CHand4Button.Caption:=CHand4.Last.GetName;
+     end;
+     5:begin
+      CHand5Button.Caption:=CHand5.Last.GetName;
+     end;
+     6:begin
+      CHand6Button.Caption:=CHand6.Last.GetName;
+     end;
+     7:begin
+      CHand7Button.Caption:=CHand7.Last.GetName;
+     end;
+     8:begin
+      CHand8Button.Caption:=CHand8.Last.GetName;
+     end;
+     9:begin
+      CHand9Button.Caption:=CHand9.Last.GetName;
+     end;
+     10:begin
+      CHand10Button.Caption:=CHand10.Last.GetName;
+     end;
+     11:begin
+      CHand11Button.Caption:=CHand11.Last.GetName;
+     end;
+     12:begin
+      CHand12Button.Caption:=CHand12.Last.GetName;
+     end;
+     13:begin
+      CHand13Button.Caption:=CHand13.Last.GetName;
+     end;
+     14:begin
+      CHand14Button.Caption:=CHand14.Last.GetName;
+     end;
+     15:begin
+      CHand15Button.Caption:=CHand15.Last.GetName;
+     end;
+     16:begin
+      CHand16Button.Caption:=CHand16.Last.GetName;
+     end;
+     17:begin
+      CHand17Button.Caption:=CHand17.Last.GetName;
+     end;
+     18:begin
+      CHand18Button.Caption:=CHand18.Last.GetName;
+     end;
+     19:begin
+      CHand19Button.Caption:=CHand19.Last.GetName;
+     end;
+     20:begin
+      CHand20Button.Caption:=CHand20.Last.GetName;
+     end;
+     21:begin
+      CHand21Button.Caption:=CHand21.Last.GetName;
+     end;
+     22:begin
+      CHand22Button.Caption:=CHand22.Last.GetName;
+     end;
+     23:begin
+      CHand23Button.Caption:=CHand23.Last.GetName;
+     end;
+     24:begin
+      CHand24Button.Caption:=CHand24.Last.GetName;
+     end;
+     25:begin
+      CHand25Button.Caption:=CHand25.Last.GetName;
+     end;
+     26:begin
+      CHand26Button.Caption:=CHand26.Last.GetName;
+     end;
+     27:begin
+      CHand27Button.Caption:=CHand27.Last.GetName;
+     end;
+     28:begin
+      CHand28Button.Caption:=CHand28.Last.GetName;
+     end;
+    end;
+  end;
+
 end;
 
 procedure TClockForm.FormCreate(Sender: TObject);
@@ -272,59 +436,48 @@ end;
 procedure TClockForm.newGame;
 begin
   turnOnButtons;
+  CreateItems;
   turnNextCard(13);
-
+  editAllButtonCaptions;
 end;
 
 procedure TClockForm.turnNextCard(i: integer);
 begin
   case i of
     1:begin
-        CHand1.Last.FlipCard;
         CHand1Button.Caption:=CHand1.Last.GetName;
       end;
     2:begin
-        CHand2.Last.FlipCard;
         CHand2Button.Caption:=CHand2.Last.GetName;
       end;
     3:begin
-        CHand3.Last.FlipCard;
         CHand3Button.Caption:=CHand3.Last.GetName;
       end;
     4:begin
-        CHand4.Last.FlipCard;
         CHand4Button.Caption:=CHand4.Last.GetName;
       end;
     5:begin
-        CHand5.Last.FlipCard;
         CHand5Button.Caption:=CHand5.Last.GetName;
       end;
     6:begin
-        CHand6.Last.FlipCard;
         CHand6Button.Caption:=CHand6.Last.GetName;
       end;
     7:begin
-        CHand7.Last.FlipCard;
         CHand7Button.Caption:=CHand7.Last.GetName;
       end;
     8:begin
-        CHand8.Last.FlipCard;
         CHand8Button.Caption:=CHand8.Last.GetName;
       end;
     9:begin
-        CHand9.Last.FlipCard;
         CHand9Button.Caption:=CHand9.Last.GetName;
       end;
     10:begin
-        CHand10.Last.FlipCard;
         CHand10Button.Caption:=CHand10.Last.GetName;
       end;
     11:begin
-        CHand11.Last.FlipCard;
         CHand11Button.Caption:=CHand11.Last.GetName;
       end;
     12:begin
-        CHand12.Last.FlipCard;
         CHand12Button.Caption:=CHand12.Last.GetName;
       end;
     13:begin
