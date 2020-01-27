@@ -123,39 +123,56 @@ implementation
 constructor TCard.Create(r, s: integer);
 begin
   rank:=r;
-  {This sets }
+  {This sets the value of rank to be the passed value of r}
   suit:=s;
+  {This sets the value of suit to be the passed value of s}
   orientation:=back;
+  {This sets the default orientation to be the back of the cards facing the
+   player}
 end;
 
 procedure TCard.FlipCard;
 begin
   if Orientation=back then
+  {This line checks to see the current orientation of the card to see if it is
+   face down}
     Orientation:=face
+    {If it is face down then it is changed to being face up}
   else if Orientation=face then
+  {If it isn't face down then this line checks to see if it is face up}
     Orientation:=back;
+    {If it is face up then it is changed to being face down}
 end;
 
 function TCard.GetName: string;
 begin
-  result:=GetRankAsString + 'of' + GetSuitAsString;
+  result:=GetRankAsString + ' of ' + GetSuitAsString;
+  {This line sets the result to be the return of GetRankAsString of the return
+   of GetSuitAsString}
 end;
 
 function TCard.GetOrientation: TOrientation;
 begin
   result:=orientation;
+  {This line returns the current value of orientation}
 end;
 
 function TCard.GetRank: integer;
 begin
   result:=rank;
+  {This line returns the current value of rank}
 end;
 
 function TCard.GetRankAsString: string;
 begin
   case Rank of
+  {This line checks the current value of rank}
     1: result := 'Ace';
+    {If the current value of rank is 1 then the rank as a string is 'Ace'}
     2: result := 'Two';
+    {If the current value of rank is 2 then the rank as a string is 'Two'
+     the rest of values between 2 and 10 inclusively are the same with the
+     result being the word form of the number}
     3: result := 'Three';
     4: result := 'Four';
     5: result := 'Five';
@@ -165,23 +182,32 @@ begin
     9: result := 'Nine';
     10: result := 'Ten';
     11: result := 'Jack';
+    {If the current value of rank is 11 then the rank as a string is 'Jack'}
     12: result := 'Queen';
+    {If the current value of rank is 12 then the rank as a  string is 'Queen'}
     13: result := 'King';
+    {If the current value of rank is 13 then the rank as a string is 'King'}
   end;
 end;
 
 function TCard.GetSuit: integer;
 begin
   result:=Suit;
+  {This line returns the current value of suit}
 end;
 
 function TCard.GetSuitAsString: String;
 begin
   case Suit of
+  {This line checks the current value of suit}
     1: result := 'Diamonds';
+    {If the current value of suit is 1 then the suit as a string is 'Diamonds'}
     2: result := 'Spades';
+    {If the current value of suit is 2 then the suit as a string is 'Spades'}
     3: result := 'Hearts';
+    {If the current value of suit is 3 then the suit as a string is 'Hearts'}
     4: result := 'Clubs';
+    {If the current value of suit is 4 then the suit as a string is 'Clubs'}
   end;
 end;
 
