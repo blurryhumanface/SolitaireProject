@@ -2,6 +2,7 @@ unit UCards;
 
 interface
   uses sysutils, math, Generics.Collections;
+  {This is a list of all of the existing libraries that I need for this unit}
   type
     TOrientation = (face,back);
     {I created a data type specifically to denote the orientation of the cards
@@ -40,40 +41,79 @@ interface
         {This function returns the current orientation of the card}
     end;
     TCards = Array[0..51] of TCard;
-    //This is a collection of cards the size of a regular deck of cards
+    {This is a collection of cards the size of a regular deck of cards}
     TDeck = Class
       Private
         FCards, FQueue:TCards;
+        {These are the actual list of cards that create the deck
+         FCards is the set of ordered cards that the deck is fully composed of
+         FQueue is the set of cards that the user interacts with}
         FFront, FRear, FSize: Integer;
+        {These are different indicators that relate to the different aspects
+         of FQueue}
       Public
         constructor Create;
+        {This procedure creates the deck and all of its components}
         destructor Destroy;
+        {This procedure frees up all instances of the deck and its components}
         procedure Shuffle;
+        {This procedure reorders the cards in FQueue}
         procedure AddCard(card:TCard);
+        {This procedure adds a card to FQueue}
         function DealCard:TCard;
+        {This function removes the top card in the queue and returns the card
+         that is removed}
         function IsEmpty:boolean;
+        {This function returns a boolean on whether the queue is empty}
         function IsFull:boolean;
+        {This function returns a boolean on whether the queue is full}
         property Top :integer read FFront write FFront;
+        {This property is a way of reading and editing where the front of the
+        queue is}
         property Bottom :integer read FRear write FRear;
+        {This property is a way of reading and editing where the back of the
+        queue is}
         property Size :integer read FSize write FSize;
+        {This property is a way of reading and editing the number of cards in
+        the queue}
     End;
-    THand = class abstract
+    THand = class abstract {This declares the the class of THand is a class that
+    is never truly present in the code but is inherited by the other hand
+    classes}
       protected
         FCards:TList<TCard>;
+        {This is the list of cards that the hand is composed of}
         function GetCard(i: integer): TCard;
+        {This function returns the card that is in the position i in the hand}
         function GetSize:integer;
+        {This function returns the size of the hand}
       public
         constructor Create; virtual;
+        {This procedure establishes the creation code that is universal to
+         all of the class hands, while also allowing additional code to be
+         included}
         destructor Destroy; override;
+        {This procedure establishes the destructor for all of the class hands
+         and overrides the established destructor code}
         procedure AddCard(card:TCard);
+        {This procedure adds a card to the list of the cards that is the hand}
         procedure Clear;
+        {This procedure removes all of the cards from the hand}
         function RemoveCard(i:integer):TCard;
+        {This function returns the card at the position i after removing it
+         from the hand}
         function RemoveFirstCard:TCard;
+        {This removes the first card in the hand and returns that card}
         function First:TCard;
+        {This function returns the card that is the first in the list}
         function Last:TCard;
+        {This function returns the card that is the last in the list}
         function IsEmpty:boolean;
+        {This function returns boolean for if there are no cards in the hand}
         property Size: integer read GetSize;
+        {This property reads how many cards there are in the hand}
         property Cards[i:integer]:TCard read GetCard;
+        {This property reads the card at position i in the hand}
     end;
 
 implementation
