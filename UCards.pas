@@ -216,12 +216,19 @@ end;
 procedure TDeck.AddCard(card: TCard);
 begin
   if not IsFull then
+  {This line calls the function IsFull to see if the deck is full.
+   If it isn't full then the next lines of code are run}
   begin
     if Bottom=51 then
+    {This line checks to see whether or not the current value for bottom is 51}
       Bottom:=0
+      {If the current value of bottom is 51 then the new value is set to be 0}
     else
       Bottom:=Bottom+1;
+      {If the current value of bottom isn't 51 then the current value is
+      incemented by 1}
     Size:=Size+1;
+    {The size of the deck is then incremented by 1}
   end;
 end;
 
