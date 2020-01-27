@@ -6,14 +6,14 @@ interface
   type
     TOrientation = (face,back);
     {I created a data type specifically to denote the orientation of the cards
-    because I know that the orientation is important in both Clock Solitaire and
-    Klondike Solitaire}
+     because I know that the orientation is important in both Clock Solitaire and
+     Klondike Solitaire}
     TCard=class
       private
-        rank: 1..13; //The rank is the value on the card's face
-        //there are 13 ranks from Ace to King
-        suit: 1..4; //In a deck of cards there are 4 suits:
-        {Hearts, Diamonds, Spades and Clubs}
+        rank: 1..13; {The rank is the value on the card's face
+        there are 13 ranks from Ace to King}
+        suit: 1..4; {In a deck of cards there are 4 suits:
+        Hearts, Diamonds, Spades and Clubs}
         orientation: TOrientation;
         {This is the actual property in the card class that relates to whether
         the card is face up or if the back of the card is facing the player}
@@ -123,6 +123,7 @@ implementation
 constructor TCard.Create(r, s: integer);
 begin
   rank:=r;
+  {This sets }
   suit:=s;
   orientation:=back;
 end;
