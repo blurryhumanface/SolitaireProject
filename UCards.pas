@@ -226,7 +226,7 @@ begin
     else
       Bottom:=Bottom+1;
       {If the current value of bottom isn't 51 then the current value is
-      incemented by 1}
+      incremented by 1}
     Size:=Size+1;
     {The size of the deck is then incremented by 1}
   end;
@@ -271,10 +271,15 @@ begin
     result:=FQueue[top];
     {This line returns the top card of the deck}
     if Top=51 then
+    {This line checks to see whether or not the current value for top is 51}
       Top:=0
+      {If the current value of top is 51 then the new value is set to be 0}
     else
       Top:=Top+1;
+      {If the current value of top isn't 51 then the current value is
+       incremented by 1}
     size:=size-1;
+    {The size is decremented by 1}
   end;
 end;
 
@@ -283,18 +288,24 @@ var
   i:integer;
 begin
    for i := 0 to 51 do
+   {This for loop iterates over length of the deck of cards}
     FCards[i].Free;
+    {This line frees up the memory space allocated to the card in position
+     i in FCards}
   inherited destroy;
+  {This procedure then uses the pre-existing destructor code}
 end;
 
 function TDeck.IsEmpty: boolean;
 begin
   result:= size=0;
+  {This line returns the boolean of if the size of the deck is 0}
 end;
 
 function TDeck.IsFull: boolean;
 begin
   result:= size=52;
+  {This line returns the boolean of if the size of the deck is 52}
 end;
 
 procedure TDeck.Shuffle;
@@ -303,11 +314,18 @@ var
   TempCard:TCard;
 begin
   for i := 0 to 51 do
+  {This for loop repeats for the length of the deck of cards}
   begin
     RandInt:=randomrange(51,0);
+    {This line sets the variable RandInt to be a random integer in the range of
+     51 and 0 inclusively}
     TempCard:=FQueue[i];
+    {This assigns the card in position i of FQueue to a temporary card}
     FQueue[i]:=FQueue[RandInt];
+    {This copies the card in the random position in FQueue to position i in
+     FQueue}
     FQueue[RandInt]:=TempCard;
+    {This copies the card stored in TempCard to the random position in FQueue}
   end;
   TempCard.Free;
 end;
