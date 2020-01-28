@@ -217,7 +217,7 @@ procedure TDeck.AddCard(card: TCard);
 begin
   if not IsFull then
   {This line calls the function IsFull to see if the deck is full.
-   If it isn't full then the next lines of code are run}
+   If it isn't full then the next block of code run}
   begin
     if Bottom=51 then
     {This line checks to see whether or not the current value for bottom is 51}
@@ -237,22 +237,39 @@ var
   i:integer;
 begin
   inherited Create;
+  {This line says that this procedure uses the pre-existing constructor in
+   addition to the additional code it is adding}
   for i := 0 to 51 do
+  {This line starts a for loop which repeats for the same length as the deck}
   begin
     FCards[i]:=TCard.Create((i mod 13)+1,i div 13);
+    {This sets the value of the position of i in the array to be the next card
+     starting with the ace of the first suit}
     FQueue[i]:=FCards[i];
+    {This copies the card that is in position i in FCards to the same position
+     in FQueue}
   end;
   top:=0;
+  {This line establishes that the first card in the deck at creation is the
+   card in the 0th position}
   bottom:=51;
+  {This line establishes that the last card in the deck at creation is the card
+   in the 51st position}
   size:=52;
+  {This line establishes that the number of cards of the deck at creation is 52}
   randomize;
+  {This line changes the seed being used by the computer for generating
+   random numbers}
 end;
 
 function TDeck.DealCard: TCard;
 begin
   if not IsEmpty then
+  {This line calls the function IsEmpty to see if the deck is empty.
+   If it isn't empty then the next block of code is run}
   begin
     result:=FQueue[top];
+    {This line returns the top card of the deck}
     if Top=51 then
       Top:=0
     else
