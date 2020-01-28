@@ -307,8 +307,9 @@ begin
     RandInt:=randomrange(51,0);
     TempCard:=FQueue[i];
     FQueue[i]:=FQueue[RandInt];
+    FQueue[RandInt]:=TempCard;
   end;
-
+  TempCard.Free;
 end;
 
 { THand }
