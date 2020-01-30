@@ -103,7 +103,9 @@ interface
         {This function returns the card at the position i after removing it
          from the hand}
         function RemoveFirstCard:TCard;
-        {This removes the first card in the hand and returns that card}
+        {This function removes the first card in the hand and returns that card}
+        function RemoveLastCard:TCard;
+        {This function removes the last card in the hand and returns that card}
         function First:TCard;
         {This function returns the card that is the first in the list}
         function Last:TCard;
@@ -421,6 +423,20 @@ begin
     FCards.Delete(0);
     {This line calls the method of TList which deletes the instance of the
      first card from itself}
+  end;
+end;
+
+function THand.RemoveLastCard: TCard;
+begin
+  if not IsEmpty then
+  {This line checks to see if there are any cards in the hand before trying to
+   taking the first card out of it}
+  begin
+    result:=FCards.Last;
+    {This line returns the last card in the hand}
+    FCards.Delete(Size-1);
+    {This line calls the method of TList which deletes the instance of the card
+     in the last position from itself}
   end;
 end;
 
