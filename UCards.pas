@@ -335,65 +335,92 @@ end;
 procedure THand.AddCard(card: TCard);
 begin
   FCards.Add(card);
+  {This procedure calls the method of TList to add the card that
+   was passed to the procedure}
 end;
 
 procedure THand.Clear;
 begin
   FCards.Clear;
+  {This procedure calls the method of TList to clear all the elements of the
+   FCards}
 end;
 
 constructor THand.Create;
 begin
-  inherited;
+  inherited Create;
+  {This line means that this procedure uses the existing constructor}
   FCards := TList<TCard>.Create;
+  {This line creates FCards by calling the creation method of TList}
 end;
 
 destructor THand.Destroy;
 begin
   FCards.Free;
-  inherited;
+  {This line frees the memory assigned to FCards}
+  inherited destroy;
+  {This line means that this procedure uses the existing Destructor}
 end;
 
 function THand.First: TCard;
 begin
   result:=FCards[0];
+  {This line returns the first card in FCards}
 end;
 
 function THand.GetCard(i: integer): TCard;
 begin
   result:=FCards[i]
+  {This line returns the card in position i in FCards}
 end;
 
 function THand.GetSize: integer;
 begin
   result:=FCards.Count;
+  {This line calls the method of Count and this returns the number of cards
+   in the list and then this list returns that value as the size}
 end;
 
 function THand.IsEmpty: boolean;
 begin
   result:=Size=0;
+  {This line returns the result of the comparison of the size of the hand with
+   0}
 end;
 
 function THand.Last: TCard;
 begin
   result:=FCards[FCards.Count-1];
+  {This line returns the card that is one less than the number of cards in the
+   hand}
 end;
 
 function THand.RemoveCard(i: integer): TCard;
 begin
   if Size > i then
+  {This line compares the value i and the number of cards in the list to see if
+   there are more cards in the hand than the card they're trying to remove so
+   so that they cannot remove a card that does not exist in the hand}
   begin
     result:=FCards[i];
+    {This line returns the card in position i}
     FCards.Delete(i);
+    {This line calls the method of TList which deletes the instance of the card
+     in position i from itself}
   end;
 end;
 
 function THand.RemoveFirstCard: TCard;
 begin
   if not IsEmpty then
+  {This line checks to see if there are any cards in the hand before trying to
+   taking the first card out of it}
   begin
     result:=FCards.First;
+    {This line returns the first card in the hand}
     FCards.Delete(0);
+    {This line calls the method of TList which deletes the instance of the
+     first card from itself}
   end;
 end;
 
