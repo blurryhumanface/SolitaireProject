@@ -50,9 +50,13 @@ type
     procedure CHand11ButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CHand13ButtonClick(Sender: TObject);
+    procedure CHand14ButtonClick(Sender: TObject);
+    procedure CHand15ButtonClick(Sender: TObject);
+    procedure CHand16ButtonClick(Sender: TObject);
   private
     { Private declarations }
     procedure CreateItems;
+    procedure sayOrientation(card:TCard);
   public
     { Public declarations }
     procedure turnOffButtons;
@@ -61,6 +65,7 @@ type
     procedure turnNextCard(i:integer);
     procedure editButtonCaption(i:integer);
     procedure editAllButtonCaptions;
+    procedure editMiddleButtonCaptions(i:integer);
   end;
 
 var
@@ -84,7 +89,15 @@ begin
       turnOffButtons;
     end
     else
+      sayOrientation(CHand10.Last);
       turnNextCard(i);
+      editButtonCaption(10);
+      editButtonCaption(26);
+    editMiddleButtonCaptions(i);
+    if CHand10.Size=0 then
+    begin
+      CHand10Button.Enabled:=False;
+    end;
   end;
 end;
 
@@ -102,7 +115,15 @@ begin
       turnOffButtons;
     end
     else
+      sayOrientation(CHand11.Last);
       turnNextCard(i);
+      editButtonCaption(11);
+      editButtonCaption(27);
+    editMiddleButtonCaptions(i);
+    if CHand11.Size=0 then
+    begin
+      CHand11Button.Enabled:=False;
+    end;
   end;
 end;
 
@@ -120,7 +141,15 @@ begin
       turnOffButtons;
     end
     else
+      sayOrientation(CHand12.Last);
       turnNextCard(i);
+      editButtonCaption(28);
+      editButtonCaption(12);
+    editMiddleButtonCaptions(i);
+    if CHand12.Size=0 then
+    begin
+      CHand12Button.Enabled:=False;
+    end;
   end;
 end;
 
@@ -132,6 +161,44 @@ begin
   ClockGame.MoveCard(CHand13,j,i);
   turnNextCard(i);
   CHand13Button.Enabled:=False;
+  CHand13Button.Caption:='Empty';
+  editMiddleButtonCaptions(i);
+end;
+
+procedure TClockForm.CHand14ButtonClick(Sender: TObject);
+var
+  i:integer;
+  j:boolean;
+begin
+  ClockGame.MoveCard(CHand14,j,i);
+  turnNextCard(i);
+  CHand14Button.Enabled:=False;
+  CHand14Button.Caption:='Empty';
+  editMiddleButtonCaptions(i);
+end;
+
+procedure TClockForm.CHand15ButtonClick(Sender: TObject);
+var
+  i:integer;
+  j:boolean;
+begin
+  ClockGame.MoveCard(CHand15,j,i);
+  turnNextCard(i);
+  CHand15Button.Enabled:=False;
+  CHand15Button.Caption:='Empty';
+  editMiddleButtonCaptions(i);
+end;
+
+procedure TClockForm.CHand16ButtonClick(Sender: TObject);
+var
+  i:integer;
+  j:boolean;
+begin
+  ClockGame.MoveCard(CHand16,j,i);
+  turnNextCard(i);
+  CHand16Button.Enabled:=False;
+  CHand16Button.Caption:='Empty';
+  editMiddleButtonCaptions(i);
 end;
 
 procedure TClockForm.CHand1ButtonClick(Sender: TObject);
@@ -142,13 +209,21 @@ begin
   if CHand1.Last.GetOrientation=face then
   begin
     ClockGame.MoveCard(CHand1,j,i);
+    if CHand1.Size=0 then
+    begin
+      CHand1Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand1.Last);
       turnNextCard(i);
+      editButtonCaption(17);
+      editButtonCaption(1);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -160,13 +235,21 @@ begin
   if CHand2.Last.GetOrientation=face then
     begin
     ClockGame.MoveCard(CHand2,j,i);
+    if CHand2.Size=0 then
+    begin
+      CHand2Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand2.Last);
       turnNextCard(i);
+      editButtonCaption(18);
+      editButtonCaption(2);
+      editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -178,13 +261,21 @@ begin
   if CHand3.Last.GetOrientation=face then
   begin
     ClockGame.MoveCard(CHand3,j,i);
+    if CHand2.Size=0 then
+    begin
+      CHand2Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand3.Last);
       turnNextCard(i);
+      editButtonCaption(19);
+      editButtonCaption(3);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -196,13 +287,21 @@ begin
   if CHand4.Last.GetOrientation=face then
   begin
     ClockGame.MoveCard(CHand4,j,i);
+    if CHand4.Size=0 then
+    begin
+      CHand4Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand4.Last);
       turnNextCard(i);
+      editButtonCaption(20);
+      editButtonCaption(4);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -214,13 +313,21 @@ begin
   if CHand5.Last.GetOrientation=face then
     begin
     ClockGame.MoveCard(CHand5,j,i);
+    if CHand5.Size=0 then
+    begin
+      CHand5Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand5.Last);
       turnNextCard(i);
+      editButtonCaption(21);
+      editButtonCaption(5);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -232,13 +339,21 @@ begin
   if CHand6.Last.GetOrientation=face then
   begin
     ClockGame.MoveCard(CHand6,j,i);
+    if CHand6.Size=0 then
+    begin
+      CHand6Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand6.Last);
       turnNextCard(i);
+      editButtonCaption(22);
+      editButtonCaption(6);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -250,13 +365,21 @@ begin
   if CHand7.Last.GetOrientation=face then
   begin
     ClockGame.MoveCard(CHand7,j,i);
+    if CHand7.Size=0 then
+    begin
+      CHand7Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand7.Last);
       turnNextCard(i);
+      editButtonCaption(23);
+      editButtonCaption(7);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -268,13 +391,21 @@ begin
   if CHand8.Last.GetOrientation = face then
   begin
     ClockGame.MoveCard(CHand8,j,i);
+    if CHand8.Size=0 then
+    begin
+      CHand8Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand8.Last);
       turnNextCard(i);
+      editButtonCaption(24);
+      editButtonCaption(8);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -286,13 +417,21 @@ begin
   if CHand9.Last.GetOrientation=face then
   begin
     ClockGame.MoveCard(CHand9,j,i);
+    if CHand8.Size=0 then
+    begin
+      CHand8Button.Enabled:=False;
+    end;
      if j=true then
     begin
       showMessage('Game Over');
       turnOffButtons;
     end
     else
+      sayOrientation(CHand9.Last);
       turnNextCard(i);
+      editButtonCaption(25);
+      editButtonCaption(9);
+    editMiddleButtonCaptions(i);
   end;
 end;
 
@@ -305,7 +444,7 @@ procedure TClockForm.editAllButtonCaptions;
 var
   i:integer;
 begin
-  for i := 1 to 13 do
+  for i := 1 to 16 do
   begin
     editButtonCaption(i);
   end;
@@ -428,6 +567,29 @@ begin
 
 end;
 
+procedure TClockForm.editMiddleButtonCaptions(i: integer);
+begin
+if i=13 then
+    begin
+      if CHand13.Size=1 then
+      begin
+        editButtonCaption(i)
+      end
+      else if CHand14.Size=1 then
+           begin
+             editButtonCaption(14)
+           end
+      else if CHand15.Size=1 then
+           begin
+             editButtonCaption(15)
+           end
+      else if CHand16.Size=1 then
+           begin
+             editButtonCaption(16)
+           end
+    end
+end;
+
 procedure TClockForm.FormCreate(Sender: TObject);
 begin
   newGame;
@@ -439,6 +601,15 @@ begin
   CreateItems;
   turnNextCard(13);
   editAllButtonCaptions;
+end;
+
+procedure TClockForm.sayOrientation(card: TCard);
+begin
+  if card.GetOrientation=face then
+    showMessage('Face')
+  else
+    showMessage('Back');
+
 end;
 
 procedure TClockForm.turnNextCard(i: integer);
