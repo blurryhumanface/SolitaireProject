@@ -1,9 +1,9 @@
 object ClockForm: TClockForm
-  Left = 0
-  Top = 0
+  Left = 229
+  Top = 154
   Caption = 'Clock Solitaire'
-  ClientHeight = 449
-  ClientWidth = 681
+  ClientHeight = 480
+  ClientWidth = 957
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,7 @@ object ClockForm: TClockForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -433,5 +434,13 @@ object ClockForm: TClockForm
     Font.Style = []
     ParentFont = False
     TabOrder = 27
+  end
+  object MovesEdit: TEdit
+    Left = 712
+    Top = 48
+    Width = 121
+    Height = 21
+    TabOrder = 28
+    Text = 'no. of moves: 0'
   end
 end

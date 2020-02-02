@@ -12,7 +12,7 @@ interface
       private
         rank: 1..13; {The rank is the value on the card's face
         there are 13 ranks from Ace to King}
-        suit: 1..4; {In a deck of cards there are 4 suits:
+        suit: 0..3; {In a deck of cards there are 4 suits:
         Hearts, Diamonds, Spades and Clubs}
         orientation: TOrientation;
         {This is the actual property in the card class that relates to whether
@@ -202,13 +202,13 @@ function TCard.GetSuitAsString: String;
 begin
   case Suit of
   {This line checks the current value of suit}
-    1: result := 'Diamonds';
+    0: result := 'Diamonds';
     {If the current value of suit is 1 then the suit as a string is 'Diamonds'}
-    2: result := 'Spades';
+    1: result := 'Spades';
     {If the current value of suit is 2 then the suit as a string is 'Spades'}
-    3: result := 'Hearts';
+    2: result := 'Hearts';
     {If the current value of suit is 3 then the suit as a string is 'Hearts'}
-    4: result := 'Clubs';
+    3: result := 'Clubs';
     {If the current value of suit is 4 then the suit as a string is 'Clubs'}
   end;
 end;
@@ -244,7 +244,7 @@ begin
   for i := 0 to 51 do
   {This line starts a for loop which repeats for the same length as the deck}
   begin
-    FCards[i]:=TCard.Create((i mod 13)+1,i div 13);
+    FCards[i]:=TCard.Create(((i mod 13)+1),i div 13);
     {This sets the value of the position of i in the array to be the next card
      starting with the ace of the first suit}
     FQueue[i]:=FCards[i];
