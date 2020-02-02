@@ -94,10 +94,12 @@
             <Form>MainMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UClock.pas">
+        <DCCReference Include="UClockForm.pas">
             <Form>ClockForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UClock.pas"/>
+        <DCCReference Include="UCards.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
