@@ -91,11 +91,8 @@ begin
     if CHand10.Size=0 then
     begin
       CHand10Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>10 then
     begin
       turnAllCardsOver(CHand10);
@@ -123,11 +120,8 @@ begin
     if CHand11.Size=0 then
     begin
       CHand11Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>11 then
     begin
       turnAllCardsOver(CHand11);
@@ -139,7 +133,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
+    end;
   end;
 end;
 
@@ -155,11 +149,8 @@ begin
     if CHand12.Size=0 then
     begin
       CHand12Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>12 then
     begin
       turnAllCardsOver(CHand12);
@@ -171,7 +162,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
+    end;
   end;
 end;
 
@@ -251,11 +242,8 @@ begin
     if CHand1.Size=0 then
     begin
       CHand1Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>1 then
     begin
       turnAllCardsOver(CHand1);
@@ -267,7 +255,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
+    end;
   end;
 end;
 
@@ -283,11 +271,8 @@ begin
     if CHand2.Size=0 then
     begin
       CHand2Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>2 then
     begin
       turnAllCardsOver(CHand2);
@@ -299,7 +284,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
+    end;
   end;
 end;
 
@@ -315,11 +300,8 @@ begin
     if CHand3.Size=0 then
     begin
       CHand3Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>3 then
     begin
       turnAllCardsOver(CHand3);
@@ -331,7 +313,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
+    end;
   end;
 end;
 
@@ -347,11 +329,8 @@ begin
     if CHand4.Size=0 then
     begin
       CHand4Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>4 then
     begin
       turnAllCardsOver(CHand4);
@@ -363,7 +342,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
+    end;
   end;
 end;
 
@@ -379,11 +358,8 @@ begin
     if CHand5.Size=0 then
     begin
       CHand5Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>5 then
     begin
       turnAllCardsOver(CHand5);
@@ -411,11 +387,8 @@ begin
     if CHand6.Size=0 then
     begin
       CHand6Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>6 then
     begin
       turnAllCardsOver(CHand6);
@@ -443,11 +416,8 @@ begin
     if CHand7.Size=0 then
     begin
       CHand7Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>7 then
     begin
       turnAllCardsOver(CHand7);
@@ -475,11 +445,8 @@ begin
     if CHand8.Size=0 then
     begin
       CHand8Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>8 then
     begin
       turnAllCardsOver(CHand8);
@@ -491,9 +458,7 @@ begin
     begin
       showMessage('Game Over');
       turnOffButtons;
-    end
-    else if CHand8.Size<>0 then
-      sayOrientation(CHand8.Last);
+    end;
   end;
 end;
 
@@ -509,11 +474,8 @@ begin
     if CHand9.Size=0 then
     begin
       CHand9Button.Enabled:=False;
-    end
-    else
-    begin
-      turnNextCard(i);
     end;
+    turnNextCard(i);
     if i<>9 then
     begin
       turnAllCardsOver(CHand9);
@@ -533,6 +495,8 @@ procedure TClockForm.CreateItems;
 begin
   ClockGame:=TClockGame.Create;
 end;
+
+
 
 procedure TClockForm.editAllButtonCaptions;
 var
@@ -748,6 +712,7 @@ begin
 end;
 
 procedure TClockForm.turnAllCardsOver(var hand: TClockHand);
+//This procedure is a patch for the extra card turning over bug
 var
   i:integer;
 begin

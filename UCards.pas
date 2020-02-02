@@ -76,6 +76,9 @@ interface
         property Size :integer read FSize write FSize;
         {This property is a way of reading and editing the number of cards in
         the queue}
+        property Cards :TCards read FQueue;
+        {This property allows all the cards in the queue to be read so that
+         they can be stored in the textfile for debugging}
     End;
     THand = class abstract {This declares the the class of THand is a class that
     is never truly present in the code but is inherited by the other hand

@@ -1,7 +1,7 @@
 unit UClock;
 
 interface
-  uses sysutils, math, generics.collections,UCards;
+  uses sysutils, math, generics.collections,UCards,UFileCreater;
 
   type
     TClockHand = Class(THand)
@@ -96,6 +96,7 @@ var
 begin
   Deck:=TDeck.Create;
   Deck.Shuffle;
+  writeToTxtFile(deck);
   CreateHands;
   AssignHands;
   for i := 1 to 3 do
