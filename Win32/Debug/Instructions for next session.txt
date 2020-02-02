@@ -1,0 +1,1 @@
+﻿Look into the problems in the dealing of the cards to see if this is where the cards with no rank are coming from
