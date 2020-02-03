@@ -1,1 +1,4 @@
-﻿Look into the problems in the dealing of the cards to see if this is where the cards with no rank are coming from
+﻿Look into the problems in the dealing of the cards to see if this is where the
+cards with no rank are coming from
+Problem doesn't exist when the cards are dealed so where the hell is the issue
+being introduced

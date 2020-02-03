@@ -96,7 +96,6 @@ var
 begin
   Deck:=TDeck.Create;
   Deck.Shuffle;
-  writeToTxtFile(deck);
   CreateHands;
   AssignHands;
   for i := 1 to 3 do
@@ -245,5 +244,6 @@ begin
       end;
   end;
 end;
+
 
 end.

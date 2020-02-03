@@ -2,7 +2,7 @@ unit UFileCreater;
 
 interface
   uses UCards;
-  procedure writeToTxtFile(deck:TDeck);
+  procedure writeToTxtFile(str:string);
 
 implementation
   procedure writeToTxtFile(str:string);
@@ -11,11 +11,8 @@ implementation
     i:integer;
   begin
     assignFile(txt,'DeckLog.txt');
-    rewrite(txt);
-    for i := 0 to 51 do
-    begin
-      writeln(txt,deck.Cards[i].GetName);
-    end;
+    append(txt);
+    writeln(txt,str);
     closeFile(txt);
   end;
 
