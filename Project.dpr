@@ -5,7 +5,8 @@ uses
   UMainMenu in 'UMainMenu.pas' {MainMenu},
   UClockForm in 'UClockForm.pas' {ClockForm},
   UClock in 'UClock.pas',
-  UCards in 'UCards.pas';
+  UCards in 'UCards.pas',
+  UFileCreater in 'UFileCreater.pas';
 
 {$R *.res}
 

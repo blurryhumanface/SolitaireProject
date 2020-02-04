@@ -1,7 +1,7 @@
 unit UClock;
 
 interface
-  uses sysutils, math, generics.collections,UCards;
+  uses sysutils, math, generics.collections,UCards,UFileCreater;
 
   type
     TClockHand = Class(THand)
@@ -11,6 +11,7 @@ interface
       Position: 1..28;
     public
       constructor Create; override;
+      procedure AddCard(card:TCard);
       function SizeChecker:boolean;
     end;
 
@@ -35,6 +36,14 @@ interface
 implementation
 
 { TClockHand }
+
+procedure TClockHand.AddCard(card:TCard);
+begin
+  HandSize:=HandSize+1;
+  FCards.Add(card);
+  {This procedure calls the method of TList to add the card that
+   was passed to the procedure}
+end;
 
 constructor TClockHand.Create;
 begin
@@ -145,95 +154,96 @@ begin
 end;
 
 procedure TClockGame.MoveCard(var FromHand:TClockHand; var GameOver:boolean; var i:integer);
-var
-  j:integer;
 begin
-  j:=FromHand.Size;
   GameOver:=False;
   case FromHand.Last.GetRank of
     1:begin
-        CHand17.AddCard(FromHand.RemoveCard(j));
+        CHand17.AddCard(FromHand.RemoveLastCard);
         CHand1.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand17.Last.GetRank;
       end;
     2:begin
-        CHand18.AddCard(FromHand.RemoveCard(j));
+        CHand18.AddCard(FromHand.RemoveLastCard);
         CHand2.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand18.Last.GetRank;
       end;
     3:begin
-        CHand19.AddCard(FromHand.RemoveCard(j));
+        CHand19.AddCard(FromHand.RemoveLastCard);
         CHand3.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand19.Last.GetRank;
       end;
     4:begin
-        CHand20.AddCard(FromHand.RemoveCard(j));
+        CHand20.AddCard(FromHand.RemoveLastCard);
         CHand4.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand20.Last.GetRank;
       end;
     5:begin
-        CHand21.AddCard(FromHand.RemoveCard(j));
+        CHand21.AddCard(FromHand.RemoveLastCard);
         CHand5.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand21.Last.GetRank;
       end;
     6:begin
-        CHand22.AddCard(FromHand.RemoveCard(j));
+        CHand22.AddCard(FromHand.RemoveLastCard);
         CHand6.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand22.Last.GetRank;
       end;
     7:begin
-        CHand23.AddCard(FromHand.RemoveCard(j));
+        CHand23.AddCard(FromHand.RemoveLastCard);
         CHand7.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand23.Last.GetRank;
       end;
     8:begin
-        CHand24.AddCard(FromHand.RemoveCard(j));
+        CHand24.AddCard(FromHand.RemoveLastCard);
         CHand8.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand24.Last.GetRank;
       end;
     9:begin
-        CHand25.AddCard(FromHand.RemoveCard(j));
+        CHand25.AddCard(FromHand.RemoveLastCard);
         CHand9.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand25.Last.GetRank;
       end;
     10:begin
-        CHand26.AddCard(FromHand.RemoveCard(j));
+        CHand26.AddCard(FromHand.RemoveLastCard);
         CHand10.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand26.Last.GetRank;
       end;
     11:begin
-        CHand27.AddCard(FromHand.RemoveCard(j));
+        CHand27.AddCard(FromHand.RemoveLastCard);
         CHand11.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand27.Last.GetRank;
       end;
     12:begin
-        CHand28.AddCard(FromHand.RemoveCard(j));
+        CHand28.AddCard(FromHand.RemoveLastCard);
         CHand12.Last.FlipCard;
-        i:=FromHand.Last.GetRank;
+        i:=CHand28.Last.GetRank;
       end;
     13:begin
         if CHand13.Size=0 then
         begin
-          CHand13.AddCard(FromHand.RemoveCard(j));
+          CHand13.AddCard(FromHand.RemoveLastCard);
           CHand14.Last.FlipCard;
+          i:=13;
         end
         else if CHand14.Size=0 then
         begin
-          CHand14.AddCard(FromHand.RemoveCard(j));
+          CHand14.AddCard(FromHand.RemoveLastCard);
           CHand15.Last.FlipCard;
+          i:=13;
         end
         else if CHand15.Size=0 then
         begin
-          CHand15.AddCard(FromHand.RemoveCard(j));
+          CHand15.AddCard(FromHand.RemoveLastCard);
           CHand16.Last.FlipCard;
+          i:=13;
         end
         else if CHand16.Size=0 then
         begin
-          CHand16.AddCard(FromHand.RemoveCard(j));
+          CHand16.AddCard(FromHand.RemoveLastCard);
           GameOver:=True;
         end;
       end;
   end;
 end;
+
 
 end.
