@@ -1,7 +1,7 @@
 unit UCards;
 
 interface
-  uses sysutils, math, Generics.Collections;
+  uses sysutils, math, Generics.Collections,UFileCreater;
   {This is a list of all of the existing libraries that I need for this unit}
   type
     TOrientation = (face,back);
@@ -332,7 +332,6 @@ begin
     FQueue[RandInt]:=TempCard;
     {This copies the card stored in TempCard to the random position in FQueue}
   end;
-  TempCard.Free;
 end;
 
 { THand }
@@ -342,6 +341,8 @@ begin
   FCards.Add(card);
   {This procedure calls the method of TList to add the card that
    was passed to the procedure}
+   writeToTxtFile(Cards[size-1].GetName);
+   writeToTxtFile('');
 end;
 
 procedure THand.Clear;

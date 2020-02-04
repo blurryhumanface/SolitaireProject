@@ -1,7 +1,6 @@
 unit UFileCreater;
 
 interface
-  uses UCards;
   procedure writeToTxtFile(str:string);
 
 implementation

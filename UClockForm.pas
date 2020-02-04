@@ -88,14 +88,14 @@ var
 begin
   if CHand10.Last.GetOrientation=face then
   begin
-    if CHand10.Size<>0 then
+    {if CHand10.Size<>0 then
     begin
       for i := 0 to (CHand10.Size-1) do
       begin
         textToFile(CHand10.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand10,j,i);
     if CHand10.Size=0 then
@@ -125,14 +125,14 @@ var
 begin
   if CHand11.Last.GetOrientation=face then
   begin
-    if CHand11.Size<>0 then
+    {if CHand11.Size<>0 then
     begin
       for i := 0 to (CHand11.Size-1) do
       begin
         textToFile(CHand11.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand11,j,i);
     if CHand11.Size=0 then
@@ -162,14 +162,14 @@ var
 begin
   if CHand12.Last.GetOrientation=face then
   begin
-    if CHand12.Size<>0 then
+    {if CHand12.Size<>0 then
     begin
       for i := 0 to (CHand12.Size-1) do
       begin
         textToFile(CHand12.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand12,j,i);
     if CHand12.Size=0 then
@@ -199,14 +199,14 @@ var
 begin
   if CHand13.Last.GetOrientation=face then
   begin
-    if CHand13.Size<>0 then
+    {if CHand13.Size<>0 then
     begin
       for i := 0 to (CHand13.Size-1) do
       begin
         textToFile(CHand13.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand13,j,i);
     turnNextCard(i);
@@ -223,14 +223,14 @@ var
 begin
   if (CHand13.Size=1)and(CHand13Button.Enabled=false) then
   begin
-    if CHand14.Size<>0 then
+    {if CHand14.Size<>0 then
     begin
       for i := 0 to (CHand14.Size-1) do
       begin
         textToFile(CHand14.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand14,j,i);
     turnNextCard(i);
@@ -247,14 +247,14 @@ var
 begin
   if (CHand13.Size=1)and(CHand14.Size=1)and(CHand14Button.Enabled=false) then
   begin
-    if CHand15.Size<>0 then
+    {if CHand15.Size<>0 then
     begin
       for i := 0 to (CHand15.Size-1) do
       begin
         textToFile(CHand15.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand15,j,i);
     turnNextCard(i);
@@ -271,20 +271,24 @@ var
 begin
   if (CHand13.Size=1)and(CHand14.Size=1)and(CHand15.Size=1)and(CHand15Button.Enabled=false) then
   begin
-    if CHand16.Size<>0 then
+    {if CHand16.Size<>0 then
     begin
       for i := 0 to (CHand16.Size-1) do
       begin
         textToFile(CHand16.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand16,j,i);
     turnNextCard(i);
     CHand16Button.Enabled:=False;
     CHand16Button.Caption:='Empty';
     editMiddleButtonCaptions(i);
+    if j=True then
+    begin
+
+    end;
   end;
 end;
 
@@ -295,14 +299,14 @@ var
 begin
   if CHand1.Last.GetOrientation=face then
   begin
-    if CHand1.Size<>0 then
+    {if CHand1.Size<>0 then
     begin
       for i := 0 to (CHand1.Size-1) do
       begin
         textToFile(CHand1.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand1,j,i);
     if CHand1.Size=0 then
@@ -332,14 +336,14 @@ var
 begin
   if CHand2.Last.GetOrientation=face then
   begin
-    if CHand2.Size<>0 then
+    {if CHand2.Size<>0 then
     begin
       for i := 0 to (CHand2.Size-1) do
       begin
         textToFile(CHand2.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand2,j,i);
     if CHand2.Size=0 then
@@ -369,14 +373,14 @@ var
 begin
   if CHand3.Last.GetOrientation=face then
   begin
-    if CHand3.Size<>0 then
+    {if CHand3.Size<>0 then
     begin
       for i := 0 to (CHand3.Size-1) do
       begin
         textToFile(CHand3.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand3,j,i);
     if CHand3.Size=0 then
@@ -406,14 +410,14 @@ var
 begin
   if CHand4.Last.GetOrientation=face then
   begin
-    if CHand4.Size<>0 then
+    {if CHand4.Size<>0 then
     begin
       for i := 0 to (CHand4.Size-1) do
       begin
         textToFile(CHand4.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end; }
     incrementMoveCounter;
     ClockGame.MoveCard(CHand4,j,i);
     if CHand4.Size=0 then
@@ -443,14 +447,14 @@ var
 begin
   if CHand5.Last.GetOrientation=face then
   begin
-    if CHand5.Size<>0 then
+    {if CHand5.Size<>0 then
     begin
       for i := 0 to (CHand5.Size-1) do
       begin
         textToFile(CHand5.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end; }
     incrementMoveCounter;
     ClockGame.MoveCard(CHand5,j,i);
     if CHand5.Size=0 then
@@ -480,14 +484,14 @@ var
 begin
   if CHand6.Last.GetOrientation=face then
   begin
-    if CHand6.Size<>0 then
+    {if CHand6.Size<>0 then
     begin
       for i := 0 to (CHand6.Size-1) do
       begin
         textToFile(CHand6.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand6,j,i);
     if CHand6.Size=0 then
@@ -517,14 +521,14 @@ var
 begin
   if CHand7.Last.GetOrientation=face then
   begin
-    if CHand7.Size<>0 then
+    {if CHand7.Size<>0 then
     begin
       for i := 0 to (CHand7.Size-1) do
       begin
         textToFile(CHand7.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand7,j,i);
     if CHand7.Size=0 then
@@ -554,14 +558,14 @@ var
 begin
   if CHand8.Last.GetOrientation = face then
   begin
-    if CHand8.Size<>0 then
+    {if CHand8.Size<>0 then
     begin
       for i := 0 to (CHand8.Size-1) do
       begin
         textToFile(CHand8.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand8,j,i);
     if CHand8.Size=0 then
@@ -591,14 +595,14 @@ var
 begin
   if CHand9.Last.GetOrientation=face then
   begin
-    if CHand9.Size<>0 then
+    {if CHand9.Size<>0 then
     begin
       for i := 0 to (CHand9.Size-1) do
       begin
         textToFile(CHand9.Cards[i].GetName);
       end;
       textToFile('');
-    end;
+    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand9,j,i);
     if CHand9.Size=0 then
@@ -792,19 +796,19 @@ procedure TClockForm.editMiddleButtonCaptions(i: integer);
 begin
 if i=13 then
     begin
-      if CHand13.Size=1 then
+      if CHand13Button.Caption='Empty' then
       begin
         editButtonCaption(i)
       end
-      else if CHand14.Size=1 then
+      else if CHand14Button.Caption='Empty' then
            begin
              editButtonCaption(14)
            end
-      else if CHand15.Size=1 then
+      else if CHand15Button.Caption='Empty' then
            begin
              editButtonCaption(15)
            end
-      else if CHand16.Size=1 then
+      else if CHand16Button.Caption='Empty' then
            begin
              editButtonCaption(16)
            end
@@ -817,13 +821,13 @@ var
 begin
   newGame;
   for i := 0 to 51 do
-  begin
+  {begin
     if Deck.Cards[i].GetSuit=0 then
     begin
       textToFile(Deck.Cards[i].GetName);
     end;
   end;
-  textToFile('');
+  textToFile('');}
 
 end;
 
@@ -943,6 +947,7 @@ begin
   CHand4Button.Enabled:=false;
   CHand5Button.Enabled:=false;
   CHand6Button.Enabled:=false;
+  CHand7Button.Enabled:=false;
   CHand8Button.Enabled:=false;
   CHand9Button.Enabled:=false;
   CHand10Button.Enabled:=false;
