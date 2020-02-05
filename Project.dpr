@@ -6,7 +6,8 @@ uses
   UClockForm in 'UClockForm.pas' {ClockForm},
   UClock in 'UClock.pas',
   UCards in 'UCards.pas',
-  UFileCreater in 'UFileCreater.pas';
+  UFileCreater in 'UFileCreater.pas',
+  UMiddleStep in 'UMiddleStep.pas';
 
 {$R *.res}
 

@@ -101,6 +101,7 @@
         <DCCReference Include="UClock.pas"/>
         <DCCReference Include="UCards.pas"/>
         <DCCReference Include="UFileCreater.pas"/>
+        <DCCReference Include="UMiddleStep.pas"/>
         <None Include="Win32\Debug\Instructions for next session.txt"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

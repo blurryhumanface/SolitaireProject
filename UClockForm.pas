@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,UClock,UCards
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, UClock, UCards
   ,UFileCreater;
 
 type
@@ -38,6 +38,8 @@ type
     CHand26Button: TButton;
     CHand27Button: TButton;
     MovesEdit: TEdit;
+    NewGameButton: TButton;
+    MainMenuButton: TButton;
     procedure CHand12ButtonClick(Sender: TObject);
     procedure CHand1ButtonClick(Sender: TObject);
     procedure CHand2ButtonClick(Sender: TObject);
@@ -55,9 +57,12 @@ type
     procedure CHand14ButtonClick(Sender: TObject);
     procedure CHand15ButtonClick(Sender: TObject);
     procedure CHand16ButtonClick(Sender: TObject);
+    procedure NewGameButtonClick(Sender: TObject);
+    procedure MainMenuButtonClick(Sender: TObject);
   private
     { Private declarations }
     moves:integer;
+    ended:boolean;
     procedure CreateItems;
     procedure sayOrientation(card:TCard);
     procedure turnAllCardsOver(var hand:TClockHand);
@@ -72,6 +77,7 @@ type
     procedure editMiddleButtonCaptions(i:integer);
     procedure incrementMoveCounter;
     procedure textToFile(str:string);
+    procedure EndGame;
   end;
 
 var
@@ -112,8 +118,8 @@ begin
     editMiddleButtonCaptions(i);
     if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -149,8 +155,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -186,8 +192,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -287,7 +293,8 @@ begin
     editMiddleButtonCaptions(i);
     if j=True then
     begin
-
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -323,8 +330,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -360,8 +367,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -397,8 +404,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -434,8 +441,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -471,8 +478,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -508,8 +515,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -545,8 +552,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -582,8 +589,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -619,8 +626,8 @@ begin
     editMiddleButtonCaptions(i);
      if j=true then
     begin
-      showMessage('Game Over');
-      turnOffButtons;
+      EndGame;
+      ended:=True;
     end;
   end;
 end;
@@ -815,6 +822,13 @@ if i=13 then
     end
 end;
 
+procedure TClockForm.EndGame;
+begin
+  showMessage('Game Over');
+  turnOffButtons;
+  ClockGame.Destroy;
+end;
+
 procedure TClockForm.FormCreate(Sender: TObject);
 var
   i:integer;
@@ -831,19 +845,38 @@ begin
 
 end;
 
+
+
 procedure TClockForm.incrementMoveCounter;
 begin
   inc(moves);
   movesEdit.text:='no. of moves: ' + inttostr(moves);
 end;
 
+procedure TClockForm.MainMenuButtonClick(Sender: TObject);
+begin
+  ClockForm.Hide;
+  openMainMenu;
+end;
+
 procedure TClockForm.newGame;
 begin
+  moves:=0;
   turnOnButtons;
   CreateItems;
   turnNextCard(13);
   editAllButtonCaptions;
   movesEdit.Text:='no. of moves: 0';
+  ended:=false;
+end;
+
+procedure TClockForm.NewGameButtonClick(Sender: TObject);
+begin
+  if (moves<>52) and (ended=false) then
+  begin
+    endGame;
+  end;
+  newGame;
 end;
 
 procedure TClockForm.sayOrientation(card: TCard);
@@ -963,11 +996,16 @@ begin
   CHand4Button.Enabled:=true;
   CHand5Button.Enabled:=true;
   CHand6Button.Enabled:=true;
+  CHand7Button.Enabled:=true;
   CHand8Button.Enabled:=true;
   CHand9Button.Enabled:=true;
   CHand10Button.Enabled:=true;
   CHand11Button.Enabled:=true;
   CHand12Button.Enabled:=true;
+  CHand13Button.Enabled:=true;
+  CHand14Button.Enabled:=true;
+  CHand15Button.Enabled:=true;
+  CHand16Button.Enabled:=true;
 end;
 
 end.

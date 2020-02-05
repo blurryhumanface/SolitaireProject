@@ -1,7 +1,9 @@
 unit UFileCreater;
 
 interface
+  uses UMainMenu;
   procedure writeToTxtFile(str:string);
+  procedure openMainMenu;
 
 implementation
   procedure writeToTxtFile(str:string);
@@ -13,6 +15,11 @@ implementation
     append(txt);
     writeln(txt,str);
     closeFile(txt);
+  end;
+
+  procedure openMainMenu;
+  begin
+    MainMenu.show;
   end;
 
 end.

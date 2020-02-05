@@ -443,4 +443,22 @@ object ClockForm: TClockForm
     TabOrder = 28
     Text = 'no. of moves: 0'
   end
+  object NewGameButton: TButton
+    Left = 712
+    Top = 120
+    Width = 121
+    Height = 25
+    Caption = 'New Game'
+    TabOrder = 29
+    OnClick = NewGameButtonClick
+  end
+  object MainMenuButton: TButton
+    Left = 712
+    Top = 186
+    Width = 121
+    Height = 25
+    Caption = 'Main Menu'
+    TabOrder = 30
+    OnClick = MainMenuButtonClick
+  end
 end
