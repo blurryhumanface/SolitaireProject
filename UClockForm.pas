@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, UClock, UCards
-  ,UFileCreater;
+  ,UFileCreater,UMiddleStep, UInstructions;
 
 type
   TClockForm = class(TForm)
@@ -40,6 +40,7 @@ type
     MovesEdit: TEdit;
     NewGameButton: TButton;
     MainMenuButton: TButton;
+    InstructionsButton: TButton;
     procedure CHand12ButtonClick(Sender: TObject);
     procedure CHand1ButtonClick(Sender: TObject);
     procedure CHand2ButtonClick(Sender: TObject);
@@ -59,6 +60,7 @@ type
     procedure CHand16ButtonClick(Sender: TObject);
     procedure NewGameButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
+    procedure InstructionsButtonClick(Sender: TObject);
   private
     { Private declarations }
     moves:integer;
@@ -851,6 +853,13 @@ procedure TClockForm.incrementMoveCounter;
 begin
   inc(moves);
   movesEdit.text:='no. of moves: ' + inttostr(moves);
+end;
+
+procedure TClockForm.InstructionsButtonClick(Sender: TObject);
+begin
+  ClockForm.Hide;
+  instructionsForm.Show;
+  instructionsForm.writeInstructions(1);
 end;
 
 procedure TClockForm.MainMenuButtonClick(Sender: TObject);

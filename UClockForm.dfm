@@ -461,4 +461,13 @@ object ClockForm: TClockForm
     TabOrder = 30
     OnClick = MainMenuButtonClick
   end
+  object InstructionsButton: TButton
+    Left = 712
+    Top = 248
+    Width = 121
+    Height = 25
+    Caption = 'Instructions'
+    TabOrder = 31
+    OnClick = InstructionsButtonClick
+  end
 end

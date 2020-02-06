@@ -1,10 +1,10 @@
 unit UMiddleStep;
 
 interface
-  uses UMainMenu;
   procedure openMainMenu;
 
 implementation
+   uses UMainMenu;
   procedure openMainMenu;
   begin
     MainMenu.show;
