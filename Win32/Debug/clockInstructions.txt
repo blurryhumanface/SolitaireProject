@@ -1,1 +1,10 @@
 Clock
+
+There are 12 piles layed out in a circle with 4 cards
+in the middle. 4 cards are dealt to the 12 outer piles
+with a single card dealt to the 4 middle piles.
+
+The card in the top left pile is turned over.
+
+From this point onwards you click on the cards and then
+they move next to the pile which will be the next to play

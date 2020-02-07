@@ -9,7 +9,6 @@ uses
 type
   TMainMenu = class(TForm)
     ClockButton: TButton;
-    Button1: TButton;
     procedure ClockButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
