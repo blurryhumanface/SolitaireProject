@@ -65,9 +65,11 @@ type
     { Private declarations }
     moves:integer;
     ended:boolean;
+    Images:array[1..28] of TImage;
     procedure CreateItems;
     procedure sayOrientation(card:TCard);
     procedure turnAllCardsOver(var hand:TClockHand);
+    procedure CreateCards(x,y:integer);
   public
     { Public declarations }
     procedure turnOffButtons;
@@ -80,6 +82,7 @@ type
     procedure incrementMoveCounter;
     procedure textToFile(str:string);
     procedure EndGame;
+    procedure changeImage(i:integer);
   end;
 
 var
@@ -221,6 +224,7 @@ begin
     CHand13Button.Enabled:=False;
     CHand13Button.Caption:='Empty';
     editMiddleButtonCaptions(i);
+    changeImage(i);
   end;
 end;
 
@@ -634,6 +638,31 @@ begin
   end;
 end;
 
+procedure TClockForm.changeImage(i: integer);
+var
+  cardImage:TBitmap;
+begin
+  cardImage:=TBitmap.Create;
+  cardImage.LoadFromFile('card-BMPs\card-BMPs\c01.bmp');
+  Images[i].Canvas.StretchDraw(Images[i].ClientRect,cardImage);
+end;
+
+procedure TClockForm.CreateCards(x,y:integer);
+var
+  img:TImage;
+  i:integer;
+begin
+  i:=1;
+  img:=TImage.Create(self);
+  img.Top:=y;
+  img.Left:=x;
+  img.Autosize:=True;
+  img.Parent:=ClockForm;
+  img.Visible:=True;
+  images[i]:=img;
+  changeImage(i);
+end;
+
 procedure TClockForm.CreateItems;
 begin
   ClockGame:=TClockGame.Create;
@@ -844,7 +873,7 @@ begin
     end;
   end;
   textToFile('');}
-
+  CreateCards(176,103);
 end;
 
 
