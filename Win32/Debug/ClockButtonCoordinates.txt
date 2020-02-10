@@ -5,7 +5,7 @@ Button 2:					Button 16:
 	Left: 447					Left: 343
 	Top: 126					Top: 199
 Button 3:					Button 17:
-	Left: 471					Left: 407
+	Left: 471					Left: 408
 	Top: 192					Top: 48
 Button 4:					Button 18:
 	Left: 447					Left: 447

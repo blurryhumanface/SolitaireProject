@@ -14,16 +14,6 @@ type
     CHand14Button: TButton;
     CHand16Button: TButton;
     CHand15Button: TButton;
-    CHand12Button: TButton;
-    CHand3Button: TButton;
-    CHand4Button: TButton;
-    CHand5Button: TButton;
-    CHand6Button: TButton;
-    CHand7Button: TButton;
-    CHand8Button: TButton;
-    CHand9Button: TButton;
-    CHand10Button: TButton;
-    CHand11Button: TButton;
     CHand28Button: TButton;
     CHand17Button: TButton;
     CHand18Button: TButton;
@@ -56,20 +46,7 @@ type
     CHand12Image: TImage;
     CHand15Image: TImage;
     CHand16Image: TImage;
-    procedure CHand12ButtonClick(Sender: TObject);
-    procedure CHand3ButtonClick(Sender: TObject);
-    procedure CHand4ButtonClick(Sender: TObject);
-    procedure CHand5ButtonClick(Sender: TObject);
-    procedure CHand6ButtonClick(Sender: TObject);
-    procedure CHand7ButtonClick(Sender: TObject);
-    procedure CHand8ButtonClick(Sender: TObject);
-    procedure CHand9ButtonClick(Sender: TObject);
-    procedure CHand10ButtonClick(Sender: TObject);
-    procedure CHand11ButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure CHand13ButtonClick(Sender: TObject);
-    procedure CHand15ButtonClick(Sender: TObject);
-    procedure CHand16ButtonClick(Sender: TObject);
     procedure NewGameButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
     procedure InstructionsButtonClick(Sender: TObject);
@@ -77,6 +54,18 @@ type
     procedure CHand2ImageClick(Sender: TObject);
     procedure CHand14ImageClick(Sender: TObject);
     procedure CHand3ImageClick(Sender: TObject);
+    procedure CHand4ImageClick(Sender: TObject);
+    procedure CHand5ImageClick(Sender: TObject);
+    procedure CHand6ImageClick(Sender: TObject);
+    procedure CHand7ImageClick(Sender: TObject);
+    procedure CHand8ImageClick(Sender: TObject);
+    procedure CHand9ImageClick(Sender: TObject);
+    procedure CHand10ImageClick(Sender: TObject);
+    procedure CHand11ImageClick(Sender: TObject);
+    procedure CHand12ImageClick(Sender: TObject);
+    procedure CHand13ImageClick(Sender: TObject);
+    procedure CHand15ImageClick(Sender: TObject);
+    procedure CHand16ImageClick(Sender: TObject);
   private
     { Private declarations }
     moves:integer;
@@ -89,8 +78,8 @@ type
     procedure getImage(Hand:TClockHand; var img:TBitmap);
   public
     { Public declarations }
-    procedure turnOffButtons;
-    procedure turnOnButtons;
+    procedure turnOffImages;
+    procedure turnOnImages;
     procedure newGame;
     procedure turnNextCard(i:integer);
     procedure editButtonCaption(i:integer);
@@ -131,33 +120,25 @@ begin
   changeImages(Images);
 end;
 
-procedure TClockForm.CHand10ButtonClick(Sender: TObject);
+procedure TClockForm.CHand10ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand10.Last.GetOrientation=face then
   begin
-    {if CHand10.Size<>0 then
-    begin
-      for i := 0 to (CHand10.Size-1) do
-      begin
-        textToFile(CHand10.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand10,j,i);
     if CHand10.Size=0 then
     begin
-      CHand10Button.Enabled:=False;
+      CHand10Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>10 then
     begin
       turnAllCardsOver(CHand10);
     end;
-    editButtonCaption(10);
+    changeImage(CHand10Image,CHand10);
     editButtonCaption(26);
     editMiddleButtonCaptions(i);
     if j=true then
@@ -168,33 +149,25 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand11ButtonClick(Sender: TObject);
+procedure TClockForm.CHand11ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand11.Last.GetOrientation=face then
   begin
-    {if CHand11.Size<>0 then
-    begin
-      for i := 0 to (CHand11.Size-1) do
-      begin
-        textToFile(CHand11.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand11,j,i);
     if CHand11.Size=0 then
     begin
-      CHand11Button.Enabled:=False;
+      CHand11Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>11 then
     begin
       turnAllCardsOver(CHand11);
     end;
-    editButtonCaption(11);
+    changeImage(CHand11Image,CHand11);
     editButtonCaption(27);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -205,33 +178,25 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand12ButtonClick(Sender: TObject);
+procedure TClockForm.CHand12ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand12.Last.GetOrientation=face then
   begin
-    {if CHand12.Size<>0 then
-    begin
-      for i := 0 to (CHand12.Size-1) do
-      begin
-        textToFile(CHand12.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand12,j,i);
     if CHand12.Size=0 then
     begin
-      CHand12Button.Enabled:=False;
+      CHand12Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>12 then
     begin
       turnAllCardsOver(CHand12);
     end;
-    editButtonCaption(12);
+    changeImage(CHand12Image,CHand12);
     editButtonCaption(28);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -242,26 +207,19 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand13ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand13ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand13.Last.GetOrientation=face then
   begin
-    {if CHand13.Size<>0 then
-    begin
-      for i := 0 to (CHand13.Size-1) do
-      begin
-        textToFile(CHand13.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand13,j,i);
     turnNextCard(i);
-    CHand13Button.Enabled:=False;
-    CHand13Button.Caption:='Empty';
+    CHand13Image.Enabled:=False;
+    ChangeImage(CHand13Image,CHand13);
     editMiddleButtonCaptions(i);
   end;
 end;
@@ -271,61 +229,46 @@ var
   i:integer;
   j:boolean;
 begin
-  if (CHand13.Size=1)and(CHand13Button.Enabled=false) then
+  if (CHand13.Size=1)and(CHand13Image.Enabled=false) then
   begin
     incrementMoveCounter;
     ClockGame.MoveCard(CHand14,j,i);
     turnNextCard(i);
-    CHand14Button.Enabled:=False;
-    CHand14Button.Caption:='Empty';
+    CHand14Image.Enabled:=False;
+    ChangeImage(CHand14Image,CHand14);
     editMiddleButtonCaptions(i);
   end;
 end;
 
-procedure TClockForm.CHand15ButtonClick(Sender: TObject);
+procedure TClockForm.CHand15ImageClick(Sender: TObject);
 var
   i:integer;
   j:boolean;
 begin
-  if (CHand13.Size=1)and(CHand14.Size=1)and(CHand14Button.Enabled=false) then
+  if (CHand13.Size=1)and(CHand14.Size=1)and(CHand14Image.Enabled=false) then
   begin
-    {if CHand15.Size<>0 then
-    begin
-      for i := 0 to (CHand15.Size-1) do
-      begin
-        textToFile(CHand15.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand15,j,i);
     turnNextCard(i);
-    CHand15Button.Enabled:=False;
-    CHand15Button.Caption:='Empty';
+    CHand15Image.Enabled:=False;
+    ChangeImage(CHand15Image,CHand15);
     editMiddleButtonCaptions(i);
   end;
 end;
 
-procedure TClockForm.CHand16ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand16ImageClick(Sender: TObject);
 var
   i:integer;
   j:boolean;
 begin
-  if (CHand13.Size=1)and(CHand14.Size=1)and(CHand15.Size=1)and(CHand15Button.Enabled=false) then
+  if (CHand13.Size=1)and(CHand14.Size=1)and(CHand15.Size=1)and(CHand15Image.Enabled=false) then
   begin
-    {if CHand16.Size<>0 then
-    begin
-      for i := 0 to (CHand16.Size-1) do
-      begin
-        textToFile(CHand16.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand16,j,i);
     turnNextCard(i);
-    CHand16Button.Enabled:=False;
-    CHand16Button.Caption:='Empty';
+    CHand16Image.Enabled:=False;
+    ChangeImage(CHand16Image,CHand16);
     editMiddleButtonCaptions(i);
     if j=True then
     begin
@@ -354,7 +297,7 @@ begin
     begin
       turnAllCardsOver(CHand1);
     end;
-    editButtonCaption(1);
+    changeImage(CHand1Image,CHand1);
     editButtonCaption(17);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -384,7 +327,7 @@ begin
     begin
       turnAllCardsOver(CHand2);
     end;
-    editButtonCaption(2);
+    changeImage(CHand2Image,CHand2);
     editButtonCaption(18);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -407,14 +350,14 @@ begin
     ClockGame.MoveCard(CHand3,j,i);
     if CHand3.Size=0 then
     begin
-      CHand3Button.Enabled:=False;
+      CHand3Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>3 then
     begin
       turnAllCardsOver(CHand3);
     end;
-    editButtonCaption(3);
+    changeImage(CHand3Image,CHand3);
     editButtonCaption(19);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -425,33 +368,25 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand4ButtonClick(Sender: TObject);
+procedure TClockForm.CHand4ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand4.Last.GetOrientation=face then
   begin
-    {if CHand4.Size<>0 then
-    begin
-      for i := 0 to (CHand4.Size-1) do
-      begin
-        textToFile(CHand4.Cards[i].GetName);
-      end;
-      textToFile('');
-    end; }
     incrementMoveCounter;
     ClockGame.MoveCard(CHand4,j,i);
     if CHand4.Size=0 then
     begin
-      CHand4Button.Enabled:=False;
+      CHand4Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>4 then
     begin
       turnAllCardsOver(CHand4);
     end;
-    editButtonCaption(4);
+    changeImage(CHand4Image,CHand4);
     editButtonCaption(20);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -462,33 +397,26 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand5ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand5ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand5.Last.GetOrientation=face then
   begin
-    {if CHand5.Size<>0 then
-    begin
-      for i := 0 to (CHand5.Size-1) do
-      begin
-        textToFile(CHand5.Cards[i].GetName);
-      end;
-      textToFile('');
-    end; }
     incrementMoveCounter;
     ClockGame.MoveCard(CHand5,j,i);
     if CHand5.Size=0 then
     begin
-      CHand5Button.Enabled:=False;
+      CHand5Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>5 then
     begin
       turnAllCardsOver(CHand5);
     end;
-    editButtonCaption(5);
+    changeImage(CHand5Image,CHand5);
     editButtonCaption(21);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -499,33 +427,26 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand6ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand6ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand6.Last.GetOrientation=face then
   begin
-    {if CHand6.Size<>0 then
-    begin
-      for i := 0 to (CHand6.Size-1) do
-      begin
-        textToFile(CHand6.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand6,j,i);
     if CHand6.Size=0 then
     begin
-      CHand6Button.Enabled:=False;
+      CHand6Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>6 then
     begin
       turnAllCardsOver(CHand6);
     end;
-    editButtonCaption(6);
+    changeImage(CHand6Image,CHand6);
     editButtonCaption(22);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -536,33 +457,26 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand7ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand7ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand7.Last.GetOrientation=face then
   begin
-    {if CHand7.Size<>0 then
-    begin
-      for i := 0 to (CHand7.Size-1) do
-      begin
-        textToFile(CHand7.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand7,j,i);
     if CHand7.Size=0 then
     begin
-      CHand7Button.Enabled:=False;
+      CHand7Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>7 then
     begin
       turnAllCardsOver(CHand7);
     end;
-    editButtonCaption(7);
+    changeImage(CHand7Image,CHand7);
     editButtonCaption(23);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -573,33 +487,26 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand8ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand8ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand8.Last.GetOrientation = face then
   begin
-    {if CHand8.Size<>0 then
-    begin
-      for i := 0 to (CHand8.Size-1) do
-      begin
-        textToFile(CHand8.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand8,j,i);
     if CHand8.Size=0 then
     begin
-      CHand8Button.Enabled:=False;
+      CHand8Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>8 then
     begin
       turnAllCardsOver(CHand8);
     end;
-    editButtonCaption(8);
+    changeImage(CHand8Image,CHand8);
     editButtonCaption(24);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -610,33 +517,26 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand9ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand9ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand9.Last.GetOrientation=face then
   begin
-    {if CHand9.Size<>0 then
-    begin
-      for i := 0 to (CHand9.Size-1) do
-      begin
-        textToFile(CHand9.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand9,j,i);
     if CHand9.Size=0 then
     begin
-      CHand9Button.Enabled:=False;
+      CHand9Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>9 then
     begin
       turnAllCardsOver(CHand9);
     end;
-    editButtonCaption(9);
+    changeImage(CHand9Image,CHand9);
     editButtonCaption(25);
     editMiddleButtonCaptions(i);
      if j=true then
@@ -702,16 +602,16 @@ begin
     case i of
 //     1:CHand1Button.Caption:='Empty';
 //     2:CHand2Button.Caption:='Empty';
-     3:CHand3Button.Caption:='Empty';
-     4:CHand4Button.Caption:='Empty';
-     5:CHand5Button.Caption:='Empty';
-     6:CHand6Button.Caption:='Empty';
-     7:CHand7Button.Caption:='Empty';
-     8:CHand8Button.Caption:='Empty';
-     9:CHand9Button.Caption:='Empty';
-     10:CHand10Button.Caption:='Empty';
-     11:CHand11Button.Caption:='Empty';
-     12:CHand12Button.Caption:='Empty';
+//     3:CHand3Button.Caption:='Empty';
+//     4:CHand4Button.Caption:='Empty';
+//     5:CHand5Button.Caption:='Empty';
+//     6:CHand6Button.Caption:='Empty';
+//     7:CHand7Button.Caption:='Empty';
+//     8:CHand8Button.Caption:='Empty';
+//     9:CHand9Button.Caption:='Empty';
+//     10:CHand10Button.Caption:='Empty';
+//     11:CHand11Button.Caption:='Empty';
+//     12:CHand12Button.Caption:='Empty';
      13:CHand13Button.Caption:='Empty';
      14:CHand14Button.Caption:='Empty';
      15:CHand15Button.Caption:='Empty';
@@ -735,16 +635,16 @@ begin
     case i of
 //      1:CHand1Button.Caption:='Back';
 //      2:CHand2Button.Caption:='Back';
-      3:CHand3Button.Caption:='Back';
-      4:CHand4Button.Caption:='Back';
-      5:CHand5Button.Caption:='Back';
-      6:CHand6Button.Caption:='Back';
-      7:CHand7Button.Caption:='Back';
-      8:CHand8Button.Caption:='Back';
-      9:CHand9Button.Caption:='Back';
-      10:CHand10Button.Caption:='Back';
-      11:CHand11Button.Caption:='Back';
-      12:CHand12Button.Caption:='Back';
+//      3:CHand3Button.Caption:='Back';
+//      4:CHand4Button.Caption:='Back';
+//      5:CHand5Button.Caption:='Back';
+//      6:CHand6Button.Caption:='Back';
+//      7:CHand7Button.Caption:='Back';
+//      8:CHand8Button.Caption:='Back';
+//      9:CHand9Button.Caption:='Back';
+//      10:CHand10Button.Caption:='Back';
+//      11:CHand11Button.Caption:='Back';
+//      12:CHand12Button.Caption:='Back';
       13:CHand13Button.Caption:='Back';
       14:CHand14Button.Caption:='Back';
       15:CHand15Button.Caption:='Back';
@@ -760,36 +660,36 @@ begin
 //     2:begin
 //      CHand2Button.Caption:=CHand2.Last.GetName;
 //     end;
-     3:begin
-      CHand3Button.Caption:=CHand3.Last.GetName;
-     end;
-     4:begin
-      CHand4Button.Caption:=CHand4.Last.GetName;
-     end;
-     5:begin
-      CHand5Button.Caption:=CHand5.Last.GetName;
-     end;
-     6:begin
-      CHand6Button.Caption:=CHand6.Last.GetName;
-     end;
-     7:begin
-      CHand7Button.Caption:=CHand7.Last.GetName;
-     end;
-     8:begin
-      CHand8Button.Caption:=CHand8.Last.GetName;
-     end;
-     9:begin
-      CHand9Button.Caption:=CHand9.Last.GetName;
-     end;
-     10:begin
-      CHand10Button.Caption:=CHand10.Last.GetName;
-     end;
-     11:begin
-      CHand11Button.Caption:=CHand11.Last.GetName;
-     end;
-     12:begin
-      CHand12Button.Caption:=CHand12.Last.GetName;
-     end;
+//     3:begin
+//      CHand3Button.Caption:=CHand3.Last.GetName;
+//     end;
+//     4:begin
+//      CHand4Button.Caption:=CHand4.Last.GetName;
+//     end;
+//     5:begin
+//      CHand5Button.Caption:=CHand5.Last.GetName;
+//     end;
+//     6:begin
+//      CHand6Button.Caption:=CHand6.Last.GetName;
+//     end;
+//     7:begin
+//      CHand7Button.Caption:=CHand7.Last.GetName;
+//     end;
+//     8:begin
+//      CHand8Button.Caption:=CHand8.Last.GetName;
+//     end;
+//     9:begin
+//      CHand9Button.Caption:=CHand9.Last.GetName;
+//     end;
+//     10:begin
+//      CHand10Button.Caption:=CHand10.Last.GetName;
+//     end;
+//     11:begin
+//      CHand11Button.Caption:=CHand11.Last.GetName;
+//     end;
+//     12:begin
+//      CHand12Button.Caption:=CHand12.Last.GetName;
+//     end;
      13:begin
       CHand13Button.Caption:=CHand13.Last.GetName;
      end;
@@ -845,31 +745,16 @@ end;
 
 procedure TClockForm.editMiddleButtonCaptions(i: integer);
 begin
-if i=13 then
-    begin
-      if CHand13Button.Caption='Empty' then
-      begin
-        editButtonCaption(i)
-      end
-      else if CHand14Button.Caption='Empty' then
-           begin
-             editButtonCaption(14)
-           end
-      else if CHand15Button.Caption='Empty' then
-           begin
-             editButtonCaption(15)
-           end
-      else if CHand16Button.Caption='Empty' then
-           begin
-             editButtonCaption(16)
-           end
-    end
+  ChangeImage(CHand13Image,CHand13);
+  ChangeImage(CHand14Image,CHand14);
+  ChangeImage(CHand15Image,CHand15);
+  ChangeImage(CHand16Image,CHand16);
 end;
 
 procedure TClockForm.EndGame;
 begin
   showMessage('Game Over');
-  turnOffButtons;
+  turnOffImages;
   ClockGame.Destroy;
 end;
 
@@ -1030,7 +915,7 @@ end;
 procedure TClockForm.newGame;
 begin
   moves:=0;
-  turnOnButtons;
+  turnOnImages;
   CreateItems;
   turnNextCard(13);
   editAllButtonCaptions;
@@ -1045,6 +930,7 @@ begin
     endGame;
   end;
   newGame;
+  changeImages(Images);
 end;
 
 procedure TClockForm.sayOrientation(card: TCard);
@@ -1079,101 +965,101 @@ end;
 procedure TClockForm.turnNextCard(i: integer);
 begin
   case i of
-//    1:begin
-//        CHand1Button.Caption:=CHand1.Last.GetName;
-//      end;
-//    2:begin
-//        CHand2Button.Caption:=CHand2.Last.GetName;
-//      end;
+    1:begin
+        changeImage(CHand1Image,CHand1);
+      end;
+    2:begin
+        changeImage(CHand2Image,CHand2);
+      end;
     3:begin
-        CHand3Button.Caption:=CHand3.Last.GetName;
+        changeImage(CHand3Image,CHand3);
       end;
     4:begin
-        CHand4Button.Caption:=CHand4.Last.GetName;
+        changeImage(CHand4Image,CHand4);
       end;
     5:begin
-        CHand5Button.Caption:=CHand5.Last.GetName;
+        changeImage(CHand5Image,CHand5);
       end;
     6:begin
-        CHand6Button.Caption:=CHand6.Last.GetName;
+        changeImage(CHand6Image,CHand6);
       end;
     7:begin
-        CHand7Button.Caption:=CHand7.Last.GetName;
+        changeImage(CHand7Image,CHand7);
       end;
     8:begin
-        CHand8Button.Caption:=CHand8.Last.GetName;
+        changeImage(CHand8Image,CHand8);
       end;
     9:begin
-        CHand9Button.Caption:=CHand9.Last.GetName;
+        changeImage(CHand9Image,CHand9);
       end;
     10:begin
-        CHand10Button.Caption:=CHand10.Last.GetName;
+        changeImage(CHand10Image,CHand10);
       end;
     11:begin
-        CHand11Button.Caption:=CHand11.Last.GetName;
+        changeImage(CHand11Image,CHand11);
       end;
     12:begin
-        CHand12Button.Caption:=CHand12.Last.GetName;
+        changeImage(CHand12Image,CHand12);
       end;
     13:begin
-        if (CHand13Button.Enabled=true)and(CHand13.Size=1) then
+        if (CHand13Image.Enabled=true)and(CHand13.Size=1) then
         begin
           CHand13.Last.FlipCard;
-          CHand13Button.Caption:=CHand13.Last.GetName;
+          changeImage(CHand13Image,CHand13);
         end
-        else if (CHand14Button.Enabled=true)and(CHand14.Size=1) then
+        else if (CHand14Image.Enabled=true)and(CHand14.Size=1) then
         begin
           CHand14.Last.FlipCard;
-          CHand14Button.Caption:=CHand14.Last.GetName;
+         changeImage(CHand14Image,CHand14);
         end
-        else if (CHand15Button.Enabled=true)and(CHand15.Size=1) then
+        else if (CHand15Image.Enabled=true)and(CHand15.Size=1) then
         begin
           CHand15.Last.FlipCard;
-          CHand15Button.Caption:=CHand15.Last.GetName;
+          changeImage(CHand16Image,CHand15);
         end
-        else if (CHand16Button.Enabled=true)and(CHand16.Size=1) then
+        else if (CHand16Image.Enabled=true)and(CHand16.Size=1) then
         begin
           CHand16.Last.FlipCard;
-          CHand16Button.Caption:=CHand16.Last.GetName;
+          changeImage(CHand16Image,CHand16);
         end
       end;
   end;
 end;
 
-procedure TClockForm.turnOffButtons;
+procedure TClockForm.turnOffImages;
 begin
   CHand1Image.Enabled:=false;
   CHand2Image.Enabled:=false;
-  CHand3Button.Enabled:=false;
-  CHand4Button.Enabled:=false;
-  CHand5Button.Enabled:=false;
-  CHand6Button.Enabled:=false;
-  CHand7Button.Enabled:=false;
-  CHand8Button.Enabled:=false;
-  CHand9Button.Enabled:=false;
-  CHand10Button.Enabled:=false;
-  CHand11Button.Enabled:=false;
-  CHand12Button.Enabled:=false;
+  CHand3Image.Enabled:=false;
+  CHand4Image.Enabled:=false;
+  CHand5Image.Enabled:=false;
+  CHand6Image.Enabled:=false;
+  CHand7Image.Enabled:=false;
+  CHand8Image.Enabled:=false;
+  CHand9Image.Enabled:=false;
+  CHand10Image.Enabled:=false;
+  CHand11Image.Enabled:=false;
+  CHand12Image.Enabled:=false;
 end;
 
-procedure TClockForm.turnOnButtons;
+procedure TClockForm.turnOnImages;
 begin
   CHand1Image.Enabled:=true;
   CHand2Image.Enabled:=true;
-  CHand3Button.Enabled:=true;
-  CHand4Button.Enabled:=true;
-  CHand5Button.Enabled:=true;
-  CHand6Button.Enabled:=true;
-  CHand7Button.Enabled:=true;
-  CHand8Button.Enabled:=true;
-  CHand9Button.Enabled:=true;
-  CHand10Button.Enabled:=true;
-  CHand11Button.Enabled:=true;
-  CHand12Button.Enabled:=true;
-  CHand13Button.Enabled:=true;
-  CHand14Button.Enabled:=true;
-  CHand15Button.Enabled:=true;
-  CHand16Button.Enabled:=true;
+  CHand3Image.Enabled:=true;
+  CHand4Image.Enabled:=true;
+  CHand5Image.Enabled:=true;
+  CHand6Image.Enabled:=true;
+  CHand7Image.Enabled:=true;
+  CHand8Image.Enabled:=true;
+  CHand9Image.Enabled:=true;
+  CHand10Image.Enabled:=true;
+  CHand11Image.Enabled:=true;
+  CHand12Image.Enabled:=true;
+  CHand13Image.Enabled:=true;
+  CHand14Image.Enabled:=true;
+  CHand15Image.Enabled:=true;
+  CHand16Image.Enabled:=true;
 end;
 
 end.
