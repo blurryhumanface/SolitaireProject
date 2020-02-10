@@ -8,14 +8,13 @@ uses
   ,UFileCreater,UMiddleStep, UInstructions;
 
 type
+  ImageArray28 = array[1..28] of TImage;
   TClockForm = class(TForm)
     CHand13Button: TButton;
     CHand14Button: TButton;
     CHand16Button: TButton;
     CHand15Button: TButton;
     CHand12Button: TButton;
-    CHand1Button: TButton;
-    CHand2Button: TButton;
     CHand3Button: TButton;
     CHand4Button: TButton;
     CHand5Button: TButton;
@@ -41,9 +40,23 @@ type
     NewGameButton: TButton;
     MainMenuButton: TButton;
     InstructionsButton: TButton;
+    CHand1Image: TImage;
+    CHand2Image: TImage;
+    CHand13Image: TImage;
+    CHand14Image: TImage;
+    CHand3Image: TImage;
+    CHand4Image: TImage;
+    CHand5Image: TImage;
+    CHand6Image: TImage;
+    CHand7Image: TImage;
+    CHand8Image: TImage;
+    CHand9Image: TImage;
+    CHand10Image: TImage;
+    CHand11Image: TImage;
+    CHand12Image: TImage;
+    CHand15Image: TImage;
+    CHand16Image: TImage;
     procedure CHand12ButtonClick(Sender: TObject);
-    procedure CHand1ButtonClick(Sender: TObject);
-    procedure CHand2ButtonClick(Sender: TObject);
     procedure CHand3ButtonClick(Sender: TObject);
     procedure CHand4ButtonClick(Sender: TObject);
     procedure CHand5ButtonClick(Sender: TObject);
@@ -55,21 +68,25 @@ type
     procedure CHand11ButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CHand13ButtonClick(Sender: TObject);
-    procedure CHand14ButtonClick(Sender: TObject);
     procedure CHand15ButtonClick(Sender: TObject);
     procedure CHand16ButtonClick(Sender: TObject);
     procedure NewGameButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
     procedure InstructionsButtonClick(Sender: TObject);
+    procedure CHand1ImageClick(Sender: TObject);
+    procedure CHand2ImageClick(Sender: TObject);
+    procedure CHand14ImageClick(Sender: TObject);
+    procedure CHand3ImageClick(Sender: TObject);
   private
     { Private declarations }
     moves:integer;
     ended:boolean;
-    Images:array[1..28] of TImage;
+    Images:ImageArray28;
     procedure CreateItems;
     procedure sayOrientation(card:TCard);
     procedure turnAllCardsOver(var hand:TClockHand);
-    procedure CreateCards(x,y:integer);
+    procedure assignImagestoArray;
+    procedure getImage(Hand:TClockHand; var img:TBitmap);
   public
     { Public declarations }
     procedure turnOffButtons;
@@ -82,7 +99,8 @@ type
     procedure incrementMoveCounter;
     procedure textToFile(str:string);
     procedure EndGame;
-    procedure changeImage(i:integer);
+    procedure changeImage(i:TImage; Hand:TClockHand);
+    procedure changeImages(a:ImageArray28);
   end;
 
 var
@@ -91,6 +109,27 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TClockForm.assignImagestoArray;
+begin
+  Images[1]:=CHand1Image;
+  Images[2]:=CHand2Image;
+  Images[3]:=CHand3Image;
+  Images[4]:=CHand4Image;
+  Images[5]:=CHand5Image;
+  Images[6]:=CHand6Image;
+  Images[7]:=CHand7Image;
+  Images[8]:=CHand8Image;
+  Images[9]:=CHand9Image;
+  Images[10]:=CHand10Image;
+  Images[11]:=CHand11Image;
+  Images[12]:=CHand12Image;
+  Images[13]:=CHand13Image;
+  Images[14]:=CHand14Image;
+  Images[15]:=CHand15Image;
+  Images[16]:=CHand16Image;
+  changeImages(Images);
+end;
 
 procedure TClockForm.CHand10ButtonClick(Sender: TObject);
 var
@@ -224,25 +263,16 @@ begin
     CHand13Button.Enabled:=False;
     CHand13Button.Caption:='Empty';
     editMiddleButtonCaptions(i);
-    changeImage(i);
   end;
 end;
 
-procedure TClockForm.CHand14ButtonClick(Sender: TObject);
+procedure TClockForm.CHand14ImageClick(Sender: TObject);
 var
   i:integer;
   j:boolean;
 begin
   if (CHand13.Size=1)and(CHand13Button.Enabled=false) then
   begin
-    {if CHand14.Size<>0 then
-    begin
-      for i := 0 to (CHand14.Size-1) do
-      begin
-        textToFile(CHand14.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand14,j,i);
     turnNextCard(i);
@@ -305,26 +335,19 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand1ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand1ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand1.Last.GetOrientation=face then
   begin
-    {if CHand1.Size<>0 then
-    begin
-      for i := 0 to (CHand1.Size-1) do
-      begin
-        textToFile(CHand1.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand1,j,i);
     if CHand1.Size=0 then
     begin
-      CHand1Button.Enabled:=False;
+      CHand1Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>1 then
@@ -342,26 +365,19 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand2ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand2ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand2.Last.GetOrientation=face then
   begin
-    {if CHand2.Size<>0 then
-    begin
-      for i := 0 to (CHand2.Size-1) do
-      begin
-        textToFile(CHand2.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand2,j,i);
     if CHand2.Size=0 then
     begin
-      CHand2Button.Enabled:=False;
+      CHand2Image.Enabled:=False;
     end;
     turnNextCard(i);
     if i<>2 then
@@ -379,21 +395,14 @@ begin
   end;
 end;
 
-procedure TClockForm.CHand3ButtonClick(Sender: TObject);
+
+procedure TClockForm.CHand3ImageClick(Sender: TObject);
 var
   j:boolean;
   i:integer;
 begin
   if CHand3.Last.GetOrientation=face then
   begin
-    {if CHand3.Size<>0 then
-    begin
-      for i := 0 to (CHand3.Size-1) do
-      begin
-        textToFile(CHand3.Cards[i].GetName);
-      end;
-      textToFile('');
-    end;}
     incrementMoveCounter;
     ClockGame.MoveCard(CHand3,j,i);
     if CHand3.Size=0 then
@@ -638,29 +647,33 @@ begin
   end;
 end;
 
-procedure TClockForm.changeImage(i: integer);
+procedure TClockForm.changeImage(i: TImage; Hand:TClockHand);
 var
   cardImage:TBitmap;
 begin
   cardImage:=TBitmap.Create;
-  cardImage.LoadFromFile('card-BMPs\card-BMPs\c01.bmp');
-  Images[i].Canvas.StretchDraw(Images[i].ClientRect,cardImage);
+  getImage(Hand,cardImage);
+  i.Canvas.StretchDraw(i.ClientRect,cardImage);
 end;
 
-procedure TClockForm.CreateCards(x,y:integer);
-var
-  img:TImage;
-  i:integer;
+procedure TClockForm.changeImages(a: ImageArray28);
 begin
-  i:=1;
-  img:=TImage.Create(self);
-  img.Top:=y;
-  img.Left:=x;
-  img.Autosize:=True;
-  img.Parent:=ClockForm;
-  img.Visible:=True;
-  images[i]:=img;
-  changeImage(i);
+  changeImage(a[1],CHand1);
+  changeImage(a[2],CHand2);
+  changeImage(a[3],CHand3);
+  changeImage(a[4],CHand4);
+  changeImage(a[5],CHand5);
+  changeImage(a[6],CHand6);
+  changeImage(a[7],CHand7);
+  changeImage(a[8],CHand8);
+  changeImage(a[9],CHand9);
+  changeImage(a[10],CHand10);
+  changeImage(a[11],CHand11);
+  changeImage(a[12],CHand12);
+  changeImage(a[13],CHand13);
+  changeImage(a[14],CHand14);
+  changeImage(a[15],CHand15);
+  changeImage(a[16],CHand16);
 end;
 
 procedure TClockForm.CreateItems;
@@ -687,8 +700,8 @@ begin
   if ClockGame.Layout[i].Size=0 then
   begin
     case i of
-     1:CHand1Button.Caption:='Empty';
-     2:CHand2Button.Caption:='Empty';
+//     1:CHand1Button.Caption:='Empty';
+//     2:CHand2Button.Caption:='Empty';
      3:CHand3Button.Caption:='Empty';
      4:CHand4Button.Caption:='Empty';
      5:CHand5Button.Caption:='Empty';
@@ -720,8 +733,8 @@ begin
   else if ClockGame.Layout[i].Last.GetOrientation=back then
   begin
     case i of
-      1:CHand1Button.Caption:='Back';
-      2:CHand2Button.Caption:='Back';
+//      1:CHand1Button.Caption:='Back';
+//      2:CHand2Button.Caption:='Back';
       3:CHand3Button.Caption:='Back';
       4:CHand4Button.Caption:='Back';
       5:CHand5Button.Caption:='Back';
@@ -741,12 +754,12 @@ begin
   else
   begin
     case i of
-     1:begin
-      CHand1Button.Caption:=CHand1.Last.GetName;
-     end;
-     2:begin
-      CHand2Button.Caption:=CHand2.Last.GetName;
-     end;
+//     1:begin
+//      CHand1Button.Caption:=CHand1.Last.GetName;
+//     end;
+//     2:begin
+//      CHand2Button.Caption:=CHand2.Last.GetName;
+//     end;
      3:begin
       CHand3Button.Caption:=CHand3.Last.GetName;
      end;
@@ -865,18 +878,135 @@ var
   i:integer;
 begin
   newGame;
-  for i := 0 to 51 do
-  {begin
-    if Deck.Cards[i].GetSuit=0 then
-    begin
-      textToFile(Deck.Cards[i].GetName);
-    end;
-  end;
-  textToFile('');}
-  CreateCards(176,103);
+  assignImagestoArray;
 end;
 
 
+
+procedure TClockForm.getImage(Hand: TClockHand; var img: TBitmap);
+begin
+  if Hand.Size=0 then
+  begin
+    img.LoadFromFile('card-BMPs\blank.bmp');
+  end
+  else if Hand.Size>0 then
+  begin
+    if Hand.Last.GetOrientation=back then
+    begin
+      img.LoadFromFile('card-BMPs\b1fv.bmp');
+    end
+    else
+    if Hand.Last.GetOrientation=face then
+    begin
+      case Hand.Last.GetRank of
+        1:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d01.bmp');
+            1: img.LoadFromFile('card-BMPs\s01.bmp');
+            2: img.LoadFromFile('card-BMPs\h01.bmp');
+            3: img.LoadFromFile('card-BMPs\c01.bmp');
+          end;
+        end;
+        2:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d02.bmp');
+            1: img.LoadFromFile('card-BMPs\s02.bmp');
+            2: img.LoadFromFile('card-BMPs\h02.bmp');
+            3: img.LoadFromFile('card-BMPs\c02.bmp');
+          end;
+        end;
+        3:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d03.bmp');
+            1: img.LoadFromFile('card-BMPs\s03.bmp');
+            2: img.LoadFromFile('card-BMPs\h03.bmp');
+            3: img.LoadFromFile('card-BMPs\c03.bmp');
+          end;
+        end;
+        4:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d04.bmp');
+            1: img.LoadFromFile('card-BMPs\s04.bmp');
+            2: img.LoadFromFile('card-BMPs\h04.bmp');
+            3: img.LoadFromFile('card-BMPs\c04.bmp');
+          end;
+        end;
+        5:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d05.bmp');
+            1: img.LoadFromFile('card-BMPs\s05.bmp');
+            2: img.LoadFromFile('card-BMPs\h05.bmp');
+            3: img.LoadFromFile('card-BMPs\c05.bmp');
+          end;
+        end;
+        6:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d06.bmp');
+            1: img.LoadFromFile('card-BMPs\s06.bmp');
+            2: img.LoadFromFile('card-BMPs\h06.bmp');
+            3: img.LoadFromFile('card-BMPs\c06.bmp');
+          end;
+        end;
+        7:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d07.bmp');
+            1: img.LoadFromFile('card-BMPs\s07.bmp');
+            2: img.LoadFromFile('card-BMPs\h07.bmp');
+            3: img.LoadFromFile('card-BMPs\c07.bmp');
+          end;
+        end;
+        8:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d08.bmp');
+            1: img.LoadFromFile('card-BMPs\s08.bmp');
+            2: img.LoadFromFile('card-BMPs\h08.bmp');
+            3: img.LoadFromFile('card-BMPs\c08.bmp');
+          end;
+        end;
+        9:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d09.bmp');
+            1: img.LoadFromFile('card-BMPs\s09.bmp');
+            2: img.LoadFromFile('card-BMPs\h09.bmp');
+            3: img.LoadFromFile('card-BMPs\c09.bmp');
+          end;
+        end;
+        10:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d10.bmp');
+            1: img.LoadFromFile('card-BMPs\s10.bmp');
+            2: img.LoadFromFile('card-BMPs\h10.bmp');
+            3: img.LoadFromFile('card-BMPs\c10.bmp');
+          end;
+        end;
+        11:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d11.bmp');
+            1: img.LoadFromFile('card-BMPs\s11.bmp');
+            2: img.LoadFromFile('card-BMPs\h11.bmp');
+            3: img.LoadFromFile('card-BMPs\c11.bmp');
+          end;
+        end;
+        12:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d12.bmp');
+            1: img.LoadFromFile('card-BMPs\s12.bmp');
+            2: img.LoadFromFile('card-BMPs\h12.bmp');
+            3: img.LoadFromFile('card-BMPs\c12.bmp');
+          end;
+        end;
+        13:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d13.bmp');
+            1: img.LoadFromFile('card-BMPs\s13.bmp');
+            2: img.LoadFromFile('card-BMPs\h13.bmp');
+            3: img.LoadFromFile('card-BMPs\c13.bmp');
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
 
 procedure TClockForm.incrementMoveCounter;
 begin
@@ -949,12 +1079,12 @@ end;
 procedure TClockForm.turnNextCard(i: integer);
 begin
   case i of
-    1:begin
-        CHand1Button.Caption:=CHand1.Last.GetName;
-      end;
-    2:begin
-        CHand2Button.Caption:=CHand2.Last.GetName;
-      end;
+//    1:begin
+//        CHand1Button.Caption:=CHand1.Last.GetName;
+//      end;
+//    2:begin
+//        CHand2Button.Caption:=CHand2.Last.GetName;
+//      end;
     3:begin
         CHand3Button.Caption:=CHand3.Last.GetName;
       end;
@@ -1012,8 +1142,8 @@ end;
 
 procedure TClockForm.turnOffButtons;
 begin
-  CHand1Button.Enabled:=false;
-  CHand2Button.Enabled:=false;
+  CHand1Image.Enabled:=false;
+  CHand2Image.Enabled:=false;
   CHand3Button.Enabled:=false;
   CHand4Button.Enabled:=false;
   CHand5Button.Enabled:=false;
@@ -1028,8 +1158,8 @@ end;
 
 procedure TClockForm.turnOnButtons;
 begin
-  CHand1Button.Enabled:=true;
-  CHand2Button.Enabled:=true;
+  CHand1Image.Enabled:=true;
+  CHand2Image.Enabled:=true;
   CHand3Button.Enabled:=true;
   CHand4Button.Enabled:=true;
   CHand5Button.Enabled:=true;

@@ -1,0 +1,42 @@
+Button 1:					Button 15:
+	Left: 408					Left: 272
+	Top: 71						Top: 199
+Button 2:					Button 16:
+	Left: 447					Left: 343
+	Top: 126					Top: 199
+Button 3:					Button 17:
+	Left: 471					Left: 407
+	Top: 192					Top: 48
+Button 4:					Button 18:
+	Left: 447					Left: 447
+	Top: 254					Top: 103
+Button 5:					Button 19:
+	Left: 408					Left: 542
+	Top: 311					Top: 192
+Button 6:					Button 20:
+	Left: 311					Left: 447
+	Top: 336					Top: 227
+Button 7:					Button 21:
+	Left: 216					Left: 408
+	Top: 311					Top: 334
+Button 8:					Button 22:
+	Left: 176					Left: 311
+	Top: 254					Top: 359
+Button 9:					Button 23:
+	Left: 159					Left: 216
+	Top: 192					Top: 334
+Button 10:					Button 24:
+	Left: 176					Left: 176
+	Top: 126					Top: 277
+Button 11:					Button 25:
+	Left: 216					Left: 88
+	Top: 71						Top: 192
+Button 12:					Button 26:
+	Left: 311					Left: 176
+	Top: 40						Top: 103
+Button 13:					Button 27:
+	Left: 272					Left: 216
+	Top: 176 					Top: 48
+Button 14:					Button 28:
+	Left: 343					Left: 311
+	Top: 176					Top: 17

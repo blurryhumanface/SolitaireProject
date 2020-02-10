@@ -2,8 +2,8 @@ object ClockForm: TClockForm
   Left = 229
   Top = 154
   Caption = 'Clock Solitaire'
-  ClientHeight = 480
-  ClientWidth = 957
+  ClientHeight = 694
+  ClientWidth = 1029
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,9 +15,109 @@ object ClockForm: TClockForm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object CHand1Image: TImage
+    Left = 383
+    Top = 71
+    Width = 71
+    Height = 96
+    OnClick = CHand1ImageClick
+  end
+  object CHand2Image: TImage
+    Left = 460
+    Top = 126
+    Width = 71
+    Height = 96
+    OnClick = CHand2ImageClick
+  end
+  object CHand13Image: TImage
+    Left = 264
+    Top = 182
+    Width = 71
+    Height = 96
+  end
+  object CHand14Image: TImage
+    Left = 341
+    Top = 182
+    Width = 71
+    Height = 96
+    OnClick = CHand14ImageClick
+  end
+  object CHand3Image: TImage
+    Left = 537
+    Top = 230
+    Width = 71
+    Height = 96
+    OnClick = CHand3ImageClick
+  end
+  object CHand4Image: TImage
+    Left = 460
+    Top = 345
+    Width = 71
+    Height = 96
+  end
+  object CHand5Image: TImage
+    Left = 383
+    Top = 397
+    Width = 71
+    Height = 96
+  end
+  object CHand6Image: TImage
+    Left = 306
+    Top = 424
+    Width = 71
+    Height = 96
+  end
+  object CHand7Image: TImage
+    Left = 229
+    Top = 397
+    Width = 71
+    Height = 96
+  end
+  object CHand8Image: TImage
+    Left = 152
+    Top = 345
+    Width = 71
+    Height = 96
+  end
+  object CHand9Image: TImage
+    Left = 75
+    Top = 230
+    Width = 71
+    Height = 96
+  end
+  object CHand10Image: TImage
+    Left = 152
+    Top = 126
+    Width = 71
+    Height = 96
+  end
+  object CHand11Image: TImage
+    Left = 229
+    Top = 74
+    Width = 71
+    Height = 96
+  end
+  object CHand12Image: TImage
+    Left = 306
+    Top = 40
+    Width = 71
+    Height = 96
+  end
+  object CHand15Image: TImage
+    Left = 264
+    Top = 284
+    Width = 71
+    Height = 96
+  end
+  object CHand16Image: TImage
+    Left = 341
+    Top = 284
+    Width = 71
+    Height = 96
+  end
   object CHand13Button: TButton
-    Left = 272
-    Top = 176
+    Left = 264
+    Top = 182
     Width = 65
     Height = 17
     Caption = 'CHand13'
@@ -31,8 +131,8 @@ object ClockForm: TClockForm
     OnClick = CHand13ButtonClick
   end
   object CHand14Button: TButton
-    Left = 343
-    Top = 176
+    Left = 341
+    Top = 182
     Width = 65
     Height = 17
     Caption = 'CHand14'
@@ -43,11 +143,10 @@ object ClockForm: TClockForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnClick = CHand14ButtonClick
   end
   object CHand16Button: TButton
-    Left = 343
-    Top = 199
+    Left = 341
+    Top = 284
     Width = 65
     Height = 17
     Caption = 'CHand16'
@@ -61,8 +160,8 @@ object ClockForm: TClockForm
     OnClick = CHand16ButtonClick
   end
   object CHand15Button: TButton
-    Left = 272
-    Top = 199
+    Left = 264
+    Top = 284
     Width = 65
     Height = 17
     Caption = 'CHand15'
@@ -76,7 +175,7 @@ object ClockForm: TClockForm
     OnClick = CHand15ButtonClick
   end
   object CHand12Button: TButton
-    Left = 311
+    Left = 306
     Top = 40
     Width = 65
     Height = 17
@@ -90,39 +189,9 @@ object ClockForm: TClockForm
     TabOrder = 4
     OnClick = CHand12ButtonClick
   end
-  object CHand1Button: TButton
-    Left = 408
-    Top = 71
-    Width = 65
-    Height = 17
-    Caption = 'CHand1'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -7
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 5
-    OnClick = CHand1ButtonClick
-  end
-  object CHand2Button: TButton
-    Left = 447
-    Top = 126
-    Width = 65
-    Height = 17
-    Caption = 'CHand2'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -7
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 6
-    OnClick = CHand2ButtonClick
-  end
   object CHand3Button: TButton
-    Left = 471
-    Top = 192
+    Left = 537
+    Top = 230
     Width = 65
     Height = 17
     Caption = 'CHand3'
@@ -132,12 +201,12 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 7
+    TabOrder = 5
     OnClick = CHand3ButtonClick
   end
   object CHand4Button: TButton
-    Left = 447
-    Top = 254
+    Left = 460
+    Top = 345
     Width = 65
     Height = 17
     Caption = 'CHand4'
@@ -147,12 +216,12 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 6
     OnClick = CHand4ButtonClick
   end
   object CHand5Button: TButton
-    Left = 408
-    Top = 311
+    Left = 383
+    Top = 397
     Width = 65
     Height = 17
     Caption = 'CHand5'
@@ -162,12 +231,12 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 7
     OnClick = CHand5ButtonClick
   end
   object CHand6Button: TButton
-    Left = 311
-    Top = 336
+    Left = 306
+    Top = 424
     Width = 65
     Height = 17
     Caption = 'CHand6'
@@ -177,12 +246,12 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 10
+    TabOrder = 8
     OnClick = CHand6ButtonClick
   end
   object CHand7Button: TButton
-    Left = 216
-    Top = 311
+    Left = 229
+    Top = 397
     Width = 65
     Height = 17
     Caption = 'CHand7'
@@ -192,12 +261,12 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 11
+    TabOrder = 9
     OnClick = CHand7ButtonClick
   end
   object CHand8Button: TButton
-    Left = 176
-    Top = 254
+    Left = 152
+    Top = 342
     Width = 65
     Height = 17
     Caption = 'CHand8'
@@ -207,12 +276,12 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 12
+    TabOrder = 10
     OnClick = CHand8ButtonClick
   end
   object CHand9Button: TButton
-    Left = 159
-    Top = 192
+    Left = 75
+    Top = 230
     Width = 65
     Height = 17
     Caption = 'CHand9'
@@ -222,11 +291,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 13
+    TabOrder = 11
     OnClick = CHand9ButtonClick
   end
   object CHand10Button: TButton
-    Left = 176
+    Left = 152
     Top = 126
     Width = 65
     Height = 17
@@ -237,11 +306,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 14
+    TabOrder = 12
     OnClick = CHand10ButtonClick
   end
   object CHand11Button: TButton
-    Left = 216
+    Left = 229
     Top = 71
     Width = 65
     Height = 17
@@ -252,11 +321,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 15
+    TabOrder = 13
     OnClick = CHand11ButtonClick
   end
   object CHand28Button: TButton
-    Left = 311
+    Left = 306
     Top = 17
     Width = 65
     Height = 17
@@ -268,10 +337,10 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 16
+    TabOrder = 14
   end
   object CHand17Button: TButton
-    Left = 408
+    Left = 383
     Top = 48
     Width = 65
     Height = 17
@@ -283,10 +352,10 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 17
+    TabOrder = 15
   end
   object CHand18Button: TButton
-    Left = 447
+    Left = 460
     Top = 103
     Width = 65
     Height = 17
@@ -298,11 +367,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 18
+    TabOrder = 16
   end
   object CHand19Button: TButton
-    Left = 542
-    Top = 192
+    Left = 614
+    Top = 230
     Width = 65
     Height = 17
     Caption = 'CHand19'
@@ -313,11 +382,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 19
+    TabOrder = 17
   end
   object CHand20Button: TButton
-    Left = 447
-    Top = 277
+    Left = 460
+    Top = 368
     Width = 65
     Height = 17
     Caption = 'CHand20'
@@ -328,11 +397,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 20
+    TabOrder = 18
   end
   object CHand21Button: TButton
-    Left = 408
-    Top = 334
+    Left = 383
+    Top = 422
     Width = 65
     Height = 17
     Caption = 'CHand21'
@@ -343,11 +412,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 21
+    TabOrder = 19
   end
   object CHand22Button: TButton
-    Left = 311
-    Top = 359
+    Left = 306
+    Top = 447
     Width = 65
     Height = 17
     Caption = 'CHand22'
@@ -358,11 +427,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 22
+    TabOrder = 20
   end
   object CHand23Button: TButton
-    Left = 216
-    Top = 334
+    Left = 229
+    Top = 420
     Width = 65
     Height = 17
     Caption = 'CHand23'
@@ -373,11 +442,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 23
+    TabOrder = 21
   end
   object CHand24Button: TButton
-    Left = 176
-    Top = 277
+    Left = 152
+    Top = 365
     Width = 65
     Height = 17
     Caption = 'CHand24'
@@ -388,11 +457,11 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 24
+    TabOrder = 22
   end
   object CHand25Button: TButton
-    Left = 88
-    Top = 192
+    Left = 4
+    Top = 230
     Width = 65
     Height = 17
     Caption = 'CHand25'
@@ -403,10 +472,10 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 25
+    TabOrder = 23
   end
   object CHand26Button: TButton
-    Left = 176
+    Left = 152
     Top = 103
     Width = 65
     Height = 17
@@ -418,10 +487,10 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 26
+    TabOrder = 24
   end
   object CHand27Button: TButton
-    Left = 216
+    Left = 229
     Top = 48
     Width = 65
     Height = 17
@@ -433,41 +502,42 @@ object ClockForm: TClockForm
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 27
+    TabOrder = 25
   end
   object MovesEdit: TEdit
-    Left = 712
-    Top = 48
+    Left = 832
+    Top = 44
     Width = 121
     Height = 21
-    TabOrder = 28
+    Enabled = False
+    TabOrder = 26
     Text = 'no. of moves: 0'
   end
   object NewGameButton: TButton
-    Left = 712
-    Top = 120
+    Left = 832
+    Top = 116
     Width = 121
     Height = 25
     Caption = 'New Game'
-    TabOrder = 29
+    TabOrder = 27
     OnClick = NewGameButtonClick
   end
   object MainMenuButton: TButton
-    Left = 712
-    Top = 186
+    Left = 832
+    Top = 182
     Width = 121
     Height = 25
     Caption = 'Main Menu'
-    TabOrder = 30
+    TabOrder = 28
     OnClick = MainMenuButtonClick
   end
   object InstructionsButton: TButton
-    Left = 712
-    Top = 248
+    Left = 832
+    Top = 244
     Width = 121
     Height = 25
     Caption = 'Instructions'
-    TabOrder = 31
+    TabOrder = 29
     OnClick = InstructionsButtonClick
   end
 end
