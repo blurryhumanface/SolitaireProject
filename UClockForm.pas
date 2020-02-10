@@ -591,8 +591,6 @@ begin
   begin
     editButtonCaption(i);
   end;
-
-
 end;
 
 procedure TClockForm.editButtonCaption(i:integer);
@@ -1009,17 +1007,14 @@ begin
         end
         else if (CHand14Image.Enabled=true)and(CHand14.Size=1) then
         begin
-          CHand14.Last.FlipCard;
          changeImage(CHand14Image,CHand14);
         end
         else if (CHand15Image.Enabled=true)and(CHand15.Size=1) then
         begin
-          CHand15.Last.FlipCard;
           changeImage(CHand16Image,CHand15);
         end
         else if (CHand16Image.Enabled=true)and(CHand16.Size=1) then
         begin
-          CHand16.Last.FlipCard;
           changeImage(CHand16Image,CHand16);
         end
       end;
