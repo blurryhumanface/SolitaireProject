@@ -2,7 +2,7 @@ object ClockForm: TClockForm
   Left = 0
   Top = 0
   Caption = 'Clock Solitaire'
-  ClientHeight = 819
+  ClientHeight = 701
   ClientWidth = 1033
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -41,11 +41,12 @@ object ClockForm: TClockForm
     Top = 259
     Width = 71
     Height = 96
+    Enabled = False
     OnClick = CHand14ImageClick
   end
   object CHand3Image: TImage
-    Left = 537
-    Top = 361
+    Left = 460
+    Top = 310
     Width = 71
     Height = 96
     OnClick = CHand3ImageClick
@@ -86,8 +87,8 @@ object ClockForm: TClockForm
     OnClick = CHand8ImageClick
   end
   object CHand9Image: TImage
-    Left = 75
-    Top = 361
+    Left = 152
+    Top = 310
     Width = 71
     Height = 96
     OnClick = CHand9ImageClick
@@ -118,6 +119,7 @@ object ClockForm: TClockForm
     Top = 361
     Width = 71
     Height = 96
+    Enabled = False
     OnClick = CHand15ImageClick
   end
   object CHand16Image: TImage
@@ -125,6 +127,7 @@ object ClockForm: TClockForm
     Top = 361
     Width = 71
     Height = 96
+    Enabled = False
     OnClick = CHand16ImageClick
   end
   object CHand28Image: TImage
@@ -150,7 +153,7 @@ object ClockForm: TClockForm
   end
   object CHand19Image: TImage
     Left = 537
-    Top = 259
+    Top = 310
     Width = 71
     Height = 96
     Enabled = False
@@ -192,7 +195,7 @@ object ClockForm: TClockForm
   end
   object CHand25Image: TImage
     Left = 75
-    Top = 259
+    Top = 310
     Width = 71
     Height = 96
     Enabled = False

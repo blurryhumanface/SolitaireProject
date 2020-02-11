@@ -78,8 +78,6 @@ type
     procedure turnOnImages;
     procedure newGame;
     procedure turnNextCard(i:integer);
-    procedure editButtonCaption(i:integer);
-    procedure editAllButtonCaptions;
     procedure editMiddleButtonCaptions(i:integer);
     procedure incrementMoveCounter;
     procedure textToFile(str:string);
@@ -224,6 +222,7 @@ begin
     ClockGame.MoveCard(CHand13,j,i);
     turnNextCard(i);
     CHand13Image.Enabled:=False;
+    //CHand14Image.Enabled:=True;
     changeImages(Images);
     editMiddleButtonCaptions(i);
   end;
@@ -234,6 +233,10 @@ var
   i:integer;
   j:boolean;
 begin
+  if CHand14Image.Enabled=false then
+  begin
+    CHand14Image.Enabled:=True;
+  end;
   if (CHand13.Size=1)and(CHand13Image.Enabled=false) then
   begin
     incrementMoveCounter;
@@ -589,166 +592,6 @@ begin
   ClockGame:=TClockGame.Create;
 end;
 
-
-
-procedure TClockForm.editAllButtonCaptions;
-var
-  i:integer;
-begin
-  for i := 1 to 16 do
-  begin
-    editButtonCaption(i);
-  end;
-end;
-
-procedure TClockForm.editButtonCaption(i:integer);
-begin
-  if ClockGame.Layout[i].Size=0 then
-  begin
-    case i of
-//     1:CHand1Button.Caption:='Empty';
-//     2:CHand2Button.Caption:='Empty';
-//     3:CHand3Button.Caption:='Empty';
-//     4:CHand4Button.Caption:='Empty';
-//     5:CHand5Button.Caption:='Empty';
-//     6:CHand6Button.Caption:='Empty';
-//     7:CHand7Button.Caption:='Empty';
-//     8:CHand8Button.Caption:='Empty';
-//     9:CHand9Button.Caption:='Empty';
-//     10:CHand10Button.Caption:='Empty';
-//     11:CHand11Button.Caption:='Empty';
-//     12:CHand12Button.Caption:='Empty';
-//     13:CHand13Button.Caption:='Empty';
-//     14:CHand14Button.Caption:='Empty';
-//     15:CHand15Button.Caption:='Empty';
-//     16:CHand16Button.Caption:='Empty';
-     17:CHand17Button.Caption:='Empty';
-     18:CHand18Button.Caption:='Empty';
-     19:CHand19Button.Caption:='Empty';
-     20:CHand20Button.Caption:='Empty';
-     21:CHand21Button.Caption:='Empty';
-     22:CHand22Button.Caption:='Empty';
-     23:CHand23Button.Caption:='Empty';
-     24:CHand24Button.Caption:='Empty';
-     25:CHand25Button.Caption:='Empty';
-     26:CHand26Button.Caption:='Empty';
-     27:CHand27Button.Caption:='Empty';
-     28:CHand28Button.Caption:='Empty';
-    end;
-  end
-  else if ClockGame.Layout[i].Last.GetOrientation=back then
-  begin
-//    case i of
-////      1:CHand1Button.Caption:='Back';
-////      2:CHand2Button.Caption:='Back';
-////      3:CHand3Button.Caption:='Back';
-////      4:CHand4Button.Caption:='Back';
-////      5:CHand5Button.Caption:='Back';
-////      6:CHand6Button.Caption:='Back';
-////      7:CHand7Button.Caption:='Back';
-////      8:CHand8Button.Caption:='Back';
-////      9:CHand9Button.Caption:='Back';
-////      10:CHand10Button.Caption:='Back';
-////      11:CHand11Button.Caption:='Back';
-////      12:CHand12Button.Caption:='Back';
-////      13:CHand13Button.Caption:='Back';
-////      14:CHand14Button.Caption:='Back';
-////      15:CHand15Button.Caption:='Back';
-////      16:CHand16Button.Caption:='Back';
-//    end;
-  end
-  else
-  begin
-    case i of
-//     1:begin
-//      CHand1Button.Caption:=CHand1.Last.GetName;
-//     end;
-//     2:begin
-//      CHand2Button.Caption:=CHand2.Last.GetName;
-//     end;
-//     3:begin
-//      CHand3Button.Caption:=CHand3.Last.GetName;
-//     end;
-//     4:begin
-//      CHand4Button.Caption:=CHand4.Last.GetName;
-//     end;
-//     5:begin
-//      CHand5Button.Caption:=CHand5.Last.GetName;
-//     end;
-//     6:begin
-//      CHand6Button.Caption:=CHand6.Last.GetName;
-//     end;
-//     7:begin
-//      CHand7Button.Caption:=CHand7.Last.GetName;
-//     end;
-//     8:begin
-//      CHand8Button.Caption:=CHand8.Last.GetName;
-//     end;
-//     9:begin
-//      CHand9Button.Caption:=CHand9.Last.GetName;
-//     end;
-//     10:begin
-//      CHand10Button.Caption:=CHand10.Last.GetName;
-//     end;
-//     11:begin
-//      CHand11Button.Caption:=CHand11.Last.GetName;
-//     end;
-//     12:begin
-//      CHand12Button.Caption:=CHand12.Last.GetName;
-//     end;
-//     13:begin
-//      CHand13Button.Caption:=CHand13.Last.GetName;
-//     end;
-//     14:begin
-//      CHand14Button.Caption:=CHand14.Last.GetName;
-//     end;
-//     15:begin
-//      CHand15Button.Caption:=CHand15.Last.GetName;
-//     end;
-//     16:begin
-//      CHand16Button.Caption:=CHand16.Last.GetName;
-//     end;
-     17:begin
-      CHand17Button.Caption:=CHand17.Last.GetName;
-     end;
-     18:begin
-      CHand18Button.Caption:=CHand18.Last.GetName;
-     end;
-     19:begin
-      CHand19Button.Caption:=CHand19.Last.GetName;
-     end;
-     20:begin
-      CHand20Button.Caption:=CHand20.Last.GetName;
-     end;
-     21:begin
-      CHand21Button.Caption:=CHand21.Last.GetName;
-     end;
-     22:begin
-      CHand22Button.Caption:=CHand22.Last.GetName;
-     end;
-     23:begin
-      CHand23Button.Caption:=CHand23.Last.GetName;
-     end;
-     24:begin
-      CHand24Button.Caption:=CHand24.Last.GetName;
-     end;
-     25:begin
-      CHand25Button.Caption:=CHand25.Last.GetName;
-     end;
-     26:begin
-      CHand26Button.Caption:=CHand26.Last.GetName;
-     end;
-     27:begin
-      CHand27Button.Caption:=CHand27.Last.GetName;
-     end;
-     28:begin
-      CHand28Button.Caption:=CHand28.Last.GetName;
-     end;
-    end;
-  end;
-
-end;
-
 procedure TClockForm.editMiddleButtonCaptions(i: integer);
 begin
   ChangeImage(CHand13Image,CHand13);
@@ -758,8 +601,24 @@ begin
 end;
 
 procedure TClockForm.EndGame;
+const
+  maxMoves=52;
+var
+  percent:double;
 begin
-  showMessage('Game Over');
+  if Moves=52 then
+  begin
+    showMessage('Congratulations you solved the deal');
+  end
+  else if moves=0 then
+  begin
+  end
+  else
+  begin
+    percent:=((moves/maxMoves)*100);
+    percent:=round(percent);
+    showMessage('Game Over. You completed '+FloatToStr(percent)+'% of the game');
+  end;
   turnOffImages;
   ClockGame.Destroy;
 end;
@@ -924,7 +783,6 @@ begin
   turnOnImages;
   CreateItems;
   turnNextCard(13);
-  editAllButtonCaptions;
   movesEdit.Text:='no. of moves: 0';
   ended:=false;
 end;
