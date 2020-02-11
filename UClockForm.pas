@@ -10,22 +10,6 @@ uses
 type
   ImageArray28 = array[1..28] of TImage;
   TClockForm = class(TForm)
-    CHand13Button: TButton;
-    CHand14Button: TButton;
-    CHand16Button: TButton;
-    CHand15Button: TButton;
-    CHand28Button: TButton;
-    CHand17Button: TButton;
-    CHand18Button: TButton;
-    CHand19Button: TButton;
-    CHand20Button: TButton;
-    CHand21Button: TButton;
-    CHand22Button: TButton;
-    CHand23Button: TButton;
-    CHand24Button: TButton;
-    CHand25Button: TButton;
-    CHand26Button: TButton;
-    CHand27Button: TButton;
     MovesEdit: TEdit;
     NewGameButton: TButton;
     MainMenuButton: TButton;
@@ -46,6 +30,18 @@ type
     CHand12Image: TImage;
     CHand15Image: TImage;
     CHand16Image: TImage;
+    CHand28Image: TImage;
+    CHand17Image: TImage;
+    CHand18Image: TImage;
+    CHand19Image: TImage;
+    CHand20Image: TImage;
+    CHand21Image: TImage;
+    CHand22Image: TImage;
+    CHand23Image: TImage;
+    CHand24Image: TImage;
+    CHand25Image: TImage;
+    CHand26Image: TImage;
+    CHand27Image: TImage;
     procedure FormCreate(Sender: TObject);
     procedure NewGameButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
@@ -117,6 +113,18 @@ begin
   Images[14]:=CHand14Image;
   Images[15]:=CHand15Image;
   Images[16]:=CHand16Image;
+  Images[17]:=CHand17Image;
+  Images[18]:=CHand18Image;
+  Images[19]:=CHand19Image;
+  Images[20]:=CHand20Image;
+  Images[21]:=CHand21Image;
+  Images[22]:=CHand22Image;
+  Images[23]:=CHand23Image;
+  Images[24]:=CHand24Image;
+  Images[25]:=CHand25Image;
+  Images[26]:=CHand26Image;
+  Images[27]:=CHand27Image;
+  Images[28]:=CHand28Image;
   changeImages(Images);
 end;
 
@@ -138,8 +146,7 @@ begin
     begin
       turnAllCardsOver(CHand10);
     end;
-    changeImage(CHand10Image,CHand10);
-    editButtonCaption(26);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
     if j=true then
     begin
@@ -167,8 +174,7 @@ begin
     begin
       turnAllCardsOver(CHand11);
     end;
-    changeImage(CHand11Image,CHand11);
-    editButtonCaption(27);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -196,8 +202,7 @@ begin
     begin
       turnAllCardsOver(CHand12);
     end;
-    changeImage(CHand12Image,CHand12);
-    editButtonCaption(28);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -219,7 +224,7 @@ begin
     ClockGame.MoveCard(CHand13,j,i);
     turnNextCard(i);
     CHand13Image.Enabled:=False;
-    ChangeImage(CHand13Image,CHand13);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
   end;
 end;
@@ -235,7 +240,7 @@ begin
     ClockGame.MoveCard(CHand14,j,i);
     turnNextCard(i);
     CHand14Image.Enabled:=False;
-    ChangeImage(CHand14Image,CHand14);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
   end;
 end;
@@ -251,7 +256,7 @@ begin
     ClockGame.MoveCard(CHand15,j,i);
     turnNextCard(i);
     CHand15Image.Enabled:=False;
-    ChangeImage(CHand15Image,CHand15);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
   end;
 end;
@@ -268,7 +273,7 @@ begin
     ClockGame.MoveCard(CHand16,j,i);
     turnNextCard(i);
     CHand16Image.Enabled:=False;
-    ChangeImage(CHand16Image,CHand16);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
     if j=True then
     begin
@@ -297,8 +302,7 @@ begin
     begin
       turnAllCardsOver(CHand1);
     end;
-    changeImage(CHand1Image,CHand1);
-    editButtonCaption(17);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -327,8 +331,7 @@ begin
     begin
       turnAllCardsOver(CHand2);
     end;
-    changeImage(CHand2Image,CHand2);
-    editButtonCaption(18);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -357,8 +360,7 @@ begin
     begin
       turnAllCardsOver(CHand3);
     end;
-    changeImage(CHand3Image,CHand3);
-    editButtonCaption(19);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -386,8 +388,7 @@ begin
     begin
       turnAllCardsOver(CHand4);
     end;
-    changeImage(CHand4Image,CHand4);
-    editButtonCaption(20);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -416,8 +417,7 @@ begin
     begin
       turnAllCardsOver(CHand5);
     end;
-    changeImage(CHand5Image,CHand5);
-    editButtonCaption(21);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -446,8 +446,7 @@ begin
     begin
       turnAllCardsOver(CHand6);
     end;
-    changeImage(CHand6Image,CHand6);
-    editButtonCaption(22);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -476,8 +475,7 @@ begin
     begin
       turnAllCardsOver(CHand7);
     end;
-    changeImage(CHand7Image,CHand7);
-    editButtonCaption(23);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -506,8 +504,7 @@ begin
     begin
       turnAllCardsOver(CHand8);
     end;
-    changeImage(CHand8Image,CHand8);
-    editButtonCaption(24);
+    changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -536,8 +533,7 @@ begin
     begin
       turnAllCardsOver(CHand9);
     end;
-    changeImage(CHand9Image,CHand9);
-    editButtonCaption(25);
+   changeImages(Images);
     editMiddleButtonCaptions(i);
      if j=true then
     begin
@@ -574,6 +570,18 @@ begin
   changeImage(a[14],CHand14);
   changeImage(a[15],CHand15);
   changeImage(a[16],CHand16);
+  changeImage(a[17],CHand17);
+  changeImage(a[18],CHand18);
+  changeImage(a[19],CHand19);
+  changeImage(a[20],CHand20);
+  changeImage(a[21],CHand21);
+  changeImage(a[22],CHand22);
+  changeImage(a[23],CHand23);
+  changeImage(a[24],CHand24);
+  changeImage(a[25],CHand25);
+  changeImage(a[26],CHand26);
+  changeImage(a[27],CHand27);
+  changeImage(a[28],CHand28);
 end;
 
 procedure TClockForm.CreateItems;
@@ -610,10 +618,10 @@ begin
 //     10:CHand10Button.Caption:='Empty';
 //     11:CHand11Button.Caption:='Empty';
 //     12:CHand12Button.Caption:='Empty';
-     13:CHand13Button.Caption:='Empty';
-     14:CHand14Button.Caption:='Empty';
-     15:CHand15Button.Caption:='Empty';
-     16:CHand16Button.Caption:='Empty';
+//     13:CHand13Button.Caption:='Empty';
+//     14:CHand14Button.Caption:='Empty';
+//     15:CHand15Button.Caption:='Empty';
+//     16:CHand16Button.Caption:='Empty';
      17:CHand17Button.Caption:='Empty';
      18:CHand18Button.Caption:='Empty';
      19:CHand19Button.Caption:='Empty';
@@ -630,24 +638,24 @@ begin
   end
   else if ClockGame.Layout[i].Last.GetOrientation=back then
   begin
-    case i of
-//      1:CHand1Button.Caption:='Back';
-//      2:CHand2Button.Caption:='Back';
-//      3:CHand3Button.Caption:='Back';
-//      4:CHand4Button.Caption:='Back';
-//      5:CHand5Button.Caption:='Back';
-//      6:CHand6Button.Caption:='Back';
-//      7:CHand7Button.Caption:='Back';
-//      8:CHand8Button.Caption:='Back';
-//      9:CHand9Button.Caption:='Back';
-//      10:CHand10Button.Caption:='Back';
-//      11:CHand11Button.Caption:='Back';
-//      12:CHand12Button.Caption:='Back';
-      13:CHand13Button.Caption:='Back';
-      14:CHand14Button.Caption:='Back';
-      15:CHand15Button.Caption:='Back';
-      16:CHand16Button.Caption:='Back';
-    end;
+//    case i of
+////      1:CHand1Button.Caption:='Back';
+////      2:CHand2Button.Caption:='Back';
+////      3:CHand3Button.Caption:='Back';
+////      4:CHand4Button.Caption:='Back';
+////      5:CHand5Button.Caption:='Back';
+////      6:CHand6Button.Caption:='Back';
+////      7:CHand7Button.Caption:='Back';
+////      8:CHand8Button.Caption:='Back';
+////      9:CHand9Button.Caption:='Back';
+////      10:CHand10Button.Caption:='Back';
+////      11:CHand11Button.Caption:='Back';
+////      12:CHand12Button.Caption:='Back';
+////      13:CHand13Button.Caption:='Back';
+////      14:CHand14Button.Caption:='Back';
+////      15:CHand15Button.Caption:='Back';
+////      16:CHand16Button.Caption:='Back';
+//    end;
   end
   else
   begin
@@ -688,18 +696,18 @@ begin
 //     12:begin
 //      CHand12Button.Caption:=CHand12.Last.GetName;
 //     end;
-     13:begin
-      CHand13Button.Caption:=CHand13.Last.GetName;
-     end;
-     14:begin
-      CHand14Button.Caption:=CHand14.Last.GetName;
-     end;
-     15:begin
-      CHand15Button.Caption:=CHand15.Last.GetName;
-     end;
-     16:begin
-      CHand16Button.Caption:=CHand16.Last.GetName;
-     end;
+//     13:begin
+//      CHand13Button.Caption:=CHand13.Last.GetName;
+//     end;
+//     14:begin
+//      CHand14Button.Caption:=CHand14.Last.GetName;
+//     end;
+//     15:begin
+//      CHand15Button.Caption:=CHand15.Last.GetName;
+//     end;
+//     16:begin
+//      CHand16Button.Caption:=CHand16.Last.GetName;
+//     end;
      17:begin
       CHand17Button.Caption:=CHand17.Last.GetName;
      end;
