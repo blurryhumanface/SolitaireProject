@@ -33,7 +33,6 @@ interface
       CHand17,CHand18,CHand19,CHand20,CHand21,CHand22,CHand23:TClockHand;
       CHand24,CHand25,CHand26,CHand27,CHand28:TClockHand;
       ClockGame:TClockGame;
-      Deck:TDeck;
 
 implementation
 
@@ -96,8 +95,6 @@ constructor TClockGame.Create;
 var
   i,j: Integer;
 begin
-  Deck:=TDeck.Create;
-  Deck.Shuffle;
   CreateHands;
   AssignHands;
   for i := 1 to 3 do

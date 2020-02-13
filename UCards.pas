@@ -121,6 +121,8 @@ interface
         {This property reads the card at position i in the hand}
     end;
 
+    var
+      Deck:TDeck;
 implementation
 
 { TCard }
