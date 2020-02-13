@@ -16,6 +16,8 @@ interface
     end;
 
     TClockGame = class
+      private
+        procedure outerHandsCardTurn;
       public
         Layout:Array[1..28] of TClockHand;
         constructor Create;
@@ -243,7 +245,22 @@ begin
         end;
       end;
   end;
+  outerHandsCardTurn;
 end;
 
+
+procedure TClockGame.outerHandsCardTurn;
+var
+  i: Integer;
+begin
+  for i := 17 to 28 do
+  begin
+    if layout[i].Size>0 then
+    begin
+      if layout[i].Last.GetOrientation=back then
+        layout[i].Last.FlipCard;
+    end;
+  end;
+end;
 
 end.

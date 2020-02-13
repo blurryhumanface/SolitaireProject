@@ -7,4 +7,12 @@ with a single card dealt to the 4 middle piles.
 The card in the top left pile is turned over.
 
 From this point onwards you click on the cards and then
-they move next to the pile which will be the next to play
+they move next to the pile which will be the next to play.
+
+The aim of the game is to get the deck sorted into piles
+of cards with the same face value. The piles are arranged
+to look like a clock, with aces representing 1 and being
+placed at 1 o'clock and going round to queens being at
+12 o'clock. The kings are put in the middle of the clock.
+To successfully complete the deal all cards need to be
+revealed before all the kings have been found.

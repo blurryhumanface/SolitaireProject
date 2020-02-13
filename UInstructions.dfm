@@ -18,6 +18,7 @@ object instructionsForm: TinstructionsForm
     Top = 32
     Width = 553
     Height = 401
+    Enabled = False
     Lines.Strings = (
       '')
     TabOrder = 0
