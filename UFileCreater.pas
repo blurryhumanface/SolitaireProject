@@ -14,5 +14,4 @@ implementation
     writeln(txt,str);
     closeFile(txt);
   end;
-
 end.
