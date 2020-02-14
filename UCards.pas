@@ -122,7 +122,9 @@ interface
     end;
 
     var
-      Deck:TDeck;
+      CDeck:TDeck;
+      MDeck:TDeck;
+      KDeck:TDeck;
 implementation
 
 { TCard }

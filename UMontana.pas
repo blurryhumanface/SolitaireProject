@@ -10,6 +10,7 @@ type
   public
     positionX:integer;
     positionY:integer;
+    function filled:boolean;
   end;
 
   TMontanaGame = class
@@ -20,7 +21,7 @@ type
     public
       layout:array[1..15,1..4] of TMontanaHand;
       constructor Create;
-      procedure MoveCard(Hand:TMontanaHand);
+      procedure MoveCard(passed:TMontanaHand; var back:integer);
       procedure assignHands;
   end;
 var
@@ -33,6 +34,14 @@ var
 implementation
 
 { TMontanaHand }
+
+function TMontanaHand.filled: boolean;
+begin
+  if Size=1 then
+    result:=true
+  else
+    result:=false;
+end;
 
 { TMontanaGame }
 
@@ -100,6 +109,8 @@ constructor TMontanaGame.Create;
 var
   i: Integer;
   j: Integer;
+  temp:TMontanaHand;
+  k:integer;
 begin
   createHands;
   assignHands;
@@ -111,13 +122,15 @@ begin
       layout[j,i].Last.FlipCard;
     end;
   end;
+  k:=0;
   for i := 1 to 4 do
   begin
     for j := 1 to 13 do
     begin
       if Layout[j,i].Last.GetRank=1 then
       begin
-        moveCard(Layout[j,i]);
+        temp:=Layout[j,i];
+        moveCard(temp,k);
       end;
     end;
   end;
@@ -201,29 +214,83 @@ begin
   end;
 end;
 
-procedure TMontanaGame.MoveCard(Hand:TMontanaHand);
+procedure TMontanaGame.MoveCard(passed:TMontanaHand; var back:integer);
+var
+  found:boolean;
+  i,j:integer;
 begin
-  case Hand.Last.GetRank of
-    1:begin
+  i:=4;
+  if passed.Last.GetRank=1 then
+  begin
       if Layout[15,4].Size=0 then
       begin
-        Layout[15,4].AddCard(Hand.RemoveLastCard)
+        Layout[15,4].AddCard(passed.RemoveLastCard)
       end
       else if (Layout[15,4].Size=1)and (Layout[15,3].Size=0) then
       begin
-        Layout[15,3].AddCard(Hand.RemoveLastCard)
+        Layout[15,3].AddCard(passed.RemoveLastCard)
       end
       else if (Layout[15,4].Size=1)and (Layout[15,3].Size=1)and (Layout[15,2].Size=0) then
       begin
-        Layout[15,2].AddCard(Hand.RemoveLastCard);
+        Layout[15,2].AddCard(passed.RemoveLastCard);
       end
       else if (Layout[15,4].Size=1)and (Layout[15,3].Size=1)and (Layout[15,2].Size=1)and (Layout[15,1].Size=0) then
       begin
-        Layout[15,1].AddCard(Hand.RemoveLastCard);
+        Layout[15,1].AddCard(passed.RemoveLastCard);
       end;
-    end;
-  end;
+    end
+    else if passed.Last.GetRank=2 then
+    begin
+    if Layout[1,4].Size=0 then
+      begin
+        Layout[1,4].AddCard(passed.RemoveLastCard)
+      end
+      else if (Layout[1,4].Size=1)and (Layout[1,3].Size=0) then
+      begin
+        Layout[1,3].AddCard(passed.RemoveLastCard)
+      end
+      else if (Layout[1,4].Size=1)and (Layout[1,3].Size=1)and (Layout[1,2].Size=0) then
+      begin
+        Layout[1,2].AddCard(passed.RemoveLastCard);
+      end
+      else if (Layout[1,4].Size=1)and (Layout[1,3].Size=1)and (Layout[1,2].Size=1)and (Layout[1,1].Size=0) then
+      begin
+        Layout[1,1].AddCard(passed.RemoveLastCard);
+      end
+      else back:=-1;
+    end
+    else
+    begin
+      repeat
+	      for j:= 1 to 13 do
+	      begin
+          if Layout[j,i].Size>0 then
+          begin
+            if passed.Last.GetSuit=Layout[j,i].Last.GetSuit then
+            begin
+              if passed.precedingNumber=Layout[j,i].Last.GetRank then
+              begin
+                found:=true;
+                break;
+              end;
+            end;
+          end;
+        end;
+	      dec(i);
+      until (found=true)or(i<1);
+      i:=i+1;
+      j:=j+1;
+      if layout[j,i].filled=true then
+      begin
+	      back:=-1;
+      end
+      else
+      begin
+	      layout[j,i].AddCard(passed.RemoveLastCard);
+	      back:=0
+      end;
 
+    end;
 end;
 
 procedure TMontanaGame.setCoordinates;

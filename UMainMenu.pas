@@ -40,6 +40,7 @@ end;
 procedure TMainMenu.MontanaButtonClick(Sender: TObject);
 begin
   MainMenu.Hide;
+  MontanaForm.Show;
 end;
 
 end.

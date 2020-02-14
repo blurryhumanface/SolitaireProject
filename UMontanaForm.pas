@@ -72,9 +72,65 @@ type
     procedure FormCreate(Sender: TObject);
     procedure InstructionsButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
+    procedure MHand1ImageClick(Sender: TObject);
+    procedure MHand2ImageClick(Sender: TObject);
+    procedure MHand3ImageClick(Sender: TObject);
+    procedure MHand4ImageClick(Sender: TObject);
+    procedure MHand5ImageClick(Sender: TObject);
+    procedure MHand6ImageClick(Sender: TObject);
+    procedure MHand7ImageClick(Sender: TObject);
+    procedure MHand8ImageClick(Sender: TObject);
+    procedure MHand9ImageClick(Sender: TObject);
+    procedure MHand10ImageClick(Sender: TObject);
+    procedure MHand11ImageClick(Sender: TObject);
+    procedure MHand12ImageClick(Sender: TObject);
+    procedure MHand13ImageClick(Sender: TObject);
+    procedure MHand15ImageClick(Sender: TObject);
+    procedure MHand16ImageClick(Sender: TObject);
+    procedure MHand17ImageClick(Sender: TObject);
+    procedure MHand18ImageClick(Sender: TObject);
+    procedure MHand19ImageClick(Sender: TObject);
+    procedure MHand20ImageClick(Sender: TObject);
+    procedure MHand21ImageClick(Sender: TObject);
+    procedure MHand22ImageClick(Sender: TObject);
+    procedure MHand23ImageClick(Sender: TObject);
+    procedure MHand24ImageClick(Sender: TObject);
+    procedure MHand25ImageClick(Sender: TObject);
+    procedure MHand26ImageClick(Sender: TObject);
+    procedure MHand27ImageClick(Sender: TObject);
+    procedure MHand29ImageClick(Sender: TObject);
+    procedure MHand30ImageClick(Sender: TObject);
+    procedure MHand31ImageClick(Sender: TObject);
+    procedure MHand32ImageClick(Sender: TObject);
+    procedure MHand33ImageClick(Sender: TObject);
+    procedure MHand34ImageClick(Sender: TObject);
+    procedure MHand35ImageClick(Sender: TObject);
+    procedure MHand36ImageClick(Sender: TObject);
+    procedure MHand37ImageClick(Sender: TObject);
+    procedure MHand38ImageClick(Sender: TObject);
+    procedure MHand39ImageClick(Sender: TObject);
+    procedure MHand40ImageClick(Sender: TObject);
+    procedure MHand41ImageClick(Sender: TObject);
+    procedure MHand55ImageClick(Sender: TObject);
+    procedure MHand54ImageClick(Sender: TObject);
+    procedure MHand53ImageClick(Sender: TObject);
+    procedure MHand52ImageClick(Sender: TObject);
+    procedure MHand43ImageClick(Sender: TObject);
+    procedure MHand44ImageClick(Sender: TObject);
+    procedure MHand45ImageClick(Sender: TObject);
+    procedure MHand46ImageClick(Sender: TObject);
+    procedure MHand47ImageClick(Sender: TObject);
+    procedure MHand48ImageClick(Sender: TObject);
+    procedure MHand49ImageClick(Sender: TObject);
+    procedure MHand50ImageClick(Sender: TObject);
+    procedure MHand51ImageClick(Sender: TObject);
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
+    row1NumberOfFixedCards:Integer;
+    row2NumberOfFixedCards:Integer;
+    row3NumberOfFixedCards:Integer;
+    row4NumberOfFixedCards:Integer;
     procedure handLayout;
     procedure changeImage(img:TImage; Hand:TMontanaHand);
     procedure getImage(Hand:TMontanaHand; var img:TBitmap);
@@ -321,6 +377,579 @@ procedure TMontanaForm.MainMenuButtonClick(Sender: TObject);
 begin
   MontanaForm.Hide;
   openMainMenu;
+end;
+
+procedure TMontanaForm.MHand10ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[10,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[10,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand11ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[11,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[11,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand12ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[12,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[12,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand13ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[13,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[13,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand15ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[1,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[1,3]),k);
+    if k=-1 then
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand16ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[2,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[2,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand17ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[3,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[3,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand18ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[4,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[4,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand19ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[5,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[5,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand1ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[1,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[1,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand20ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[6,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[6,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand21ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[7,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[7,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand22ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[8,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[8,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand23ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[9,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[9,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand24ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[10,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[10,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand25ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[11,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[11,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand26ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[12,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[12,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand27ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[13,3].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[13,3]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand29ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[1,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[1,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand2ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[2,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[2,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand30ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[2,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[2,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand31ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[3,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[3,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand32ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[4,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[4,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand33ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[5,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[5,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand34ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[6,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[6,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand35ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[7,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[7,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand36ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[8,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[8,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand37ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[9,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[9,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand38ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[10,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[10,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand39ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[11,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[11,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand3ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[3,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[3,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand40ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[12,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[12,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand41ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[13,2].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[13,2]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand43ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[1,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[1,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand44ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[2,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[2,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand45ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[3,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[3,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand46ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[4,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[4,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand47ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[5,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[5,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand48ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[6,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[6,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand49ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[7,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[7,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand4ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[4,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[4,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand50ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[8,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[8,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand51ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[9,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[9,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand52ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[10,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[10,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand53ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[11,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[11,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand54ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[12,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[12,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand55ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[13,1].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[13,1]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand5ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[5,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[5,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand6ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[6,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[6,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand7ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[7,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[7,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand8ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[8,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[8,4]),k);
+    changeImages(ImageLayout);
+  end;
+end;
+
+procedure TMontanaForm.MHand9ImageClick(Sender: TObject);
+var
+  k:integer;
+begin
+  if MontanaGame.layout[9,4].Size>0 then
+  begin
+    MontanaGame.MoveCard((MontanaGame.layout[9,4]),k);
+    changeImages(ImageLayout);
+  end;
 end;
 
 end.

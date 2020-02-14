@@ -16,8 +16,12 @@ uses
 {$R *.res}
 
 begin
-  Deck:=TDeck.Create;
-  Deck.Shuffle;
+  CDeck:=TDeck.Create;
+  CDeck.Shuffle;
+  MDeck:=TDeck.Create;
+  MDeck.Shuffle;
+  KDeck:=TDeck.Create;
+  KDeck.Shuffle;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMainMenu, MainMenu);
