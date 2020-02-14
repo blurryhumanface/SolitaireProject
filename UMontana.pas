@@ -13,8 +13,10 @@ type
   TMontanaGame = class
     private
       procedure setCoordinates;
+      procedure createHands;
     public
       layout:array[1..15,1..4] of TMontanaHand;
+      constructor Create;
       procedure MoveCard;
       procedure assignHands;
   end;
@@ -89,6 +91,71 @@ begin
   Layout[12,1]:=MHand54;
   Layout[13,1]:=MHand55;
   Layout[15,1]:=MHand56;
+end;
+
+constructor TMontanaGame.Create;
+begin
+  createHands;
+end;
+
+procedure TMontanaGame.createHands;
+begin
+  MHand1:=TMontanaHand.Create;
+  MHand2:=TMontanaHand.Create;
+  MHand3:=TMontanaHand.Create;
+  MHand4:=TMontanaHand.Create;
+  MHand5:=TMontanaHand.Create;
+  MHand6:=TMontanaHand.Create;
+  MHand7:=TMontanaHand.Create;
+  MHand8:=TMontanaHand.Create;
+  MHand9:=TMontanaHand.Create;
+  MHand10:=TMontanaHand.Create;
+  MHand11:=TMontanaHand.Create;
+  MHand12:=TMontanaHand.Create;
+  MHand13:=TMontanaHand.Create;
+  MHand14:=TMontanaHand.Create;
+  MHand15:=TMontanaHand.Create;
+  MHand16:=TMontanaHand.Create;
+  MHand17:=TMontanaHand.Create;
+  MHand18:=TMontanaHand.Create;
+  MHand19:=TMontanaHand.Create;
+  MHand20:=TMontanaHand.Create;
+  MHand21:=TMontanaHand.Create;
+  MHand22:=TMontanaHand.Create;
+  MHand23:=TMontanaHand.Create;
+  MHand24:=TMontanaHand.Create;
+  MHand25:=TMontanaHand.Create;
+  MHand26:=TMontanaHand.Create;
+  MHand27:=TMontanaHand.Create;
+  MHand28:=TMontanaHand.Create;
+  MHand29:=TMontanaHand.Create;
+  MHand30:=TMontanaHand.Create;
+  MHand31:=TMontanaHand.Create;
+  MHand32:=TMontanaHand.Create;
+  MHand33:=TMontanaHand.Create;
+  MHand34:=TMontanaHand.Create;
+  MHand35:=TMontanaHand.Create;
+  MHand36:=TMontanaHand.Create;
+  MHand37:=TMontanaHand.Create;
+  MHand38:=TMontanaHand.Create;
+  MHand39:=TMontanaHand.Create;
+  MHand40:=TMontanaHand.Create;
+  MHand41:=TMontanaHand.Create;
+  MHand42:=TMontanaHand.Create;
+  MHand43:=TMontanaHand.Create;
+  MHand44:=TMontanaHand.Create;
+  MHand45:=TMontanaHand.Create;
+  MHand46:=TMontanaHand.Create;
+  MHand47:=TMontanaHand.Create;
+  MHand48:=TMontanaHand.Create;
+  MHand49:=TMontanaHand.Create;
+  MHand50:=TMontanaHand.Create;
+  MHand51:=TMontanaHand.Create;
+  MHand52:=TMontanaHand.Create;
+  MHand53:=TMontanaHand.Create;
+  MHand54:=TMontanaHand.Create;
+  MHand55:=TMontanaHand.Create;
+  MHand56:=TMontanaHand.Create;
 end;
 
 procedure TMontanaGame.MoveCard;

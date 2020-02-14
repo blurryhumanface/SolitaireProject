@@ -1,6 +1,6 @@
 object MontanaForm: TMontanaForm
   Left = 0
-  Top = 0
+  Top = -51
   Caption = 'Montana'
   ClientHeight = 693
   ClientWidth = 1270
@@ -11,6 +11,8 @@ object MontanaForm: TMontanaForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object MHand1Image: TImage

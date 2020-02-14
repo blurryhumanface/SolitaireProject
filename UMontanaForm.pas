@@ -4,9 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,UMontana,UCards;
 
 type
+  TMontanaImageArray = array[1..15,1..4] of TImage;
   TMontanaForm = class(TForm)
     MHand1Image: TImage;
     MHand2Image: TImage;
@@ -64,10 +65,14 @@ type
     MHand53Image: TImage;
     MHand54Image: TImage;
     MHand55Image: TImage;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    ImageLayout:array[1..15,1..4] of TImage;
+    ImageLayout:TMontanaImageArray;
     procedure handLayout;
+    procedure changeImage(img:TImage; Hand:TMontanaHand);
+    procedure getImage(Hand:TMontanaHand; var img:TBitmap);
+    procedure changeImages(a:TMontanaImageArray);
   public
     { Public declarations }
   end;
@@ -80,6 +85,162 @@ implementation
 {$R *.dfm}
 
 { TForm1 }
+
+procedure TMontanaForm.changeImage(img:TImage; Hand:TMontanaHand);
+var
+  cardImage:TBitmap;
+begin
+  cardImage:=TBitmap.Create;
+  getImage(Hand,cardImage);
+  img.Canvas.StretchDraw(img.ClientRect,cardImage);
+end;
+
+procedure TMontanaForm.changeImages(a: TMontanaImageArray);
+var
+  i: Integer;
+  j: Integer;
+begin
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      changeImage(a[j,i],MontanaGame.layout[j,i]);
+    end;
+    changeImage(a[15,i],MontanaGame.layout[15,i]);
+  end;
+
+end;
+
+procedure TMontanaForm.FormCreate(Sender: TObject);
+begin
+  MontanaGame:=TMontanaGame.Create;
+  changeImages(ImageLayout);
+end;
+
+procedure TMontanaForm.getImage(Hand:TMontanaHand; var img:Tbitmap);
+begin
+    if Hand.Size=0 then
+  begin
+    img.LoadFromFile('card-BMPs\blank.bmp');
+  end
+  else if Hand.Size>0 then
+  begin
+    if Hand.Last.GetOrientation=back then
+    begin
+      img.LoadFromFile('card-BMPs\b1fv.bmp');
+    end
+    else
+    if Hand.Last.GetOrientation=face then
+    begin
+      case Hand.Last.GetRank of
+        1:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d01.bmp');
+            1: img.LoadFromFile('card-BMPs\s01.bmp');
+            2: img.LoadFromFile('card-BMPs\h01.bmp');
+            3: img.LoadFromFile('card-BMPs\c01.bmp');
+          end;
+        end;
+        2:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d02.bmp');
+            1: img.LoadFromFile('card-BMPs\s02.bmp');
+            2: img.LoadFromFile('card-BMPs\h02.bmp');
+            3: img.LoadFromFile('card-BMPs\c02.bmp');
+          end;
+        end;
+        3:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d03.bmp');
+            1: img.LoadFromFile('card-BMPs\s03.bmp');
+            2: img.LoadFromFile('card-BMPs\h03.bmp');
+            3: img.LoadFromFile('card-BMPs\c03.bmp');
+          end;
+        end;
+        4:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d04.bmp');
+            1: img.LoadFromFile('card-BMPs\s04.bmp');
+            2: img.LoadFromFile('card-BMPs\h04.bmp');
+            3: img.LoadFromFile('card-BMPs\c04.bmp');
+          end;
+        end;
+        5:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d05.bmp');
+            1: img.LoadFromFile('card-BMPs\s05.bmp');
+            2: img.LoadFromFile('card-BMPs\h05.bmp');
+            3: img.LoadFromFile('card-BMPs\c05.bmp');
+          end;
+        end;
+        6:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d06.bmp');
+            1: img.LoadFromFile('card-BMPs\s06.bmp');
+            2: img.LoadFromFile('card-BMPs\h06.bmp');
+            3: img.LoadFromFile('card-BMPs\c06.bmp');
+          end;
+        end;
+        7:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d07.bmp');
+            1: img.LoadFromFile('card-BMPs\s07.bmp');
+            2: img.LoadFromFile('card-BMPs\h07.bmp');
+            3: img.LoadFromFile('card-BMPs\c07.bmp');
+          end;
+        end;
+        8:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d08.bmp');
+            1: img.LoadFromFile('card-BMPs\s08.bmp');
+            2: img.LoadFromFile('card-BMPs\h08.bmp');
+            3: img.LoadFromFile('card-BMPs\c08.bmp');
+          end;
+        end;
+        9:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d09.bmp');
+            1: img.LoadFromFile('card-BMPs\s09.bmp');
+            2: img.LoadFromFile('card-BMPs\h09.bmp');
+            3: img.LoadFromFile('card-BMPs\c09.bmp');
+          end;
+        end;
+        10:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d10.bmp');
+            1: img.LoadFromFile('card-BMPs\s10.bmp');
+            2: img.LoadFromFile('card-BMPs\h10.bmp');
+            3: img.LoadFromFile('card-BMPs\c10.bmp');
+          end;
+        end;
+        11:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d11.bmp');
+            1: img.LoadFromFile('card-BMPs\s11.bmp');
+            2: img.LoadFromFile('card-BMPs\h11.bmp');
+            3: img.LoadFromFile('card-BMPs\c11.bmp');
+          end;
+        end;
+        12:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d12.bmp');
+            1: img.LoadFromFile('card-BMPs\s12.bmp');
+            2: img.LoadFromFile('card-BMPs\h12.bmp');
+            3: img.LoadFromFile('card-BMPs\c12.bmp');
+          end;
+        end;
+        13:begin
+          case Hand.Last.GetSuit of
+            0: img.LoadFromFile('card-BMPs\d13.bmp');
+            1: img.LoadFromFile('card-BMPs\s13.bmp');
+            2: img.LoadFromFile('card-BMPs\h13.bmp');
+            3: img.LoadFromFile('card-BMPs\c13.bmp');
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
 
 procedure TMontanaForm.handLayout;
 begin
