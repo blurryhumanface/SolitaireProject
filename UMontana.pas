@@ -5,6 +5,8 @@ uses
   UCards;
 type
   TMontanaHand = class(THand)
+  private
+    precedingNumber:Integer;
   public
     positionX:integer;
     positionY:integer;
@@ -14,6 +16,7 @@ type
     private
       procedure setCoordinates;
       procedure createHands;
+      procedure establishPrecedingNumbers;
     public
       layout:array[1..15,1..4] of TMontanaHand;
       constructor Create;
@@ -118,6 +121,7 @@ begin
       end;
     end;
   end;
+  establishPrecedingNumbers;
 end;
 
 procedure TMontanaGame.createHands;
@@ -178,6 +182,23 @@ begin
   MHand54:=TMontanaHand.Create;
   MHand55:=TMontanaHand.Create;
   MHand56:=TMontanaHand.Create;
+end;
+
+procedure TMontanaGame.establishPrecedingNumbers;
+var
+  i: Integer;
+  j: Integer;
+begin
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      if layout[j,i].Size>0 then
+      begin
+        Layout[j,i].precedingNumber:=Layout[j,i].Last.GetRank-1;
+      end;
+    end;
+  end;
 end;
 
 procedure TMontanaGame.MoveCard(Hand:TMontanaHand);
