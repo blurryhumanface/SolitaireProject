@@ -101,12 +101,12 @@ begin
   begin
     for j := 1 to 12 do
     begin
-      layout[j].AddCard(Deck.DealCard);
+      layout[j].AddCard(CDeck.DealCard);
     end;
   end;
   for i := 1 to 16 do
   begin
-    layout[i].AddCard(Deck.DealCard);
+    layout[i].AddCard(CDeck.DealCard);
   end;
 end;
 

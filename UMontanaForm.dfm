@@ -1,6 +1,6 @@
 object MontanaForm: TMontanaForm
   Left = 0
-  Top = -51
+  Top = 0
   Caption = 'Montana'
   ClientHeight = 693
   ClientWidth = 1270
@@ -98,12 +98,14 @@ object MontanaForm: TMontanaForm
     Top = 8
     Width = 71
     Height = 96
+    Enabled = False
   end
   object MHand28Image: TImage
     Left = 1086
     Top = 128
     Width = 71
     Height = 96
+    Enabled = False
   end
   object MHand15Image: TImage
     Left = 8
@@ -188,6 +190,7 @@ object MontanaForm: TMontanaForm
     Top = 256
     Width = 71
     Height = 96
+    Enabled = False
   end
   object MHand29Image: TImage
     Left = 8
@@ -272,6 +275,7 @@ object MontanaForm: TMontanaForm
     Top = 392
     Width = 71
     Height = 96
+    Enabled = False
   end
   object MHand43Image: TImage
     Left = 8
@@ -350,5 +354,31 @@ object MontanaForm: TMontanaForm
     Top = 392
     Width = 71
     Height = 96
+  end
+  object MainMenuButton: TButton
+    Left = 1040
+    Top = 616
+    Width = 129
+    Height = 25
+    Caption = 'Main Menu'
+    TabOrder = 0
+    OnClick = MainMenuButtonClick
+  end
+  object InstructionsButton: TButton
+    Left = 264
+    Top = 616
+    Width = 129
+    Height = 25
+    Caption = 'Instructions'
+    TabOrder = 1
+    OnClick = InstructionsButtonClick
+  end
+  object NewGameButton: TButton
+    Left = 85
+    Top = 616
+    Width = 129
+    Height = 25
+    Caption = 'NewGame'
+    TabOrder = 2
   end
 end

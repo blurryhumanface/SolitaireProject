@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,UMontana,UCards;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,UMontana,UCards,
+  Vcl.StdCtrls,UInstructions,UMiddleStep;
 
 type
   TMontanaImageArray = array[1..15,1..4] of TImage;
@@ -65,7 +66,12 @@ type
     MHand53Image: TImage;
     MHand54Image: TImage;
     MHand55Image: TImage;
+    MainMenuButton: TButton;
+    InstructionsButton: TButton;
+    NewGameButton: TButton;
     procedure FormCreate(Sender: TObject);
+    procedure InstructionsButtonClick(Sender: TObject);
+    procedure MainMenuButtonClick(Sender: TObject);
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
@@ -114,6 +120,7 @@ end;
 procedure TMontanaForm.FormCreate(Sender: TObject);
 begin
   MontanaGame:=TMontanaGame.Create;
+  handLayout;
   changeImages(ImageLayout);
 end;
 
@@ -300,6 +307,20 @@ begin
   ImageLayout[12,1]:=MHand54Image;
   ImageLayout[13,1]:=MHand55Image;
   ImageLayout[15,1]:=MHand56Image;
+end;
+
+
+procedure TMontanaForm.InstructionsButtonClick(Sender: TObject);
+begin
+  MontanaForm.Hide;
+  instructionsForm.Show;
+  instructionsForm.writeInstructions(2);
+end;
+
+procedure TMontanaForm.MainMenuButtonClick(Sender: TObject);
+begin
+  MontanaForm.Hide;
+  openMainMenu;
 end;
 
 end.

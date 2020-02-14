@@ -24,7 +24,7 @@ var
   instructionsForm: TinstructionsForm;
 
 implementation
-uses UClockForm;
+uses UClockForm,UMontanaForm;
 
 {$R *.dfm}
 
@@ -38,7 +38,11 @@ begin
       instructionsForm.Hide;
       clockForm.Show;
     end;
-    2:;
+    2:
+    begin
+      instructionsForm.Hide;
+      montanaForm.Show;
+    end;
     3:;
   end;
   instructionsMemo.Lines.Clear;

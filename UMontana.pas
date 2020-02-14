@@ -17,7 +17,7 @@ type
     public
       layout:array[1..15,1..4] of TMontanaHand;
       constructor Create;
-      procedure MoveCard;
+      procedure MoveCard(Hand:TMontanaHand);
       procedure assignHands;
   end;
 var
@@ -94,8 +94,30 @@ begin
 end;
 
 constructor TMontanaGame.Create;
+var
+  i: Integer;
+  j: Integer;
 begin
   createHands;
+  assignHands;
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      layout[j,i].AddCard(MDeck.DealCard);
+      layout[j,i].Last.FlipCard;
+    end;
+  end;
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      if Layout[j,i].Last.GetRank=1 then
+      begin
+        moveCard(Layout[j,i]);
+      end;
+    end;
+  end;
 end;
 
 procedure TMontanaGame.createHands;
@@ -158,8 +180,28 @@ begin
   MHand56:=TMontanaHand.Create;
 end;
 
-procedure TMontanaGame.MoveCard;
+procedure TMontanaGame.MoveCard(Hand:TMontanaHand);
 begin
+  case Hand.Last.GetRank of
+    1:begin
+      if Layout[15,4].Size=0 then
+      begin
+        Layout[15,4].AddCard(Hand.RemoveLastCard)
+      end
+      else if (Layout[15,4].Size=1)and (Layout[15,3].Size=0) then
+      begin
+        Layout[15,3].AddCard(Hand.RemoveLastCard)
+      end
+      else if (Layout[15,4].Size=1)and (Layout[15,3].Size=1)and (Layout[15,2].Size=0) then
+      begin
+        Layout[15,2].AddCard(Hand.RemoveLastCard);
+      end
+      else if (Layout[15,4].Size=1)and (Layout[15,3].Size=1)and (Layout[15,2].Size=1)and (Layout[15,1].Size=0) then
+      begin
+        Layout[15,1].AddCard(Hand.RemoveLastCard);
+      end;
+    end;
+  end;
 
 end;
 
