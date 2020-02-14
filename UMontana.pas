@@ -12,6 +12,7 @@ type
 
   TMontanaGame = class
     private
+      procedure setCoordinates;
     public
       layout:array[1..15,1..4] of TMontanaHand;
       procedure MoveCard;
@@ -93,6 +94,23 @@ end;
 procedure TMontanaGame.MoveCard;
 begin
 
+end;
+
+procedure TMontanaGame.setCoordinates;
+var
+  i: Integer;
+  j: Integer;
+begin
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      layout[j,i].positionX:=j;
+      layout[j,i].positionY:=i;
+    end;
+    layout[15,i].positionX:=15;
+    layout[15,i].positionY:=i;
+  end;
 end;
 
 end.

@@ -4,14 +4,15 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,UClockForm,UInstructions;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,UClockForm,UMontanaForm;
 
 type
   TMainMenu = class(TForm)
     ClockButton: TButton;
+    MontanaButton: TButton;
     procedure ClockButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure MontanaButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,13 +26,6 @@ implementation
 
 {$R *.dfm}
 
-procedure TMainMenu.Button1Click(Sender: TObject);
-begin
-  MainMenu.Hide;
-  InstructionsForm.Show;
-  InstructionsForm.writeInstructions(3);
-end;
-
 procedure TMainMenu.ClockButtonClick(Sender: TObject);
 begin
   MainMenu.Hide;
@@ -41,6 +35,11 @@ end;
 procedure TMainMenu.FormCreate(Sender: TObject);
 begin
   MainMenu.Show;
+end;
+
+procedure TMainMenu.MontanaButtonClick(Sender: TObject);
+begin
+  MainMenu.Hide;
 end;
 
 end.
