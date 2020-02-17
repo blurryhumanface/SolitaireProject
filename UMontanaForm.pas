@@ -69,6 +69,7 @@ type
     MainMenuButton: TButton;
     InstructionsButton: TButton;
     NewGameButton: TButton;
+    RedealButton: TButton;
     procedure FormCreate(Sender: TObject);
     procedure InstructionsButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
@@ -124,6 +125,7 @@ type
     procedure MHand49ImageClick(Sender: TObject);
     procedure MHand50ImageClick(Sender: TObject);
     procedure MHand51ImageClick(Sender: TObject);
+    procedure RedealButtonClick(Sender: TObject);
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
@@ -131,12 +133,17 @@ type
     row2NumberOfFixedCards:Integer;
     row3NumberOfFixedCards:Integer;
     row4NumberOfFixedCards:Integer;
+    redeals:integer;
     procedure handLayout;
     procedure changeImage(img:TImage; Hand:TMontanaHand);
     procedure getImage(Hand:TMontanaHand; var img:TBitmap);
     procedure changeImages(a:TMontanaImageArray);
+    procedure redeal();
+    procedure turnOffImages;
+//    procedure turnOnImages;
   public
     { Public declarations }
+    procedure EndGame(noRedeal:boolean);
   end;
 
 var
@@ -173,9 +180,16 @@ begin
 
 end;
 
+procedure TMontanaForm.EndGame(noRedeal: boolean);
+begin
+ turnOffImages;
+end;
+
 procedure TMontanaForm.FormCreate(Sender: TObject);
 begin
+  redeals:=3;
   MontanaGame:=TMontanaGame.Create;
+//  turnOnImages;
   handLayout;
   changeImages(ImageLayout);
 end;
@@ -951,5 +965,76 @@ begin
     changeImages(ImageLayout);
   end;
 end;
+
+procedure TMontanaForm.redeal;
+var
+  i: Integer;
+  j: Integer;
+begin
+  if redeals>0 then
+  begin
+    for i := 1 to 4 do
+    begin
+      for j := 1 to 13 do
+      begin
+        if MontanaGame.layout[j,i].fixed = false then
+        begin
+          MDeck.AddCard(MontanaGame.layout[j,i].RemoveLastCard);
+        end;
+        MDeck.AddCard(MontanaGame.layout[15,i].RemoveLastCard);
+      end;
+    end;
+    dec(redeals);
+    MDeck.Shuffle;
+    MontanaGame.deal;
+    for i := 1 to 4 do
+    begin
+      for j := 1 to 13 do
+      begin
+        if MontanaGame.layout[j,i].Size>0 then
+        begin
+          MontanaGame.layout[j,i].Last.FlipCard;
+        end;
+      end;
+    end;
+  end
+  else
+  begin
+    EndGame(true);
+  end;
+end;
+
+procedure TMontanaForm.RedealButtonClick(Sender: TObject);
+begin
+  redeal;
+  changeImages(ImageLayout);
+end;
+
+procedure TMontanaForm.turnOffImages;
+var
+  i: Integer;
+  j: Integer;
+begin
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      ImageLayout[j,i].Enabled:=false;
+    end;
+  end;
+end;
+
+//procedure TMontanaForm.turnOnImages;
+//var
+//  i,j:integer;
+//begin
+//  for i := 1 to 4 do
+//  begin
+//    for j := 1 to 13 do
+//    begin
+//      ImageLayout[j,i].Enabled:=true;
+//    end;
+//  end;
+//end;
 
 end.

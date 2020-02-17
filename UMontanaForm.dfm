@@ -417,7 +417,7 @@ object MontanaForm: TMontanaForm
     OnClick = MainMenuButtonClick
   end
   object InstructionsButton: TButton
-    Left = 264
+    Left = 855
     Top = 616
     Width = 129
     Height = 25
@@ -432,5 +432,14 @@ object MontanaForm: TMontanaForm
     Height = 25
     Caption = 'NewGame'
     TabOrder = 2
+  end
+  object RedealButton: TButton
+    Left = 258
+    Top = 616
+    Width = 129
+    Height = 25
+    Caption = 'Redeal'
+    TabOrder = 3
+    OnClick = RedealButtonClick
   end
 end

@@ -10,6 +10,7 @@ type
   public
     positionX:integer;
     positionY:integer;
+    fixed:boolean;
     function filled:boolean;
   end;
 
@@ -23,6 +24,7 @@ type
       constructor Create;
       procedure MoveCard(passed:TMontanaHand; var back:integer);
       procedure assignHands;
+      procedure deal;
   end;
 var
   MontanaGame:TMontanaGame;
@@ -114,27 +116,7 @@ var
 begin
   createHands;
   assignHands;
-  for i := 1 to 4 do
-  begin
-    for j := 1 to 13 do
-    begin
-      layout[j,i].AddCard(MDeck.DealCard);
-      layout[j,i].Last.FlipCard;
-    end;
-  end;
-  k:=0;
-  for i := 1 to 4 do
-  begin
-    for j := 1 to 13 do
-    begin
-      if Layout[j,i].Last.GetRank=1 then
-      begin
-        temp:=Layout[j,i];
-        moveCard(temp,k);
-      end;
-    end;
-  end;
-  establishPrecedingNumbers;
+  deal;
 end;
 
 procedure TMontanaGame.createHands;
@@ -195,6 +177,34 @@ begin
   MHand54:=TMontanaHand.Create;
   MHand55:=TMontanaHand.Create;
   MHand56:=TMontanaHand.Create;
+end;
+
+procedure TMontanaGame.deal;
+var
+  i,j,k:integer;
+  temp:TMontanaHand;
+begin
+  for i := 1 to 4 do
+    begin
+      for j := 1 to 13 do
+      begin
+        layout[j,i].AddCard(MDeck.DealCard);
+        layout[j,i].Last.FlipCard;
+      end;
+    end;
+    k:=0;
+    for i := 1 to 4 do
+    begin
+      for j := 1 to 13 do
+      begin
+        if Layout[j,i].Last.GetRank=1 then
+        begin
+          temp:=Layout[j,i];
+          moveCard(temp,k);
+        end;
+      end;
+    end;
+    establishPrecedingNumbers;
 end;
 
 procedure TMontanaGame.establishPrecedingNumbers;
@@ -290,6 +300,13 @@ begin
 	      back:=0
       end;
 
+    end;
+    for i := 1 to 4 do
+    begin
+      for j := 1 to 13 do
+      begin
+        establishPrecedingNumbers;
+      end;
     end;
 end;
 
