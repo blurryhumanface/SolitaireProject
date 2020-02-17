@@ -129,10 +129,8 @@ type
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
-    row1NumberOfFixedCards:Integer;
-    row2NumberOfFixedCards:Integer;
-    row3NumberOfFixedCards:Integer;
-    row4NumberOfFixedCards:Integer;
+    fixedCards:array[1..4] of integer;
+    fixedSuit:array[1..4] of integer;
     redeals:integer;
     procedure handLayout;
     procedure changeImage(img:TImage; Hand:TMontanaHand);
@@ -141,6 +139,7 @@ type
     procedure redeal();
     procedure turnOffImages;
 //    procedure turnOnImages;
+    procedure fixCards;
   public
     { Public declarations }
     procedure EndGame(noRedeal:boolean);
@@ -185,8 +184,132 @@ begin
  turnOffImages;
 end;
 
-procedure TMontanaForm.FormCreate(Sender: TObject);
+procedure TMontanaForm.fixCards;
+var
+  i,j:integer;
 begin
+	for i := 1 to 4 do
+	begin
+		for j := 1 to 12 do
+		begin
+			if MontanaGame.layout[j,i].size>0 then
+			begin
+				case j of
+					1:begin
+						if MontanaGame.layout[j,i].Last.getRank=2 then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=1;
+							fixedSuit[i]:=MontanaGame.layout[j,i].last.getsuit;
+						end;
+					end;
+					2:begin
+						if (MontanaGame.layout[j,i].Last.getRank=3)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=2;
+						end;
+					end;
+					3:begin
+						if (MontanaGame.layout[j,i].Last.getRank=4)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=3;
+						end;
+					end;
+					4:begin
+						if (MontanaGame.layout[j,i].Last.getRank=5)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=4;
+						end;
+					end;
+					5:begin
+						if (MontanaGame.layout[j,i].Last.getRank=6)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=5;
+						end;
+					end;
+					6:begin
+						if (MontanaGame.layout[j,i].Last.getRank=7)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=6;
+						end;
+					end;
+					7:begin
+						if (MontanaGame.layout[j,i].Last.getRank=8)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=7;
+						end;
+					end;
+					8:begin
+						if (MontanaGame.layout[j,i].Last.getRank=9)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=8;
+						end;
+					end;
+					9:begin
+						if (MontanaGame.layout[j,i].Last.getRank=10)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=9;
+						end;
+					end;
+					10:begin
+						if (MontanaGame.layout[j,i].Last.getRank=11)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=10;
+						end;
+					end;
+					11:begin
+						if (MontanaGame.layout[j,i].Last.getRank=12)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=11;
+						end;
+					end;
+					12:begin
+						if (MontanaGame.layout[j,i].Last.getRank=13)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
+						begin
+							MontanaGame.layout[j,i].fixed:=true;
+							ImageLayout[j,i].enabled:=false;
+							fixedCards[i]:=12;
+						end;
+					end;
+				end;
+			end;
+		end;
+		if (MontanaGame.layout[13,i].size=0) and (MontanaGame.layout[12,i].last.getRank=13) then
+		begin
+			fixedCards[i]:=13;
+		end;
+	end;
+end;
+
+procedure TMontanaForm.FormCreate(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 1 to 4 do
+  begin
+    fixedCards[i]:=-1;
+  end;
   redeals:=3;
   MontanaGame:=TMontanaGame.Create;
 //  turnOnImages;
@@ -401,6 +524,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[10,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -412,6 +536,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[11,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -423,6 +548,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[12,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -434,6 +560,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[13,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -446,6 +573,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[1,3]),k);
     if k=-1 then
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -457,6 +585,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[2,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -468,6 +597,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[3,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -479,6 +609,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[4,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -490,6 +621,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[5,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -501,6 +633,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[1,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -512,6 +645,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[6,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -523,6 +657,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[7,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -534,6 +669,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[8,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -545,6 +681,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[9,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -556,6 +693,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[10,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -567,6 +705,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[11,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -578,6 +717,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[12,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -589,6 +729,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[13,3]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -600,6 +741,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[1,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -611,6 +753,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[2,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -622,6 +765,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[2,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -633,6 +777,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[3,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -644,6 +789,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[4,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -655,6 +801,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[5,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -666,6 +813,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[6,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -677,6 +825,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[7,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -688,6 +837,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[8,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -699,6 +849,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[9,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -710,6 +861,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[10,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -721,6 +873,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[11,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -732,6 +885,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[3,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -743,6 +897,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[12,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -754,6 +909,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[13,2]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -765,6 +921,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[1,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -776,6 +933,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[2,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -787,6 +945,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[3,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -798,6 +957,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[4,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -809,6 +969,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[5,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -820,6 +981,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[6,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -831,6 +993,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[7,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -842,6 +1005,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[4,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -853,6 +1017,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[8,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -864,6 +1029,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[9,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -875,6 +1041,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[10,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -886,6 +1053,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[11,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -897,6 +1065,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[12,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -908,6 +1077,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[13,1]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -919,6 +1089,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[5,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -930,6 +1101,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[6,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -941,6 +1113,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[7,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -952,6 +1125,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[8,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
@@ -963,6 +1137,7 @@ begin
   begin
     MontanaGame.MoveCard((MontanaGame.layout[9,4]),k);
     changeImages(ImageLayout);
+    fixCards;
   end;
 end;
 
