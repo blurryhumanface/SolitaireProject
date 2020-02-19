@@ -194,105 +194,24 @@ begin
 		begin
 			if MontanaGame.layout[j,i].size>0 then
 			begin
-				case j of
-					1:begin
-						if MontanaGame.layout[j,i].Last.getRank=2 then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=1;
-							fixedSuit[i]:=MontanaGame.layout[j,i].last.getsuit;
-						end;
-					end;
-					2:begin
-						if (MontanaGame.layout[j,i].Last.getRank=3)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=2;
-						end;
-					end;
-					3:begin
-						if (MontanaGame.layout[j,i].Last.getRank=4)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=3;
-						end;
-					end;
-					4:begin
-						if (MontanaGame.layout[j,i].Last.getRank=5)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=4;
-						end;
-					end;
-					5:begin
-						if (MontanaGame.layout[j,i].Last.getRank=6)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=5;
-						end;
-					end;
-					6:begin
-						if (MontanaGame.layout[j,i].Last.getRank=7)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=6;
-						end;
-					end;
-					7:begin
-						if (MontanaGame.layout[j,i].Last.getRank=8)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=7;
-						end;
-					end;
-					8:begin
-						if (MontanaGame.layout[j,i].Last.getRank=9)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=8;
-						end;
-					end;
-					9:begin
-						if (MontanaGame.layout[j,i].Last.getRank=10)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=9;
-						end;
-					end;
-					10:begin
-						if (MontanaGame.layout[j,i].Last.getRank=11)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=10;
-						end;
-					end;
-					11:begin
-						if (MontanaGame.layout[j,i].Last.getRank=12)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=11;
-						end;
-					end;
-					12:begin
-						if (MontanaGame.layout[j,i].Last.getRank=13)and(MontanaGame.layout[j,i].Last.getSuit=fixedSuit[i]) then
-						begin
-							MontanaGame.layout[j,i].fixed:=true;
-							ImageLayout[j,i].enabled:=false;
-							fixedCards[i]:=12;
-						end;
-					end;
-				end;
+        if j=1 then
+        begin
+          if MontanaGame.layout[j,i].Last.getRank=2 then
+          begin
+            MontanaGame.layout[j,i].fixed:=true;
+            MontanaGame.fixedCardLayout[j,i]:=MontanaGame.layout[j,i];
+            ImageLayout[j,i].enabled:=false;
+            fixedCards[i]:=1;
+            fixedSuit[i]:=MontanaGame.layout[j,i].last.getsuit;
+          end;
+        end
+        else if (MontanaGame.layout[j-1,i].fixed=true)and(MontanaGame.layout[j-1,i].Last.GetRank=MontanaGame.layout[j,i].previousNumber)and(MontanaGame.layout[j,i].Last.GetSuit=fixedSuit[i]) then
+        begin
+          MontanaGame.layout[j,i].fixed:=true;
+          MontanaGame.fixedCardLayout[j,i]:=MontanaGame.layout[j,i];
+          ImageLayout[j,i].enabled:=false;
+          fixedCards[i]:=fixedCards[i]+1;
+        end;
 			end;
 		end;
 		if (MontanaGame.layout[13,i].size=0) and (MontanaGame.layout[12,i].last.getRank=13) then
@@ -571,7 +490,6 @@ begin
   if MontanaGame.layout[1,3].Size>0 then
   begin
     MontanaGame.MoveCard((MontanaGame.layout[1,3]),k);
-    if k=-1 then
     changeImages(ImageLayout);
     fixCards;
   end;

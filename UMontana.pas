@@ -5,14 +5,17 @@ uses
   UCards;
 type
   TMontanaHand = class(THand)
-  private
+  protected
     precedingNumber:Integer;
   public
     positionX:integer;
     positionY:integer;
     fixed:boolean;
     function filled:boolean;
+    property previousNumber:integer read precedingNumber;
   end;
+
+  TMLayout = array[1..15,1..4] of TMontanaHand;
 
   TMontanaGame = class
     private
@@ -20,7 +23,8 @@ type
       procedure createHands;
       procedure establishPrecedingNumbers;
     public
-      layout:array[1..15,1..4] of TMontanaHand;
+      layout:TMLayout;
+      fixedCardLayout:TMLayout;
       constructor Create;
       procedure MoveCard(passed:TMontanaHand; var back:integer);
       procedure assignHands;
