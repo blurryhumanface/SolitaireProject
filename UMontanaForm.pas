@@ -129,7 +129,7 @@ type
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
-    fixedCards:array[1..4] of integer;
+
     fixedSuit:array[1..4] of integer;
     redeals:integer;
     procedure handLayout;
@@ -142,6 +142,7 @@ type
     procedure fixCards;
   public
     { Public declarations }
+    fixedCards:array[1..4] of integer;
     procedure EndGame(noRedeal:boolean);
   end;
 
@@ -227,7 +228,7 @@ var
 begin
   for i := 1 to 4 do
   begin
-    fixedCards[i]:=-1;
+    fixedCards[i]:=0;
   end;
   redeals:=3;
   MontanaGame:=TMontanaGame.Create;
@@ -1066,16 +1067,22 @@ var
 begin
   if redeals>0 then
   begin
+    MDeck.Size:=52;
     for i := 1 to 4 do
     begin
-      for j := 1 to 13 do
+      MDeck.Size:=MDeck.Size-fixedCards[i];
+    end;
+    MDeck.resize;
+    for i := 1 to 4 do
+    begin
+      for j := (fixedCards[i]+1) to 13 do
       begin
         if MontanaGame.layout[j,i].fixed = false then
         begin
           MDeck.AddCard(MontanaGame.layout[j,i].RemoveLastCard);
         end;
-        MDeck.AddCard(MontanaGame.layout[15,i].RemoveLastCard);
       end;
+      MDeck.AddCard(MontanaGame.layout[15,i].RemoveLastCard);
     end;
     dec(redeals);
     MDeck.Shuffle;

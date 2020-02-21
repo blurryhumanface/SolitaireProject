@@ -38,6 +38,7 @@ var
   MHand43,MHand44,MHand45,MHand46,MHand47,MHand48,MHand49,MHand50,MHand51,MHand52,MHand53,MHand54,MHand55,MHand56:TMontanaHand;
 
 implementation
+  uses UMontanaForm;
 
 { TMontanaHand }
 
@@ -190,7 +191,7 @@ var
 begin
   for i := 1 to 4 do
     begin
-      for j := 1 to 13 do
+      for j := MontanaForm.fixedCards[i] to 13 do
       begin
         layout[j,i].AddCard(MDeck.DealCard);
         layout[j,i].Last.FlipCard;
