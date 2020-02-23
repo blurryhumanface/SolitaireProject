@@ -129,7 +129,7 @@ type
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
-    //fixedCards:array[1..4] of integer;
+    fixedCards:array[1..4] of integer;
     fixedSuit:array[1..4] of integer;
     redeals:integer;
     procedure handLayout;
@@ -1076,7 +1076,7 @@ begin
     MDeck.resize;
     for i := 1 to 4 do
     begin
-      for j := fixedCards[i]+1 to 13 do
+      for j := (fixedCards[i]+1) to 13 do
       begin
         if MontanaGame.layout[j,i].fixed = false then
         begin

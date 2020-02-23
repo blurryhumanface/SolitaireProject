@@ -95,7 +95,7 @@ constructor TClockGame.Create;
 var
   i,j: Integer;
 begin
-  CDeck.Create;
+  CDeck:=TDeck.Create;
   CDeck.Shuffle;
   CreateHands;
   AssignHands;
