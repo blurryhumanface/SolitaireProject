@@ -29,6 +29,7 @@ type
       procedure MoveCard(passed:TMontanaHand; var back:integer);
       procedure assignHands;
       procedure deal;
+      procedure moveAces;
   end;
 var
   MontanaGame:TMontanaGame;
@@ -38,6 +39,7 @@ var
   MHand43,MHand44,MHand45,MHand46,MHand47,MHand48,MHand49,MHand50,MHand51,MHand52,MHand53,MHand54,MHand55,MHand56:TMontanaHand;
 
 implementation
+  uses UMontanaForm;
 
 { TMontanaHand }
 
@@ -190,24 +192,13 @@ var
 begin
   for i := 1 to 4 do
     begin
-      for j := 1 to 13 do
+      for j := (MontanaForm.fixedCards[i]+1) to 13 do
       begin
         layout[j,i].AddCard(MDeck.DealCard);
         layout[j,i].Last.FlipCard;
       end;
     end;
-    k:=0;
-    for i := 1 to 4 do
-    begin
-      for j := 1 to 13 do
-      begin
-        if Layout[j,i].Last.GetRank=1 then
-        begin
-          temp:=Layout[j,i];
-          moveCard(temp,k);
-        end;
-      end;
-    end;
+    moveAces;
     establishPrecedingNumbers;
 end;
 
@@ -226,6 +217,25 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TMontanaGame.moveAces;
+var
+  i,j,k:integer;
+  temp:TMontanaHand;
+begin
+    k:=0;
+    for i := 1 to 4 do
+    begin
+      for j := 1 to 13 do
+      begin
+        if Layout[j,i].Last.GetRank=1 then
+        begin
+          temp:=Layout[j,i];
+          moveCard(temp,k);
+        end;
+      end;
+    end;
 end;
 
 procedure TMontanaGame.MoveCard(passed:TMontanaHand; var back:integer);

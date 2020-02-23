@@ -40,7 +40,7 @@ interface
         function GetOrientation:TOrientation;
         {This function returns the current orientation of the card}
     end;
-    TCards = Array[0..51] of TCard;
+    TCards = Array of TCard;
     {This is a collection of cards the size of a regular deck of cards}
     TDeck = Class
       Private
@@ -60,6 +60,9 @@ interface
         {This procedure reorders the cards in FQueue}
         procedure AddCard(card:TCard);
         {This procedure adds a card to FQueue}
+        procedure resize;
+        {This procedure changes the size of FQueue for Montana so that the
+        fixed cards work}
         function DealCard:TCard;
         {This function removes the top card in the queue and returns the card
          that is removed}
@@ -80,7 +83,8 @@ interface
         {This property allows all the cards in the queue to be read so that
          they can be stored in the textfile for debugging}
     End;
-    THand = class abstract {This declares the the class of THand is a class that
+    THand = class abstract
+    {This declares the the class of THand is a class that
     is never truly present in the code but is inherited by the other hand
     classes}
       protected
@@ -248,6 +252,8 @@ begin
   inherited Create;
   {This line says that this procedure uses the pre-existing constructor in
    addition to the additional code it is adding}
+  setLength(FCards,52);
+  setLength(FQueue,52);
   for i := 0 to 51 do
   {This line starts a for loop which repeats for the same length as the deck}
   begin
@@ -315,6 +321,11 @@ function TDeck.IsFull: boolean;
 begin
   result:= size=52;
   {This line returns the boolean of if the size of the deck is 52}
+end;
+
+procedure TDeck.resize;
+begin
+  setLength(FQueue,size);
 end;
 
 procedure TDeck.Shuffle;
