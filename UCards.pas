@@ -63,6 +63,7 @@ interface
         procedure resize(newSize:integer);
         {This procedure changes the size of FQueue for Montana so that the
         fixed cards work}
+        procedure sortCards;
         function DealCard:TCard;
         {This function removes the top card in the queue and returns the card
          that is removed}
@@ -82,7 +83,7 @@ interface
         property Cards :TCards read FQueue;
         {This property allows all the cards in the queue to be read so that
          they can be stored in the textfile for debugging}
-    End;
+    end;
     THand = class abstract
     {This declares the the class of THand is a class that
     is never truly present in the code but is inherited by the other hand
@@ -346,6 +347,27 @@ begin
      FQueue}
     FQueue[RandInt]:=TempCard;
     {This copies the card stored in TempCard to the random position in FQueue}
+  end;
+end;
+
+procedure TDeck.sortCards;
+var
+  Cards:TCards;
+  tempArray:TCards;
+  i,j,k:integer;
+  mid,last:integer;
+begin
+  setLength(Cards,Length(FQueue));
+  setLength(tempArray,Length(Cards));
+  Cards:=FQueue;
+  mid:=(length(Cards)+1)/2;
+  i:=0;
+  j:=mid;
+  k:=0;
+  last:=(length(Cards)-1);
+  while ((i<=mid)and(j<=last)) do
+  begin
+
   end;
 end;
 
