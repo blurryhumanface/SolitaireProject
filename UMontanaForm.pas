@@ -231,7 +231,7 @@ begin
   begin
     fixedCards[i]:=0;
   end;
-  redeals:=3;
+  redeals:=2;
   MontanaGame:=TMontanaGame.Create;
 //  turnOnImages;
   handLayout;
@@ -1078,7 +1078,7 @@ begin
     begin
       for j := (fixedCards[i]+1) to 13 do
       begin
-        if MontanaGame.layout[j,i].fixed = false then
+        if MontanaGame.layout[j,i].filled = true then
         begin
           MDeck.AddCard(MontanaGame.layout[j,i].RemoveLastCard);
         end;

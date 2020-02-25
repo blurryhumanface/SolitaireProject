@@ -1,7 +1,7 @@
 unit UCards;
 
 interface
-  uses sysutils, math, Generics.Collections,UFileCreater;
+  uses sysutils, math, Generics.Collections;
   {This is a list of all of the existing libraries that I need for this unit}
   type
     TOrientation = (face,back);
@@ -131,6 +131,8 @@ interface
       MDeck:TDeck;
       KDeck:TDeck;
 implementation
+  uses
+    UFileCreater;
 
 { TCard }
 
@@ -152,7 +154,7 @@ begin
    face down}
     Orientation:=face
     {If it is face down then it is changed to being face up}
-  else if Orientation=face then
+  else
   {If it isn't face down then this line checks to see if it is face up}
     Orientation:=back;
     {If it is face up then it is changed to being face down}
@@ -233,14 +235,19 @@ begin
   {This line calls the function IsFull to see if the deck is full.
    If it isn't full then the next block of code run}
   begin
-    if Bottom=51 then
+    FQueue[Bottom]:=card;
+    if Bottom=Length(FQueue)-1 then
     {This line checks to see whether or not the current value for bottom is 51}
-      Bottom:=0
+    begin
+      Bottom:=0;
       {If the current value of bottom is 51 then the new value is set to be 0}
+    end
     else
+    begin
       Bottom:=Bottom+1;
       {If the current value of bottom isn't 51 then the current value is
       incremented by 1}
+    end;
     Size:=Size+1;
     {The size of the deck is then incremented by 1}
   end;
@@ -320,13 +327,15 @@ end;
 
 function TDeck.IsFull: boolean;
 begin
-  result:= size=52;
+  result:= size=(length(FQueue)-1);
   {This line returns the boolean of if the size of the deck is 52}
 end;
 
 procedure TDeck.resize(newSize:integer);
 begin
   setLength(FQueue,newSize);
+  top:=0;
+  bottom:=0;
 end;
 
 procedure TDeck.Shuffle;
@@ -360,7 +369,7 @@ begin
   setLength(Cards,Length(FQueue));
   setLength(tempArray,Length(Cards));
   Cards:=FQueue;
-  mid:=(length(Cards)+1)/2;
+  mid:=(length(Cards)+1) div 2;
   i:=0;
   j:=mid;
   k:=0;

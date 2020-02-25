@@ -2,7 +2,7 @@ unit UMontana;
 
 interface
 uses
-  UCards;
+  UCards,UFileCreater;
 type
   TMontanaHand = class(THand)
   protected
@@ -190,14 +190,14 @@ var
   i,j,k:integer;
   temp:TMontanaHand;
 begin
-  if MontanaForm.redeals<>3 then
+  if MontanaForm.redeals<2 then
   begin
     for i := 1 to 4 do
     begin
       for j := (MontanaForm.fixedCards[i]+2) to 13 do
       begin
         layout[j,i].AddCard(MDeck.DealCard);
-        layout[j,i].Last.FlipCard;
+        writeToFile(layout[j,i].Last.GetName,layout[j,i].Last.GetOrientation);
       end;
     end;
   end
@@ -209,6 +209,7 @@ begin
       begin
         layout[j,i].AddCard(MDeck.DealCard);
         layout[j,i].Last.FlipCard;
+        writeToFile(layout[j,i].Last.GetName,layout[j,i].Last.GetOrientation);
       end;
     end;
   end;
