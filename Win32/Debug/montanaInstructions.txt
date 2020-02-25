@@ -1,1 +1,4 @@
 Montana
+
+All 52 cards are dealt out into play after the deck has been shuffled.
+The aces are then removed and placed separately

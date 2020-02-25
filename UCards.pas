@@ -60,7 +60,7 @@ interface
         {This procedure reorders the cards in FQueue}
         procedure AddCard(card:TCard);
         {This procedure adds a card to FQueue}
-        procedure resize;
+        procedure resize(newSize:integer);
         {This procedure changes the size of FQueue for Montana so that the
         fixed cards work}
         function DealCard:TCard;
@@ -323,9 +323,9 @@ begin
   {This line returns the boolean of if the size of the deck is 52}
 end;
 
-procedure TDeck.resize;
+procedure TDeck.resize(newSize:integer);
 begin
-  setLength(FQueue,size);
+  setLength(FQueue,newSize);
 end;
 
 procedure TDeck.Shuffle;
@@ -333,10 +333,10 @@ var
   i,RandInt:integer;
   TempCard:TCard;
 begin
-  for i := 0 to 51 do
+  for i := 0 to (size-1) do
   {This for loop repeats for the length of the deck of cards}
   begin
-    RandInt:=randomrange(51,0);
+    RandInt:=randomrange((size-1),0);
     {This line sets the variable RandInt to be a random integer in the range of
      51 and 0 inclusively}
     TempCard:=FQueue[i];

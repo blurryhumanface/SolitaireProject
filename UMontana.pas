@@ -24,7 +24,7 @@ type
       procedure establishPrecedingNumbers;
     public
       layout:TMLayout;
-      fixedCardLayout:TMLayout;
+      fixedCardLayout:array[1..15,1..4] of Integer;
       constructor Create;
       procedure MoveCard(passed:TMontanaHand; var back:integer);
       procedure assignHands;
@@ -190,7 +190,20 @@ var
   i,j,k:integer;
   temp:TMontanaHand;
 begin
-  for i := 1 to 4 do
+  if MontanaForm.redeals<>3 then
+  begin
+    for i := 1 to 4 do
+    begin
+      for j := (MontanaForm.fixedCards[i]+2) to 13 do
+      begin
+        layout[j,i].AddCard(MDeck.DealCard);
+        layout[j,i].Last.FlipCard;
+      end;
+    end;
+  end
+  else
+  begin
+    for i := 1 to 4 do
     begin
       for j := (MontanaForm.fixedCards[i]+1) to 13 do
       begin
@@ -198,6 +211,7 @@ begin
         layout[j,i].Last.FlipCard;
       end;
     end;
+  end;
     moveAces;
     establishPrecedingNumbers;
 end;

@@ -129,9 +129,8 @@ type
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
-    fixedCards:array[1..4] of integer;
     fixedSuit:array[1..4] of integer;
-    redeals:integer;
+    expectedDeckSize:integer;
     procedure handLayout;
     procedure changeImage(img:TImage; Hand:TMontanaHand);
     procedure getImage(Hand:TMontanaHand; var img:TBitmap);
@@ -144,6 +143,7 @@ type
   public
     { Public declarations }
     fixedCards:array[1..4] of integer;
+    redeals:integer;
     procedure EndGame(noRedeal:boolean);
   end;
 
@@ -201,7 +201,7 @@ begin
           if MontanaGame.layout[j,i].Last.getRank=2 then
           begin
             MontanaGame.layout[j,i].fixed:=true;
-            MontanaGame.fixedCardLayout[j,i]:=MontanaGame.layout[j,i];
+            MontanaGame.fixedCardLayout[j,i]:=MontanaGame.layout[j,i].Last.GetRank;
             ImageLayout[j,i].enabled:=false;
             fixedCards[i]:=1;
             fixedSuit[i]:=MontanaGame.layout[j,i].last.getsuit;
@@ -210,7 +210,7 @@ begin
         else if (MontanaGame.layout[j-1,i].fixed=true)and(MontanaGame.layout[j-1,i].Last.GetRank=MontanaGame.layout[j,i].previousNumber)and(MontanaGame.layout[j,i].Last.GetSuit=fixedSuit[i]) then
         begin
           MontanaGame.layout[j,i].fixed:=true;
-          MontanaGame.fixedCardLayout[j,i]:=MontanaGame.layout[j,i];
+          MontanaGame.fixedCardLayout[j,i]:=MontanaGame.layout[j,i].Last.GetRank;
           ImageLayout[j,i].enabled:=false;
           fixedCards[i]:=fixedCards[i]+1;
         end;
@@ -1068,12 +1068,12 @@ var
 begin
   if redeals>0 then
   begin
-    MDeck.Size:=52;
+    expectedDeckSize:=52;
     for i := 1 to 4 do
     begin
-      MDeck.Size:=MDeck.Size-fixedCards[i];
+      expectedDeckSize:=expectedDeckSize-fixedCards[i];
     end;
-    MDeck.resize;
+    MDeck.resize(expectedDeckSize);
     for i := 1 to 4 do
     begin
       for j := (fixedCards[i]+1) to 13 do
