@@ -271,27 +271,14 @@ end;
 
 function TClockGame.solve(dummyLayout:TClockLayout): boolean;
 var
-  dummyDeck:TDummyDeck;
   dummyLayout2:TClockLayout;
-  i,moves,j:integer;
+  i,moves:integer;
   playingCard:integer;
   k:boolean;
 begin
-  dummyDeck:=TdummyDeck.Create;
-  for i := 0 to 51 do
+  for i := 1 to 28 do
   begin
-    dummyDeck.Cards[i].setRankandSuit(CDeck.Cards[i].GetRank,CDeck.Cards[i].GetSuit);
-  end;
-  for i := 1 to 3 do
-  begin
-    for j := 1 to 12 do
-    begin
-      dummyLayout2[j].AddCard(dummyDeck.DealCard);
-    end;
-  end;
-  for i := 1 to 16 do
-  begin
-    dummyLayout2[i].AddCard(dummyDeck.DealCard);
+    dummyLayout2[i]:=dummyLayout[i];
   end;
   playingCard:=13;
   repeat
