@@ -26,6 +26,7 @@ type
       layout:TMLayout;
       fixedCardLayout:array[1..15,1..4] of Integer;
       constructor Create;
+      destructor Destroy;
       procedure MoveCard(passed:TMontanaHand; var back:integer);
       procedure assignHands;
       procedure deal;
@@ -120,6 +121,8 @@ var
   temp:TMontanaHand;
   k:integer;
 begin
+  MDeck.Create;
+  MDeck.Shuffle;
   createHands;
   assignHands;
   deal;
@@ -215,6 +218,20 @@ begin
   end;
     moveAces;
     establishPrecedingNumbers;
+end;
+
+destructor TMontanaGame.Destroy;
+var
+  i,j:integer;
+begin
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      layout[j,i].Destroy;
+    end;
+  end;
+  MDeck.Destroy;
 end;
 
 procedure TMontanaGame.establishPrecedingNumbers;

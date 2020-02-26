@@ -126,6 +126,7 @@ type
     procedure MHand50ImageClick(Sender: TObject);
     procedure MHand51ImageClick(Sender: TObject);
     procedure RedealButtonClick(Sender: TObject);
+    procedure NewGameButtonClick(Sender: TObject);
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
@@ -137,9 +138,10 @@ type
     procedure changeImages(a:TMontanaImageArray);
     procedure redeal();
     procedure turnOffImages;
-//    procedure turnOnImages;
+    procedure turnOnImages;
     procedure fixCards;
     procedure turnCardsFaceUp;
+    procedure newGame;
   public
     { Public declarations }
     fixedCards:array[1..4] of integer;
@@ -183,7 +185,16 @@ end;
 
 procedure TMontanaForm.EndGame(noRedeal: boolean);
 begin
- turnOffImages;
+  turnOffImages;
+  if noRedeal=true then
+  begin
+    showMessage('No more redeals. Game Over');
+  end;
+  if fixedCards[1]+fixedCards[2]+fixedCards[3]+fixedCards[4]=52 then
+  begin
+    showMessage('Congratulations on completing the deck');
+  end;
+  MontanaGame.Destroy;
 end;
 
 procedure TMontanaForm.fixCards;
@@ -227,15 +238,7 @@ procedure TMontanaForm.FormCreate(Sender: TObject);
 var
   i: Integer;
 begin
-  for i := 1 to 4 do
-  begin
-    fixedCards[i]:=0;
-  end;
-  redeals:=2;
-  MontanaGame:=TMontanaGame.Create;
-//  turnOnImages;
-  handLayout;
-  changeImages(ImageLayout);
+  newGame;
 end;
 
 procedure TMontanaForm.getImage(Hand:TMontanaHand; var img:Tbitmap);
@@ -1061,6 +1064,27 @@ begin
   end;
 end;
 
+procedure TMontanaForm.newGame;
+var
+  i:integer;
+begin
+  for i := 1 to 4 do
+  begin
+    fixedCards[i]:=0;
+  end;
+  redeals:=2;
+  MontanaGame:=TMontanaGame.Create;
+  handLayout;
+  turnOnImages;
+  changeImages(ImageLayout);
+end;
+
+procedure TMontanaForm.NewGameButtonClick(Sender: TObject);
+begin
+  endGame(false);
+  newGame;
+end;
+
 procedure TMontanaForm.redeal;
 var
   i: Integer;
@@ -1136,17 +1160,18 @@ begin
   end;
 end;
 
-//procedure TMontanaForm.turnOnImages;
-//var
-//  i,j:integer;
-//begin
-//  for i := 1 to 4 do
-//  begin
-//    for j := 1 to 13 do
-//    begin
-//      ImageLayout[j,i].Enabled:=true;
-//    end;
-//  end;
-//end;
+
+procedure TMontanaForm.turnOnImages;
+var
+  i,j:integer;
+begin
+  for i := 1 to 4 do
+  begin
+    for j := 1 to 13 do
+    begin
+      ImageLayout[j,i].Enabled:=true;
+    end;
+  end;
+end;
 
 end.

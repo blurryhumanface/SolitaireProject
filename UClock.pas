@@ -25,6 +25,7 @@ interface
         procedure CreateHands;
         procedure AssignHands;
         procedure MoveCard(var FromHand:TClockHand;var GameOver:boolean;var i:integer);
+        function solve:boolean;
     end;
 
     var
@@ -148,6 +149,7 @@ destructor TClockGame.Destroy;
 var
   i:integer;
 begin
+  CDeck.Destroy;
   for i := 1 to 28 do
     begin
       Layout[i].Destroy;

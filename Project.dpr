@@ -16,8 +16,6 @@ uses
 {$R *.res}
 
 begin
-  MDeck:=TDeck.Create;
-  MDeck.Shuffle;
   KDeck:=TDeck.Create;
   KDeck.Shuffle;
   Application.Initialize;
