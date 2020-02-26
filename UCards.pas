@@ -24,6 +24,7 @@ interface
         procedure FlipCard;
         {This procedure changes the state of the orientation property of the
         card}
+        procedure setRankandSuit(newRank:integer;newSuit:integer);
         function GetRank:integer;
         {This function returns the numerical value of the rank of the card}
         function GetSuit:integer;
@@ -125,6 +126,8 @@ interface
         property Cards[i:integer]:TCard read GetCard;
         {This property reads the card at position i in the hand}
     end;
+    TDummyDeck = class (TDeck)
+    end;
 
     var
       CDeck:TDeck;
@@ -225,6 +228,12 @@ begin
     3: result := 'Clubs';
     {If the current value of suit is 4 then the suit as a string is 'Clubs'}
   end;
+end;
+
+procedure TCard.setRankandSuit(newRank, newSuit: integer);
+begin
+  rank:=NewRank;
+  suit:=newSuit;
 end;
 
 { TDeck }

@@ -15,17 +15,19 @@ interface
       function SizeChecker:boolean;
     end;
 
+    TClockLayout = array[1..28] of TClockHand;
+
     TClockGame = class
       private
         procedure outerHandsCardTurn;
       public
-        Layout:Array[1..28] of TClockHand;
+        Layout:TClockLayout;
         constructor Create;
         destructor Destroy;
         procedure CreateHands;
         procedure AssignHands;
-        procedure MoveCard(var FromHand:TClockHand;var GameOver:boolean;var i:integer);
-        function solve:boolean;
+        procedure MoveCard(var FromHand:TClockHand;var GameOver:boolean;var i:integer;var separateLayout:TClockLayout; player:string);
+        function solve(dummyLayout:TClockLayout):boolean;
     end;
 
     var
@@ -156,97 +158,100 @@ begin
     end;
 end;
 
-procedure TClockGame.MoveCard(var FromHand:TClockHand; var GameOver:boolean; var i:integer);
+procedure TClockGame.MoveCard(var FromHand:TClockHand; var GameOver:boolean; var i:integer;var separateLayout:TClockLayout; player:string);
 begin
   GameOver:=False;
   case FromHand.Last.GetRank of
     1:begin
-        CHand17.AddCard(FromHand.RemoveLastCard);
-        CHand1.Last.FlipCard;
-        i:=CHand17.Last.GetRank;
+        separateLayout[17].AddCard(FromHand.RemoveLastCard);
+        separateLayout[1].Last.FlipCard;
+        i:=separateLayout[17].Last.GetRank;
       end;
     2:begin
-        CHand18.AddCard(FromHand.RemoveLastCard);
-        CHand2.Last.FlipCard;
-        i:=CHand18.Last.GetRank;
+        separateLayout[18].AddCard(FromHand.RemoveLastCard);
+        separateLayout[2].Last.FlipCard;
+        i:=separateLayout[18].Last.GetRank;
       end;
     3:begin
-        CHand19.AddCard(FromHand.RemoveLastCard);
-        CHand3.Last.FlipCard;
-        i:=CHand19.Last.GetRank;
+        separateLayout[19].AddCard(FromHand.RemoveLastCard);
+        separateLayout[3].Last.FlipCard;
+        i:=separateLayout[19].Last.GetRank;
       end;
     4:begin
-        CHand20.AddCard(FromHand.RemoveLastCard);
-        CHand4.Last.FlipCard;
-        i:=CHand20.Last.GetRank;
+        separateLayout[20].AddCard(FromHand.RemoveLastCard);
+        separateLayout[4].Last.FlipCard;
+        i:=separateLayout[20].Last.GetRank;
       end;
     5:begin
-        CHand21.AddCard(FromHand.RemoveLastCard);
-        CHand5.Last.FlipCard;
-        i:=CHand21.Last.GetRank;
+        separateLayout[21].AddCard(FromHand.RemoveLastCard);
+        separateLayout[5].Last.FlipCard;
+        i:=separateLayout[21].Last.GetRank;
       end;
     6:begin
-        CHand22.AddCard(FromHand.RemoveLastCard);
-        CHand6.Last.FlipCard;
-        i:=CHand22.Last.GetRank;
+        separateLayout[22].AddCard(FromHand.RemoveLastCard);
+        separateLayout[6].Last.FlipCard;
+        i:=separateLayout[22].Last.GetRank;
       end;
     7:begin
-        CHand23.AddCard(FromHand.RemoveLastCard);
-        CHand7.Last.FlipCard;
-        i:=CHand23.Last.GetRank;
+        separateLayout[23].AddCard(FromHand.RemoveLastCard);
+        separateLayout[7].Last.FlipCard;
+        i:=separateLayout[23].Last.GetRank;
       end;
     8:begin
-        CHand24.AddCard(FromHand.RemoveLastCard);
-        CHand8.Last.FlipCard;
-        i:=CHand24.Last.GetRank;
+        separateLayout[24].AddCard(FromHand.RemoveLastCard);
+        separateLayout[8].Last.FlipCard;
+        i:=separateLayout[24].Last.GetRank;
       end;
     9:begin
-        CHand25.AddCard(FromHand.RemoveLastCard);
-        CHand9.Last.FlipCard;
-        i:=CHand25.Last.GetRank;
+        separateLayout[25].AddCard(FromHand.RemoveLastCard);
+        separateLayout[9].Last.FlipCard;
+        i:=separateLayout[25].Last.GetRank;
       end;
     10:begin
-        CHand26.AddCard(FromHand.RemoveLastCard);
-        CHand10.Last.FlipCard;
-        i:=CHand26.Last.GetRank;
+        separateLayout[26].AddCard(FromHand.RemoveLastCard);
+        separateLayout[10].Last.FlipCard;
+        i:=separateLayout[26].Last.GetRank;
       end;
     11:begin
-        CHand27.AddCard(FromHand.RemoveLastCard);
-        CHand11.Last.FlipCard;
-        i:=CHand27.Last.GetRank;
+        separateLayout[27].AddCard(FromHand.RemoveLastCard);
+        separateLayout[11].Last.FlipCard;
+        i:=separateLayout[27].Last.GetRank;
       end;
     12:begin
-        CHand28.AddCard(FromHand.RemoveLastCard);
-        CHand12.Last.FlipCard;
-        i:=CHand28.Last.GetRank;
+        separateLayout[28].AddCard(FromHand.RemoveLastCard);
+        separateLayout[12].Last.FlipCard;
+        i:=separateLayout[28].Last.GetRank;
       end;
     13:begin
-        if CHand13.Size=0 then
+        if separateLayout[13].Size=0 then
         begin
-          CHand13.AddCard(FromHand.RemoveLastCard);
-          CHand14.Last.FlipCard;
-          i:=13;
+          separateLayout[13].AddCard(FromHand.RemoveLastCard);
+          separateLayout[14].Last.FlipCard;
+          i:=14;
         end
-        else if CHand14.Size=0 then
+        else if separateLayout[14].Size=0 then
         begin
-          CHand14.AddCard(FromHand.RemoveLastCard);
-          CHand15.Last.FlipCard;
-          i:=13;
+          separateLayout[14].AddCard(FromHand.RemoveLastCard);
+          separateLayout[15].Last.FlipCard;
+          i:=15;
         end
-        else if CHand15.Size=0 then
+        else if separateLayout[15].Size=0 then
         begin
-          CHand15.AddCard(FromHand.RemoveLastCard);
-          CHand16.Last.FlipCard;
-          i:=13;
+          separateLayout[15].AddCard(FromHand.RemoveLastCard);
+          separateLayout[16].Last.FlipCard;
+          i:=16;
         end
-        else if CHand16.Size=0 then
+        else if separateLayout[16].Size=0 then
         begin
-          CHand16.AddCard(FromHand.RemoveLastCard);
+          separateLayout[16].AddCard(FromHand.RemoveLastCard);
           GameOver:=True;
         end;
       end;
   end;
-  outerHandsCardTurn;
+  if player='human' then
+  begin
+    outerHandsCardTurn;
+  end;
 end;
 
 
@@ -261,6 +266,46 @@ begin
       if layout[i].Last.GetOrientation=back then
         layout[i].Last.FlipCard;
     end;
+  end;
+end;
+
+function TClockGame.solve(dummyLayout:TClockLayout): boolean;
+var
+  dummyDeck:TDummyDeck;
+  dummyLayout2:TClockLayout;
+  i,moves,j:integer;
+  playingCard:integer;
+  k:boolean;
+begin
+  dummyDeck:=TdummyDeck.Create;
+  for i := 0 to 51 do
+  begin
+    dummyDeck.Cards[i].setRankandSuit(CDeck.Cards[i].GetRank,CDeck.Cards[i].GetSuit);
+  end;
+  for i := 1 to 3 do
+  begin
+    for j := 1 to 12 do
+    begin
+      dummyLayout2[j].AddCard(dummyDeck.DealCard);
+    end;
+  end;
+  for i := 1 to 16 do
+  begin
+    dummyLayout2[i].AddCard(dummyDeck.DealCard);
+  end;
+  playingCard:=13;
+  repeat
+    moveCard(dummyLayout2[playingCard],k,i,dummyLayout2,'cpu');
+    playingCard:=i;
+    inc(moves)
+  until k=true;
+  if Moves=52 then
+  begin
+    result:=true
+  end
+  else
+  begin
+    result:=false
   end;
 end;
 

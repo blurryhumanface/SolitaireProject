@@ -121,7 +121,7 @@ var
   temp:TMontanaHand;
   k:integer;
 begin
-  MDeck.Create;
+  MDeck:=TDeck.Create;
   MDeck.Shuffle;
   createHands;
   assignHands;
