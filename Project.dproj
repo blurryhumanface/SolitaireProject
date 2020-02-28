@@ -99,11 +99,16 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UClock.pas"/>
-        <DCCReference Include="UCards.pas"/>
         <DCCReference Include="UFileCreater.pas"/>
         <DCCReference Include="UMiddleStep.pas"/>
         <DCCReference Include="UInstructions.pas">
             <Form>instructionsForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UCards.pas"/>
+        <DCCReference Include="UMontana.pas"/>
+        <DCCReference Include="UMontanaForm.pas">
+            <Form>MontanaForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <None Include="Win32\Debug\Instructions for next session.txt"/>
@@ -113,6 +118,7 @@
         <None Include="ModelSupport_Project\UCards\default.txvpck"/>
         <None Include="ModelSupport_Project\UClock\default.txvpck"/>
         <None Include="ModelSupport_Project\UClockForm\default.txvpck"/>
+        <None Include="ModelSupport_Project\UCards\default.txaPackage"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -160,6 +166,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="ModelSupport_Project\UClock\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="ModelSupport_Project\UCards\default.txaPackage" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>

@@ -15,12 +15,21 @@ object MainMenu: TMainMenu
   PixelsPerInch = 96
   TextHeight = 13
   object ClockButton: TButton
-    Left = 232
+    Left = 224
     Top = 96
-    Width = 75
+    Width = 97
     Height = 25
     Caption = 'Clock Solitaire'
     TabOrder = 0
     OnClick = ClockButtonClick
+  end
+  object MontanaButton: TButton
+    Left = 224
+    Top = 160
+    Width = 97
+    Height = 25
+    Caption = 'Montana Solitaire'
+    TabOrder = 1
+    OnClick = MontanaButtonClick
   end
 end

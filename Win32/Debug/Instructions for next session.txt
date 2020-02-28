@@ -1,1 +1,6 @@
-﻿Write Code for EndGame
+﻿Search algorithm searching for preceding number of same suit
+Spits out -1 if not present
+Stops searching when found
+Then checks to see if next square is free
+If it is preceding numbers change over
+Ignores all but last card that is in fixed place

@@ -1,7 +1,7 @@
 unit UCards;
 
 interface
-  uses sysutils, math, Generics.Collections,UFileCreater;
+  uses sysutils, math, Generics.Collections;
   {This is a list of all of the existing libraries that I need for this unit}
   type
     TOrientation = (face,back);
@@ -24,6 +24,7 @@ interface
         procedure FlipCard;
         {This procedure changes the state of the orientation property of the
         card}
+        procedure setRankandSuit(newRank:integer;newSuit:integer);
         function GetRank:integer;
         {This function returns the numerical value of the rank of the card}
         function GetSuit:integer;
@@ -40,7 +41,7 @@ interface
         function GetOrientation:TOrientation;
         {This function returns the current orientation of the card}
     end;
-    TCards = Array[0..51] of TCard;
+    TCards = Array of TCard;
     {This is a collection of cards the size of a regular deck of cards}
     TDeck = Class
       Private
@@ -60,6 +61,10 @@ interface
         {This procedure reorders the cards in FQueue}
         procedure AddCard(card:TCard);
         {This procedure adds a card to FQueue}
+        procedure resize(newSize:integer);
+        {This procedure changes the size of FQueue for Montana so that the
+        fixed cards work}
+        procedure sortCards;
         function DealCard:TCard;
         {This function removes the top card in the queue and returns the card
          that is removed}
@@ -79,8 +84,9 @@ interface
         property Cards :TCards read FQueue;
         {This property allows all the cards in the queue to be read so that
          they can be stored in the textfile for debugging}
-    End;
-    THand = class abstract {This declares the the class of THand is a class that
+    end;
+    THand = class abstract
+    {This declares the the class of THand is a class that
     is never truly present in the code but is inherited by the other hand
     classes}
       protected
@@ -120,8 +126,16 @@ interface
         property Cards[i:integer]:TCard read GetCard;
         {This property reads the card at position i in the hand}
     end;
+    TDummyDeck = class (TDeck)
+    end;
 
+    var
+      CDeck:TDeck;
+      MDeck:TDeck;
+      KDeck:TDeck;
 implementation
+  uses
+    UFileCreater;
 
 { TCard }
 
@@ -143,7 +157,7 @@ begin
    face down}
     Orientation:=face
     {If it is face down then it is changed to being face up}
-  else if Orientation=face then
+  else
   {If it isn't face down then this line checks to see if it is face up}
     Orientation:=back;
     {If it is face up then it is changed to being face down}
@@ -216,6 +230,12 @@ begin
   end;
 end;
 
+procedure TCard.setRankandSuit(newRank, newSuit: integer);
+begin
+  rank:=NewRank;
+  suit:=newSuit;
+end;
+
 { TDeck }
 
 procedure TDeck.AddCard(card: TCard);
@@ -224,14 +244,19 @@ begin
   {This line calls the function IsFull to see if the deck is full.
    If it isn't full then the next block of code run}
   begin
-    if Bottom=51 then
+    FQueue[Bottom]:=card;
+    if Bottom=Length(FQueue)-1 then
     {This line checks to see whether or not the current value for bottom is 51}
-      Bottom:=0
+    begin
+      Bottom:=0;
       {If the current value of bottom is 51 then the new value is set to be 0}
+    end
     else
+    begin
       Bottom:=Bottom+1;
       {If the current value of bottom isn't 51 then the current value is
       incremented by 1}
+    end;
     Size:=Size+1;
     {The size of the deck is then incremented by 1}
   end;
@@ -244,6 +269,8 @@ begin
   inherited Create;
   {This line says that this procedure uses the pre-existing constructor in
    addition to the additional code it is adding}
+  setLength(FCards,52);
+  setLength(FQueue,52);
   for i := 0 to 51 do
   {This line starts a for loop which repeats for the same length as the deck}
   begin
@@ -309,8 +336,15 @@ end;
 
 function TDeck.IsFull: boolean;
 begin
-  result:= size=52;
+  result:= size=(length(FQueue)-1);
   {This line returns the boolean of if the size of the deck is 52}
+end;
+
+procedure TDeck.resize(newSize:integer);
+begin
+  setLength(FQueue,newSize);
+  top:=0;
+  bottom:=0;
 end;
 
 procedure TDeck.Shuffle;
@@ -318,10 +352,10 @@ var
   i,RandInt:integer;
   TempCard:TCard;
 begin
-  for i := 0 to 51 do
+  for i := 0 to (size-1) do
   {This for loop repeats for the length of the deck of cards}
   begin
-    RandInt:=randomrange(51,0);
+    RandInt:=randomrange((size-1),0);
     {This line sets the variable RandInt to be a random integer in the range of
      51 and 0 inclusively}
     TempCard:=FQueue[i];
@@ -331,6 +365,27 @@ begin
      FQueue}
     FQueue[RandInt]:=TempCard;
     {This copies the card stored in TempCard to the random position in FQueue}
+  end;
+end;
+
+procedure TDeck.sortCards;
+var
+  Cards:TCards;
+  tempArray:TCards;
+  i,j,k:integer;
+  mid,last:integer;
+begin
+  setLength(Cards,Length(FQueue));
+  setLength(tempArray,Length(Cards));
+  Cards:=FQueue;
+  mid:=(length(Cards)+1) div 2;
+  i:=0;
+  j:=mid;
+  k:=0;
+  last:=(length(Cards)-1);
+  while ((i<=mid)and(j<=last)) do
+  begin
+
   end;
 end;
 

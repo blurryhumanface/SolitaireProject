@@ -1,0 +1,25 @@
+repeat
+	for j:= 1 to 13 do
+	begin
+		if passed.Last.GetSuit=Layout[j,i].Last.GetSuit then
+		begin
+			if passed.precedingNumber=Layout[j,i].Last.GetRank then
+			begin
+				found:=true;
+				break;
+			end;
+		end;
+	end;
+	dec(i);
+until (found=true)or(i<1);
+i:=i+1;
+j:=j+1;
+if layout[j,i].filled=true then
+begin
+	back:=-1;
+end
+else
+begin
+	layout.AddCard(passed.RemoveLastCard);
+	back:=0
+end;

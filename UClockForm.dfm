@@ -225,7 +225,7 @@ object ClockForm: TClockForm
   end
   object NewGameButton: TButton
     Left = 832
-    Top = 116
+    Top = 164
     Width = 121
     Height = 25
     Caption = 'New Game'
@@ -234,7 +234,7 @@ object ClockForm: TClockForm
   end
   object MainMenuButton: TButton
     Left = 832
-    Top = 182
+    Top = 230
     Width = 121
     Height = 25
     Caption = 'Main Menu'
@@ -243,11 +243,20 @@ object ClockForm: TClockForm
   end
   object InstructionsButton: TButton
     Left = 832
-    Top = 244
+    Top = 292
     Width = 121
     Height = 25
     Caption = 'Instructions'
     TabOrder = 3
     OnClick = InstructionsButtonClick
+  end
+  object SolubilityEdit: TEdit
+    Left = 832
+    Top = 84
+    Width = 121
+    Height = 21
+    Enabled = False
+    TabOrder = 4
+    Text = 'Solvable'
   end
 end
