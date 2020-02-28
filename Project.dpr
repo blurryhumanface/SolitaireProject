@@ -10,8 +10,7 @@ uses
   UInstructions in 'UInstructions.pas' {instructionsForm},
   UCards in 'UCards.pas',
   UMontana in 'UMontana.pas',
-  UMontanaForm in 'UMontanaForm.pas' {MontanaForm},
-  UImageHandling in 'UImageHandling.pas';
+  UMontanaForm in 'UMontanaForm.pas' {MontanaForm};
 
 {$R *.res}
 

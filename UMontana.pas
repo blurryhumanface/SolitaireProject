@@ -230,6 +230,7 @@ begin
     begin
       layout[j,i].Destroy;
     end;
+    layout[15,i].Destroy;
   end;
   MDeck.Destroy;
 end;

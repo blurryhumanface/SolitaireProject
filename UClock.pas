@@ -22,7 +22,7 @@ interface
         procedure outerHandsCardTurn;
       public
         Layout:TClockLayout;
-        constructor Create;
+        constructor Create(var str:string);
         destructor Destroy;
         procedure CreateHands;
         procedure AssignHands;
@@ -94,12 +94,20 @@ begin
   Layout[28]:=CHand28;
 end;
 
-constructor TClockGame.Create;
+constructor TClockGame.Create(var str:string);
 var
   i,j: Integer;
 begin
   CDeck:=TDeck.Create;
   CDeck.Shuffle;
+  if solve(layout)=true then
+  begin
+    str:='true';
+  end
+  else
+  begin
+    str:='false';
+  end;
   CreateHands;
   AssignHands;
   for i := 1 to 3 do
@@ -271,14 +279,31 @@ end;
 
 function TClockGame.solve(dummyLayout:TClockLayout): boolean;
 var
+  dummyDeck:TDeck;
   dummyLayout2:TClockLayout;
-  i,moves:integer;
+  i,moves,j:integer;
   playingCard:integer;
   k:boolean;
 begin
+  dummyDeck:=TDeck.Create;
   for i := 1 to 28 do
   begin
-    dummyLayout2[i]:=dummyLayout[i];
+    DummyLayout2[i]:=TClockHand.Create;
+  end;
+  for i := 0 to 51 do
+  begin
+    dummyDeck.Cards[i].setRankandSuit(CDeck.Cards[i].GetRank,CDeck.Cards[i].GetSuit);
+  end;
+  for i := 1 to 3 do
+  begin
+    for j := 1 to 12 do
+    begin
+      dummyLayout2[j].AddCard(dummyDeck.DealCard);
+    end;
+  end;
+  for i := 1 to 16 do
+  begin
+    dummyLayout2[i].AddCard(dummyDeck.DealCard);
   end;
   playingCard:=13;
   repeat

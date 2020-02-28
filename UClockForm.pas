@@ -42,6 +42,7 @@ type
     CHand25Image: TImage;
     CHand26Image: TImage;
     CHand27Image: TImage;
+    SolubilityEdit: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure NewGameButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
@@ -67,7 +68,7 @@ type
     moves:integer;
     ended:boolean;
     Images:ImageArray28;
-    procedure CreateItems;
+    procedure CreateItems(var str:string);
     procedure sayOrientation(card:TCard);
     procedure turnAllCardsOver(var hand:TClockHand);
     procedure assignImagestoArray;
@@ -134,7 +135,7 @@ begin
   if CHand10.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand10,j,i);
+    ClockGame.MoveCard(CHand10,j,i,ClockGame.layout,'human');
     if CHand10.Size=0 then
     begin
       CHand10Image.Enabled:=False;
@@ -162,7 +163,7 @@ begin
   if CHand11.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand11,j,i);
+    ClockGame.MoveCard(CHand11,j,i,ClockGame.layout,'human');
     if CHand11.Size=0 then
     begin
       CHand11Image.Enabled:=False;
@@ -190,7 +191,7 @@ begin
   if CHand12.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand12,j,i);
+    ClockGame.MoveCard(CHand12,j,i,ClockGame.layout,'human');
     if CHand12.Size=0 then
     begin
       CHand12Image.Enabled:=False;
@@ -219,7 +220,7 @@ begin
   if CHand13.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand13,j,i);
+    ClockGame.MoveCard(CHand13,j,i,ClockGame.layout,'human');
     turnNextCard(i);
     CHand13Image.Enabled:=False;
     //CHand14Image.Enabled:=True;
@@ -240,7 +241,7 @@ begin
   if (CHand13.Size=1)and(CHand13Image.Enabled=false) then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand14,j,i);
+    ClockGame.MoveCard(CHand14,j,i,ClockGame.layout,'human');
     turnNextCard(i);
     CHand14Image.Enabled:=False;
     changeImages(Images);
@@ -256,7 +257,7 @@ begin
   if (CHand13.Size=1)and(CHand14.Size=1)and(CHand14Image.Enabled=false) then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand15,j,i);
+    ClockGame.MoveCard(CHand15,j,i,ClockGame.layout,'human');
     turnNextCard(i);
     CHand15Image.Enabled:=False;
     changeImages(Images);
@@ -273,7 +274,7 @@ begin
   if (CHand13.Size=1)and(CHand14.Size=1)and(CHand15.Size=1)and(CHand15Image.Enabled=false) then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand16,j,i);
+    ClockGame.MoveCard(CHand16,j,i,ClockGame.layout,'human');
     turnNextCard(i);
     CHand16Image.Enabled:=False;
     changeImages(Images);
@@ -295,7 +296,7 @@ begin
   if CHand1.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand1,j,i);
+    ClockGame.MoveCard(CHand1,j,i,ClockGame.layout,'human');
     if CHand1.Size=0 then
     begin
       CHand1Image.Enabled:=False;
@@ -324,7 +325,7 @@ begin
   if CHand2.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand2,j,i);
+    ClockGame.MoveCard(CHand2,j,i,ClockGame.layout,'human');
     if CHand2.Size=0 then
     begin
       CHand2Image.Enabled:=False;
@@ -353,7 +354,7 @@ begin
   if CHand3.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand3,j,i);
+    ClockGame.MoveCard(CHand3,j,i,ClockGame.layout,'human');
     if CHand3.Size=0 then
     begin
       CHand3Image.Enabled:=False;
@@ -381,7 +382,7 @@ begin
   if CHand4.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand4,j,i);
+    ClockGame.MoveCard(CHand4,j,i,ClockGame.layout,'human');
     if CHand4.Size=0 then
     begin
       CHand4Image.Enabled:=False;
@@ -410,7 +411,7 @@ begin
   if CHand5.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand5,j,i);
+    ClockGame.MoveCard(CHand5,j,i,ClockGame.layout,'human');
     if CHand5.Size=0 then
     begin
       CHand5Image.Enabled:=False;
@@ -439,7 +440,7 @@ begin
   if CHand6.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand6,j,i);
+    ClockGame.MoveCard(CHand6,j,i,ClockGame.layout,'human');
     if CHand6.Size=0 then
     begin
       CHand6Image.Enabled:=False;
@@ -468,7 +469,7 @@ begin
   if CHand7.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand7,j,i);
+    ClockGame.MoveCard(CHand7,j,i,ClockGame.layout,'human');
     if CHand7.Size=0 then
     begin
       CHand7Image.Enabled:=False;
@@ -497,7 +498,7 @@ begin
   if CHand8.Last.GetOrientation = face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand8,j,i);
+    ClockGame.MoveCard(CHand8,j,i,ClockGame.layout,'human');
     if CHand8.Size=0 then
     begin
       CHand8Image.Enabled:=False;
@@ -526,7 +527,7 @@ begin
   if CHand9.Last.GetOrientation=face then
   begin
     incrementMoveCounter;
-    ClockGame.MoveCard(CHand9,j,i);
+    ClockGame.MoveCard(CHand9,j,i,ClockGame.layout,'human');
     if CHand9.Size=0 then
     begin
       CHand9Image.Enabled:=False;
@@ -587,9 +588,9 @@ begin
   changeImage(a[28],CHand28);
 end;
 
-procedure TClockForm.CreateItems;
+procedure TClockForm.CreateItems(var str:string);
 begin
-  ClockGame:=TClockGame.Create;
+  ClockGame:=TClockGame.Create(str);
 end;
 
 procedure TClockForm.editMiddleButtonCaptions(i: integer);
@@ -778,11 +779,21 @@ begin
 end;
 
 procedure TClockForm.newGame;
+var
+  str:string;
 begin
   moves:=0;
   turnOnImages;
-  CreateItems;
+  CreateItems(str);
   turnNextCard(13);
+  if str='true' then
+  begin
+    SolubilityEdit.Text:='soluble';
+  end
+  else
+  begin
+    SolubilityEdit.Text:='insoluble';
+  end;
   movesEdit.Text:='no. of moves: 0';
   ended:=false;
 end;
@@ -871,15 +882,21 @@ begin
           CHand13.Last.FlipCard;
           changeImage(CHand13Image,CHand13);
         end
-        else if (CHand14Image.Enabled=true)and(CHand14.Size=1) then
+      end;
+    14:begin
+        if (CHand14Image.Enabled=true)and(CHand14.Size=1) then
         begin
          changeImage(CHand14Image,CHand14);
         end
-        else if (CHand15Image.Enabled=true)and(CHand15.Size=1) then
+      end;
+    15:begin
+        if (CHand15Image.Enabled=true)and(CHand15.Size=1) then
         begin
           changeImage(CHand16Image,CHand15);
         end
-        else if (CHand16Image.Enabled=true)and(CHand16.Size=1) then
+      end;
+    16:begin
+        if (CHand16Image.Enabled=true)and(CHand16.Size=1) then
         begin
           changeImage(CHand16Image,CHand16);
         end

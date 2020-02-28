@@ -1,4 +1,13 @@
 Montana
 
-All 52 cards are dealt out into play after the deck has been shuffled.
-The aces are then removed and placed separately
+In Montana all the cards in the deck are dealt out face up then the aces are removed.
+The aim of the game is to order the suits from 2 to king.
+In the spaces left by removing the aces you can move cards of the same suit and
+one higher than the card to the left of the space. This means that nothing can be to
+the right of a king.
+If you get stuck in you are allowed to redeal the deck twice.
+When redealing you keep all the cards that are in order and start in the left most
+position and leave a space making sure there are still spaces for 13 cards in each row.
+
+To move the cards simply click on the card that needs to move and it will move to it's
+new place.
