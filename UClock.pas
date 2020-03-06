@@ -319,6 +319,7 @@ begin
   begin
     result:=false
   end;
+  dummyDeck.Destroy;
 end;
 
 end.

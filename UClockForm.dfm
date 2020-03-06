@@ -1,5 +1,5 @@
 object ClockForm: TClockForm
-  Left = 0
+  Left = -46
   Top = 0
   Caption = 'Clock Solitaire'
   ClientHeight = 701
@@ -12,6 +12,7 @@ object ClockForm: TClockForm
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
