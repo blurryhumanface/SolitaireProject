@@ -6,47 +6,125 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, UClock, UCards
   ,UFileCreater,UMiddleStep, UInstructions;
+ {This is a list of all of the units that this unit requires on creation}
 
 type
   ImageArray28 = array[1..28] of TImage;
+  {This is a data type that multiple instances are needed, meaning it is easier
+   to define it as its own data type rather than declaring it separately each time.
+   As well as this it isn't possible to pass an array with a defined number of
+   rows into a procedure or function and it the some of the functions require
+   an instance of this array to be passed to it}
   TClockForm = class(TForm)
     MovesEdit: TEdit;
+    {This is an edit to inform the user of how many moves they have done}
     NewGameButton: TButton;
+    {This is a button, which will allow the user to start a new game when
+     clicked}
     MainMenuButton: TButton;
+    {This is a button, which will allow the user to go back to the main menu}
     InstructionsButton: TButton;
+    {This is a button that will send the user to the instructions screen}
     CHand1Image: TImage;
+    {This is an image that corresponds to CHand1, the inner hand that is turned
+     over when aces are moved}
     CHand2Image: TImage;
+    {This is an image that corresponds to CHand2, the inner hand that is turned
+     over when twos are moved}
     CHand13Image: TImage;
+    {This is an image that corresponds to CHand13, the top left hand card in
+     the centre of the layout and is the first card to be moved and where the
+     first king is moved to}
     CHand14Image: TImage;
+    {This is an image that corresponds to CHand14, the top right hand card in
+     the centre of the layout and is the card to turn over when the first king
+     is moved and is where the second king is moved to}
     CHand3Image: TImage;
+    {This is an image that corresponds to CHand3, the inner hand that is turned
+     over when threes are moved}
     CHand4Image: TImage;
+    {This is an image that corresponds to CHand4, the inner hand that is turned
+     over when fours are moved}
     CHand5Image: TImage;
+    {This is an image that corresponds to CHand5, the inner hand that is turned
+     over when fives are moved}
     CHand6Image: TImage;
+    {This is an image that corresponds to CHand6, the inner hand that is turned
+     over when sixes are moved}
     CHand7Image: TImage;
+    {This is an image that corresponds to CHand7, the inner hand that is turned
+     over when sevens are moved}
     CHand8Image: TImage;
+    {This is an image that corresponds to CHand8, the inner hand that is turned
+     over when eights are moved}
     CHand9Image: TImage;
+    {This is an image that corresponds to CHand9, the inner hand that is turned
+     over when nines are moved}
     CHand10Image: TImage;
+    {This is an image that corresponds to CHand10, the inner hand that is
+     turned over when tens are moved}
     CHand11Image: TImage;
+    {This is an image that corresponds to CHand11, the inner hand that is
+     turned over when jacks are moved}
     CHand12Image: TImage;
+    {This is an image that corresponds to CHand12, the inner hand that is
+     turned over when queens are moved}
     CHand15Image: TImage;
+    {This is an image that corresponds to CHand15, the bottom left hand in the
+     centre of the layout and is the card to be turned over when the second king
+     is moved and it is where the third king is moved to}
     CHand16Image: TImage;
+    {This is an image that corresponds to CHand16, the bottom right hand in the
+     centre of the layout and is the card to be turned over when the third king
+     is moved and it is where the final king is moved to, causing the game to
+     end}
     CHand28Image: TImage;
+    {This is an image that corresponds to CHand28, the outer hand that the
+     queens that are moved to}
     CHand17Image: TImage;
+    {This is an image that corresponds to CHand17, the outer hand that the aces
+     are moved to}
     CHand18Image: TImage;
+    {This is an image that corresponds to CHand18, the outer hand that the twos
+     are moved to}
     CHand19Image: TImage;
+    {This is an image that corresponds to CHand19, the outer hand that the
+     threes are moved to}
     CHand20Image: TImage;
+    {This is an image that corresponds to CHand20, the outer hand that the
+     fours are moved to}
     CHand21Image: TImage;
+    {This is an image that corresponds to CHand21, the outer hand that the
+     fives are moved to}
     CHand22Image: TImage;
+    {This is an image that corresponds to CHand22, the outer hand that the
+     sixes are moved to}
     CHand23Image: TImage;
+    {This is an image that corresponds to CHand23, the outer hand that the
+     sevens are moved to}
     CHand24Image: TImage;
+    {This is an image that corresponds to CHand24, the outer hand that the
+     eights are moved to}
     CHand25Image: TImage;
+    {This is an image that corresponds to CHand25, the outer hand that the
+     nines are moved to}
     CHand26Image: TImage;
+    {This is an image that corresponds to CHand26, the outer hand that the
+     tens are moved to}
     CHand27Image: TImage;
+    {This is an image that corresponds to CHand27, the outer hand that the
+     jacks are moved to}
     SolubilityEdit: TEdit;
+    {This is the edit that will have the text it contains change to inform the
+     user whether or not a deal is soluble}
     procedure FormCreate(Sender: TObject);
+    {This is the procedure that is called when the form is created}
+    {The next 3 procedures are procedures that happen when one of the three
+     buttons on the form is clicked}
     procedure NewGameButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
     procedure InstructionsButtonClick(Sender: TObject);
+    {The next 16 procedures are called when the moveable cards are clicked on}
     procedure CHand1ImageClick(Sender: TObject);
     procedure CHand2ImageClick(Sender: TObject);
     procedure CHand14ImageClick(Sender: TObject);
@@ -63,28 +141,67 @@ type
     procedure CHand13ImageClick(Sender: TObject);
     procedure CHand15ImageClick(Sender: TObject);
     procedure CHand16ImageClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    {This procedure is called when the form is closed}
   private
     { Private declarations }
     moves:integer;
+    {This is an integer to count the number of moves the user has made}
     ended:boolean;
+    {This is a boolean to see if a game of Clock should be finished}
     Images:ImageArray28;
+    {This is an a array of the custom data type ImageArray28 and is when
+     the images are needed to be changed}
     procedure CreateItems(var str:string);
+    {This procedure calls the TClockGame.Create method for the game that is
+     currently being played}
     procedure sayOrientation(card:TCard);
+    {This is a procedure is now defunct but was used while debugging a
+     particular error it would show a message box with the orientation of the
+     card that is now at the top of the pile that has just had a card moved
+     from}
     procedure turnAllCardsOver(var hand:TClockHand);
+    {This procedure is to fix a bug in which there will occasionally be a card
+     that is revealed with it's face being shown rather than the back of it,
+     like it should be}
     procedure assignImagestoArray;
+    {This procedure assigns the 28 rows in the Image array to being the
+     CHandImage which has the same CHand number as the row and then changes the
+     images of these hands}
     procedure getImage(Hand:TClockHand; var img:TBitmap);
+    {This procedure finds the relevant bitmap from a folder in the debug that
+     is required by the last card in the hand that has been passed to it. The
+     procedure returns the bitmap}
   public
     { Public declarations }
     procedure turnOffImages;
+    {This procedure disables all of the images, preventing the user from
+     clicking on one and altering the state of the game}
     procedure turnOnImages;
+    {This procedure enables all of the images that can be clickable, meaning
+     that multiple games can be played}
     procedure newGame;
+    {This procedure holds all of the required code for creating and running a
+     new game}
     procedure turnNextCard(i:integer);
+    {This procedure turns the card in the inner hand to the card that has had a
+     card moved into its outer hand}
     procedure editMiddleButtonCaptions(i:integer);
+    {This is a specialised procedure to only change the middle images. The name
+     is left over from when buttons were used instead of images}
     procedure incrementMoveCounter;
+    {This procedure increases the value of moves by 1}
     procedure textToFile(str:string);
+    {This procedure is now defunct, but it was used to write the values of the
+     hand that had just been clicked to a file to check to see if there were
+     cards without rank or suit}
     procedure EndGame;
+    {This procedure holds all of the code required to end a game of clock}
     procedure changeImage(i:TImage; Hand:TClockHand);
+    {This procedure changes the particular image passed to it with regards to
+     the hand that is passed to it}
     procedure changeImages(a:ImageArray28);
+    {This procedure calls changeImage after being passed an ImageArray28}
   end;
 
 var
@@ -96,6 +213,7 @@ implementation
 
 procedure TClockForm.assignImagestoArray;
 begin
+  {The next 28 lines set the rows of Images to the relative CHand image}
   Images[1]:=CHand1Image;
   Images[2]:=CHand2Image;
   Images[3]:=CHand3Image;
@@ -125,6 +243,7 @@ begin
   Images[27]:=CHand27Image;
   Images[28]:=CHand28Image;
   changeImages(Images);
+  {This line calls the ChangeImages procedure and passes it the array Images}
 end;
 
 procedure TClockForm.CHand10ImageClick(Sender: TObject);
@@ -624,6 +743,11 @@ begin
   ClockGame.Destroy;
 end;
 
+procedure TClockForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  openMainMenu;
+end;
+
 procedure TClockForm.FormCreate(Sender: TObject);
 var
   i:integer;
@@ -807,6 +931,8 @@ begin
   newGame;
   changeImages(Images);
 end;
+
+
 
 procedure TClockForm.sayOrientation(card: TCard);
 begin

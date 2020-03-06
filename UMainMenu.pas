@@ -13,6 +13,7 @@ type
     procedure ClockButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MontanaButtonClick(Sender: TObject);
+    procedure FormOwnerSet(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +31,7 @@ procedure TMainMenu.ClockButtonClick(Sender: TObject);
 begin
   MainMenu.Hide;
   ClockForm.Show;
+  ShowWindow(Application.Handle, SW_SHOW)
 end;
 
 procedure TMainMenu.FormCreate(Sender: TObject);
@@ -37,10 +39,16 @@ begin
   MainMenu.Show;
 end;
 
+procedure TMainMenu.FormOwnerSet(Sender: TObject);
+begin
+  ShowWindow(Application.Handle, SW_SHOW)
+end;
+
 procedure TMainMenu.MontanaButtonClick(Sender: TObject);
 begin
   MainMenu.Hide;
   MontanaForm.Show;
+  ShowWindow(Application.Handle, SW_SHOW)
 end;
 
 end.

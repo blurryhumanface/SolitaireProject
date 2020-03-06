@@ -11,6 +11,7 @@ type
     instructionsMemo: TMemo;
     backButton: TButton;
     procedure backButtonClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     instructionFile:textfile;
@@ -48,10 +49,21 @@ begin
   instructionsMemo.Lines.Clear;
 end;
 
+procedure TinstructionsForm.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  case homeGame of
+    1:clockForm.Show;
+    2:montanaForm.Show;
+  end;
+
+end;
+
 procedure TinstructionsForm.writeInstructions(game: integer);
 var
   instruction:string;
 begin
+  instructionsMemo.Clear;
   homeGame:=game;
   case game of
     1:

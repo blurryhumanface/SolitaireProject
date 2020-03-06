@@ -18,7 +18,7 @@ begin
   KDeck:=TDeck.Create;
   KDeck.Shuffle;
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
+//  Application.MainFormOnTaskbar := True;
   Application.CreateForm(TMainMenu, MainMenu);
   Application.CreateForm(TClockForm, ClockForm);
   Application.CreateForm(TinstructionsForm, instructionsForm);

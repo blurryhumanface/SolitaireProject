@@ -12,6 +12,7 @@ object MontanaForm: TMontanaForm
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -213,196 +214,196 @@ object MontanaForm: TMontanaForm
   end
   object MHand42Image: TImage
     Left = 1086
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     Enabled = False
   end
   object MHand29Image: TImage
     Left = 8
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand29ImageClick
   end
   object MHand30Image: TImage
     Left = 85
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand30ImageClick
   end
   object MHand31Image: TImage
     Left = 162
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand31ImageClick
   end
   object MHand32Image: TImage
     Left = 239
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand32ImageClick
   end
   object MHand33Image: TImage
     Left = 316
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand33ImageClick
   end
   object MHand34Image: TImage
     Left = 393
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand34ImageClick
   end
   object MHand35Image: TImage
     Left = 470
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand35ImageClick
   end
   object MHand36Image: TImage
     Left = 547
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand36ImageClick
   end
   object MHand37Image: TImage
     Left = 624
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand37ImageClick
   end
   object MHand38Image: TImage
     Left = 701
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand38ImageClick
   end
   object MHand39Image: TImage
     Left = 778
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand39ImageClick
   end
   object MHand40Image: TImage
     Left = 855
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand40ImageClick
   end
   object MHand41Image: TImage
     Left = 932
-    Top = 256
+    Top = 248
     Width = 71
     Height = 96
     OnClick = MHand41ImageClick
   end
   object MHand56Image: TImage
     Left = 1086
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     Enabled = False
   end
   object MHand43Image: TImage
     Left = 8
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand43ImageClick
   end
   object MHand44Image: TImage
     Left = 85
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand44ImageClick
   end
   object MHand45Image: TImage
     Left = 162
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand45ImageClick
   end
   object MHand46Image: TImage
     Left = 239
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand46ImageClick
   end
   object MHand47Image: TImage
     Left = 316
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand47ImageClick
   end
   object MHand48Image: TImage
     Left = 393
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand48ImageClick
   end
   object MHand49Image: TImage
     Left = 470
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand49ImageClick
   end
   object MHand50Image: TImage
     Left = 547
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand50ImageClick
   end
   object MHand51Image: TImage
     Left = 624
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand51ImageClick
   end
   object MHand52Image: TImage
     Left = 701
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand52ImageClick
   end
   object MHand53Image: TImage
     Left = 778
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand53ImageClick
   end
   object MHand54Image: TImage
     Left = 855
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand54ImageClick
   end
   object MHand55Image: TImage
     Left = 932
-    Top = 392
+    Top = 368
     Width = 71
     Height = 96
     OnClick = MHand55ImageClick
@@ -442,5 +443,14 @@ object MontanaForm: TMontanaForm
     Caption = 'Redeal'
     TabOrder = 3
     OnClick = RedealButtonClick
+  end
+  object MovesEdit: TEdit
+    Left = 547
+    Top = 616
+    Width = 134
+    Height = 25
+    Enabled = False
+    TabOrder = 4
+    Text = 'no. of moves: 0'
   end
 end

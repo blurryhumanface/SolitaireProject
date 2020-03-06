@@ -12,6 +12,7 @@ object MainMenu: TMainMenu
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnShow = FormOwnerSet
   PixelsPerInch = 96
   TextHeight = 13
   object ClockButton: TButton

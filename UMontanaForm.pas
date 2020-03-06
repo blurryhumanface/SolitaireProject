@@ -70,6 +70,7 @@ type
     InstructionsButton: TButton;
     NewGameButton: TButton;
     RedealButton: TButton;
+    MovesEdit: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure InstructionsButtonClick(Sender: TObject);
     procedure MainMenuButtonClick(Sender: TObject);
@@ -127,11 +128,15 @@ type
     procedure MHand51ImageClick(Sender: TObject);
     procedure RedealButtonClick(Sender: TObject);
     procedure NewGameButtonClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     ImageLayout:TMontanaImageArray;
     fixedSuit:array[1..4] of integer;
     expectedDeckSize:integer;
+    redealable:boolean;
+    moves:integer;
+    procedure incrementMoveCounter;
     procedure handLayout;
     procedure changeImage(img:TImage; Hand:TMontanaHand);
     procedure getImage(Hand:TMontanaHand; var img:TBitmap);
@@ -142,11 +147,12 @@ type
     procedure fixCards;
     procedure turnCardsFaceUp;
     procedure newGame;
+    procedure FinishedGame;
   public
     { Public declarations }
     fixedCards:array[1..4] of integer;
     redeals:integer;
-    procedure EndGame(noRedeal:boolean);
+    procedure EndGame;
   end;
 
 var
@@ -183,18 +189,19 @@ begin
 
 end;
 
-procedure TMontanaForm.EndGame(noRedeal: boolean);
+procedure TMontanaForm.EndGame;
 begin
   turnOffImages;
-  if noRedeal=true then
-  begin
-    showMessage('No more redeals. Game Over');
-  end;
-  if fixedCards[1]+fixedCards[2]+fixedCards[3]+fixedCards[4]=52 then
-  begin
-    showMessage('Congratulations on completing the deck');
-  end;
   MontanaGame.Destroy;
+end;
+
+procedure TMontanaForm.FinishedGame;
+begin
+  if FixedCards[1]+FixedCards[2]+FixedCards[3]+FixedCards[4]=52 then
+  begin
+    showMessage('Congratulations, you have completed this deal.');
+    endGame;
+  end;
 end;
 
 procedure TMontanaForm.fixCards;
@@ -232,6 +239,12 @@ begin
 			fixedCards[i]:=13;
 		end;
 	end;
+  finishedGame;
+end;
+
+procedure TMontanaForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  openMainMenu;
 end;
 
 procedure TMontanaForm.FormCreate(Sender: TObject);
@@ -427,6 +440,12 @@ begin
 end;
 
 
+procedure TMontanaForm.incrementMoveCounter;
+begin
+  inc(moves);
+  movesEdit.text:='no. of moves: ' + inttostr(moves);
+end;
+
 procedure TMontanaForm.InstructionsButtonClick(Sender: TObject);
 begin
   MontanaForm.Hide;
@@ -449,6 +468,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[10,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -461,6 +481,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[11,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -473,6 +494,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[12,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -485,6 +507,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[13,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -497,6 +520,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[1,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -509,6 +533,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[2,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -521,6 +546,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[3,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -533,6 +559,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[4,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -545,6 +572,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[5,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -557,6 +585,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[1,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -569,6 +598,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[6,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -581,6 +611,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[7,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -593,6 +624,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[8,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -605,6 +637,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[9,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -617,6 +650,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[10,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -629,6 +663,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[11,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -641,6 +676,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[12,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -653,6 +689,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[13,3]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -665,6 +702,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[1,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -677,6 +715,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[2,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -689,6 +728,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[2,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -701,6 +741,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[3,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -713,6 +754,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[4,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -725,6 +767,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[5,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -737,6 +780,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[6,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -749,6 +793,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[7,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -761,6 +806,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[8,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -773,6 +819,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[9,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -785,6 +832,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[10,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -797,6 +845,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[11,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -809,6 +858,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[3,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -821,6 +871,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[12,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -833,6 +884,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[13,2]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -845,6 +897,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[1,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -857,6 +910,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[2,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -869,6 +923,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[3,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -881,6 +936,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[4,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -893,6 +949,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[5,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -905,6 +962,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[6,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -917,6 +975,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[7,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -929,6 +988,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[4,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -941,6 +1001,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[8,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -953,6 +1014,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[9,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -965,6 +1027,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[10,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -977,6 +1040,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[11,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -989,6 +1053,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[12,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1001,6 +1066,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[13,1]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1013,6 +1079,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[5,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1025,6 +1092,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[6,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1037,6 +1105,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[7,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1049,6 +1118,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[8,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1061,6 +1131,7 @@ begin
     MontanaGame.MoveCard((MontanaGame.layout[9,4]),k);
     changeImages(ImageLayout);
     fixCards;
+    incrementMoveCounter;
   end;
 end;
 
@@ -1072,7 +1143,10 @@ begin
   begin
     fixedCards[i]:=0;
   end;
+  moves:=0;
+  movesEdit.Text:='no. of moves: 0';
   redeals:=2;
+  redealButton.Enabled:=True;
   MontanaGame:=TMontanaGame.Create;
   handLayout;
   turnOnImages;
@@ -1081,7 +1155,7 @@ end;
 
 procedure TMontanaForm.NewGameButtonClick(Sender: TObject);
 begin
-  endGame(false);
+  endGame;
   newGame;
 end;
 
@@ -1107,16 +1181,21 @@ begin
           MDeck.AddCard(MontanaGame.layout[j,i].RemoveLastCard);
         end;
       end;
-      MontanaGame.layout[fixedCards[i]+1,i].AddCard(MontanaGame.layout[15,i].RemoveLastCard);
+      if fixedCards[i]<>13 then
+      begin
+        MontanaGame.layout[fixedCards[i]+1,i].AddCard(MontanaGame.layout[15,i].RemoveLastCard);
+      end;
     end;
     dec(redeals);
     MDeck.Shuffle;
     MontanaGame.deal;
     turnCardsFaceUp;
+    incrementMoveCounter;
   end
   else
   begin
-    EndGame(true);
+    showMessage('You have no more redeals. Please press the New Game button');
+    redealButton.Enabled:=False;
   end;
 end;
 
